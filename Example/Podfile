@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'KRProgressHUD_Example', :exclusive => true do
+  pod 'KRProgressHUD', :path => '../'
+end
+
+target 'KRProgressHUD_Tests', :exclusive => true do
+  pod 'KRProgressHUD', :path => '../'
+
+  
+end
