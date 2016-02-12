@@ -38,7 +38,6 @@ pod "KRProgressHUD"
 
 At first, import `KRProgressHUD` in your swift file.
 
-　　
 
 Show simple HUD (using GCD) :
 ```Swift
