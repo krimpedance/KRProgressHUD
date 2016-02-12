@@ -1,6 +1,5 @@
 # KRProgressHUD
 
-[![CI Status](http://img.shields.io/travis/krimpedance/KRProgressHUD.svg?style=flat)](https://travis-ci.org/krimpedance/KRProgressHUD)
 [![Version](https://img.shields.io/cocoapods/v/KRProgressHUD.svg?style=flat)](http://cocoapods.org/pods/KRProgressHUD)
 [![License](https://img.shields.io/cocoapods/l/KRProgressHUD.svg?style=flat)](http://cocoapods.org/pods/KRProgressHUD)
 [![Platform](https://img.shields.io/cocoapods/p/KRProgressHUD.svg?style=flat)](http://cocoapods.org/pods/KRProgressHUD)
@@ -99,7 +98,7 @@ public class func setDefaultMaskType(type :KRProgressHUDMaskType)  // Default is
 public class func setDefaultStyle(style :KRProgressHUDStyle)  // Default is .White
 public class func setDefaultActivityIndicatorStyle(style :KRActivityIndicatorStyle)  // Default is .Black
 ```
-`KRActivityIndicatorView`のスタイルは[here](https://github.com/krimpedance/KRActivityIndicator/blob/master/README.md)を参考にしてください．
+`KRActivityIndicatorView`のスタイルは[こちら](https://github.com/krimpedance/KRActivityIndicator/blob/master/README.md)を参考にしてください．
 
 ## ライブラリに関する質問等
 バグや機能のリクエストがありましたら，気軽にコメントしてください．
