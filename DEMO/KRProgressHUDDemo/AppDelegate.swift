@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  KRProgressHUD
+//  KRProgressHUDDemo
 //
-//  Created by krimpedance on 02/12/2016.
-//  Copyright (c) 2016 krimpedance. All rights reserved.
+//  Created by Ryunosuke Kirikihira on 2016/02/12.
+//  Copyright © 2016年 Krimpedance. All rights reserved.
 //
 
 import UIKit

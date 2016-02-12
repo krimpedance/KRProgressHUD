@@ -8,24 +8,24 @@
 
 import UIKit
 
-enum KRProgressHUDMaskType {
+public enum KRProgressHUDMaskType {
     case Clear, White, Black
 }
 
-enum KRProgressHUDStyle {
+public enum KRProgressHUDStyle {
     case Black, White, BlackColor, WhiteColor
 }
 
-enum KRActivityIndicatorStyle {
+public enum KRActivityIndicatorStyle {
     case Black, White, Color(UIColor, UIColor)
 }
 
 
-final class KRProgressHUD {
+public final class KRProgressHUD {
     private static let view = KRProgressHUD()
-    class func sharedView() -> KRProgressHUD { return view }
+    public class func sharedView() -> KRProgressHUD { return view }
    
-    let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+    private let window = UIWindow(frame: UIScreen.mainScreen().bounds)
     
     private let progressHUDView = UIView(frame: CGRectMake(0, 0, 100, 100))
     private let iconView = UIView(frame: CGRectMake(0,0,50,50))
@@ -116,17 +116,17 @@ final class KRProgressHUD {
  *  KRProgressHUD Setter --------------------------
  */
 extension KRProgressHUD {
-    class func setDefaultMaskType(type :KRProgressHUDMaskType) {
+    public class func setDefaultMaskType(type :KRProgressHUDMaskType) {
         KRProgressHUD.sharedView().maskType = type
         KRProgressHUD.sharedView().defaultMaskType = type
     }
     
-    class func setDefaultStyle(style :KRProgressHUDStyle) {
+    public class func setDefaultStyle(style :KRProgressHUDStyle) {
         KRProgressHUD.sharedView().progressHUDStyle = style
         KRProgressHUD.sharedView().defaultStyle = KRProgressHUD.sharedView().progressHUDStyle
     }
     
-    class func setDefaultActivityIndicatorStyle(style :KRActivityIndicatorStyle) {
+    public class func setDefaultActivityIndicatorStyle(style :KRActivityIndicatorStyle) {
         KRProgressHUD.sharedView().activityIndicatorStyle = style
         KRProgressHUD.sharedView().defaultActivityIndicatorStyle = style
     }
@@ -138,7 +138,7 @@ extension KRProgressHUD {
  *  KRProgressHUD Show & Dismiss --------------------------
  */
 extension KRProgressHUD {
-    class func show(
+    public class func show(
         progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
         maskType type:KRProgressHUDMaskType? = nil,
         activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
@@ -153,7 +153,7 @@ extension KRProgressHUD {
     }
     
     
-    class func showSuccess(
+    public class func showSuccess(
         progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
         maskType type:KRProgressHUDMaskType? = nil,
         activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
@@ -171,7 +171,7 @@ extension KRProgressHUD {
         }
     }
     
-    class func showInfo(
+    public class func showInfo(
         progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
         maskType type:KRProgressHUDMaskType? = nil,
         activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
@@ -189,7 +189,7 @@ extension KRProgressHUD {
         }
     }
     
-    class func showWarning(
+    public class func showWarning(
         progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
         maskType type:KRProgressHUDMaskType? = nil,
         activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
@@ -207,7 +207,7 @@ extension KRProgressHUD {
         }
     }
     
-    class func showError(
+    public class func showError(
         progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
         maskType type:KRProgressHUDMaskType? = nil,
         activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
@@ -225,7 +225,7 @@ extension KRProgressHUD {
         }
     }
     
-    class func dismiss() {
+    public class func dismiss() {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             UIView.animateWithDuration(0.5, animations: {
                 KRProgressHUD.sharedView().window.alpha = 0
