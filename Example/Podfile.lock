@@ -1,0 +1,14 @@
+PODS:
+  - KRProgressHUD (0.1.0)
+
+DEPENDENCIES:
+  - KRProgressHUD (from `../`)
+
+EXTERNAL SOURCES:
+  KRProgressHUD:
+    :path: ../
+
+SPEC CHECKSUMS:
+  KRProgressHUD: 5131bb45af7c7cdaa219695c4e3850cfb590600e
+
+COCOAPODS: 0.39.0
