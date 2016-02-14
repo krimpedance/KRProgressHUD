@@ -68,6 +68,7 @@ class func show(
     maskType type:KRProgressHUDMaskType? = nil,
     activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
     message :String? = nil,
+    font :UIFont? = nil,
     image :UIImage? = nil
 )
 
@@ -94,9 +95,10 @@ class func showError()
 ## カスタマイズ
 `KRProgressHUD`は，以下の設定が可能です．
 ```
-public class func setDefaultMaskType(type :KRProgressHUDMaskType)  // Default is .Black
-public class func setDefaultStyle(style :KRProgressHUDStyle)  // Default is .White
-public class func setDefaultActivityIndicatorStyle(style :KRActivityIndicatorStyle)  // Default is .Black
+public class func setDefaultMaskType(type :KRProgressHUDMaskType)  // デフォルト: .Black
+public class func setDefaultStyle(style :KRProgressHUDStyle)  // デフォルト: .White
+public class func setDefaultActivityIndicatorStyle(style :KRActivityIndicatorStyle)  // デフォルト: .Black
+public class func setDefaultFont(font :UIFont)  // デフォルト: ヒラギノ角ゴ W3 13px(ない場合はシステムフォント13px)
 ```
 `KRActivityIndicatorView`のスタイルは[こちら](https://github.com/krimpedance/KRActivityIndicator/blob/master/README.md)を参考にしてください．
 
