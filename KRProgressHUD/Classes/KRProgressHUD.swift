@@ -64,9 +64,10 @@ public final class KRProgressHUD {
         }
     }
     
-    private var defaultStyle :KRProgressHUDStyle = .White
-    private var defaultMaskType :KRProgressHUDMaskType = .Black
-    private var defaultActivityIndicatorStyle :KRActivityIndicatorStyle = .Black
+    private var defaultStyle :KRProgressHUDStyle = .White { willSet { self.progressHUDStyle = newValue } }
+    private var defaultMaskType :KRProgressHUDMaskType = .Black { willSet { self.maskType = newValue } }
+    private var defaultActivityIndicatorStyle :KRActivityIndicatorStyle = .Black { willSet { self.activityIndicatorStyle = newValue } }
+    private var defaultMessageFont = UIFont(name: "HiraginoSans-W3", size: 13) ?? UIFont.systemFontOfSize(13) { willSet { self.messageLabel.font = newValue } }
 
     private init() {
         self.window.windowLevel = UIWindowLevelNormal
@@ -101,7 +102,7 @@ public final class KRProgressHUD {
 
         self.messageLabel.center = CGPointMake(150/2, 90)
         self.messageLabel.backgroundColor = UIColor.clearColor()
-        self.messageLabel.font = UIFont(name: "HiraginoSans-W3", size: 13) ?? UIFont.systemFontOfSize(13)
+        self.messageLabel.font = self.defaultMessageFont
         self.messageLabel.textAlignment = .Center
         self.messageLabel.adjustsFontSizeToFitWidth = true
         self.messageLabel.minimumScaleFactor = 0.5
@@ -117,18 +118,19 @@ public final class KRProgressHUD {
  */
 extension KRProgressHUD {
     public class func setDefaultMaskType(type :KRProgressHUDMaskType) {
-        KRProgressHUD.sharedView().maskType = type
         KRProgressHUD.sharedView().defaultMaskType = type
     }
     
     public class func setDefaultStyle(style :KRProgressHUDStyle) {
-        KRProgressHUD.sharedView().progressHUDStyle = style
         KRProgressHUD.sharedView().defaultStyle = KRProgressHUD.sharedView().progressHUDStyle
     }
     
     public class func setDefaultActivityIndicatorStyle(style :KRActivityIndicatorStyle) {
-        KRProgressHUD.sharedView().activityIndicatorStyle = style
         KRProgressHUD.sharedView().defaultActivityIndicatorStyle = style
+    }
+    
+    public class func setDefaultFont(font :UIFont) {
+        KRProgressHUD.sharedView().defaultMessageFont = font
     }
 }
 // -------------------------------------
@@ -142,11 +144,12 @@ extension KRProgressHUD {
         progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
         maskType type:KRProgressHUDMaskType? = nil,
         activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
+        font :UIFont? = nil,
         message :String? = nil,
         image :UIImage? = nil
     ) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
-        KRProgressHUD.sharedView().updateProgressHUDViewText(message)
+        KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(image: image)
         
         KRProgressHUD.sharedView().show()
@@ -157,10 +160,11 @@ extension KRProgressHUD {
         progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
         maskType type:KRProgressHUDMaskType? = nil,
         activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
+        font :UIFont? = nil,
         message :String? = nil
     ) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
-        KRProgressHUD.sharedView().updateProgressHUDViewText(message)
+        KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Success)
         
         KRProgressHUD.sharedView().show()
@@ -175,10 +179,11 @@ extension KRProgressHUD {
         progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
         maskType type:KRProgressHUDMaskType? = nil,
         activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
+        font :UIFont? = nil,
         message :String? = nil
     ) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
-        KRProgressHUD.sharedView().updateProgressHUDViewText(message)
+        KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Info)
                                                              
         KRProgressHUD.sharedView().show()
@@ -193,10 +198,11 @@ extension KRProgressHUD {
         progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
         maskType type:KRProgressHUDMaskType? = nil,
         activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
+        font :UIFont? = nil,
         message :String? = nil
     ) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
-        KRProgressHUD.sharedView().updateProgressHUDViewText(message)
+        KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Warning)
                                                              
         KRProgressHUD.sharedView().show()
@@ -211,10 +217,11 @@ extension KRProgressHUD {
         progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
         maskType type:KRProgressHUDMaskType? = nil,
         activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
+        font :UIFont? = nil,
         message :String? = nil
     ) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
-        KRProgressHUD.sharedView().updateProgressHUDViewText(message)
+        KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Error)
                                                              
         KRProgressHUD.sharedView().show()
@@ -236,6 +243,7 @@ extension KRProgressHUD {
                 KRProgressHUD.sharedView().progressHUDStyle = KRProgressHUD.sharedView().defaultStyle
                 KRProgressHUD.sharedView().maskType = KRProgressHUD.sharedView().defaultMaskType
                 KRProgressHUD.sharedView().activityIndicatorStyle = KRProgressHUD.sharedView().defaultActivityIndicatorStyle
+                KRProgressHUD.sharedView().messageLabel.font = KRProgressHUD.sharedView().defaultMessageFont
             }
         }
     }
@@ -259,7 +267,7 @@ extension KRProgressHUD {
         if let style = indicatorStyle { KRProgressHUD.sharedView().activityIndicatorStyle = style }
     }
     
-    private func updateProgressHUDViewText(message :String?) {
+    private func updateProgressHUDViewText(font font :UIFont?, message :String?) {
         if let text = message {
             let center = self.progressHUDView.center
             var frame = self.progressHUDView.frame
@@ -271,6 +279,7 @@ extension KRProgressHUD {
          
             self.messageLabel.hidden = false
             self.messageLabel.text = text
+            self.messageLabel.font = font ?? defaultMessageFont
         }
         else {
             let center = self.progressHUDView.center
