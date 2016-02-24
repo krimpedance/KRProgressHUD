@@ -61,7 +61,7 @@ You can appoint only the args which You want to appoint.
 class func show(
     progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
     maskType type:KRProgressHUDMaskType? = nil,
-    activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
+    activityIndicatorStyle indicatorStyle :KRProgressHUDActivityIndicatorStyle? = nil,
     message :String? = nil,
     font :UIFont? = nil,
     image :UIImage? = nil
@@ -95,7 +95,7 @@ class func showError()
 ```
 public class func setDefaultMaskType(type :KRProgressHUDMaskType)  // Default is .Black
 public class func setDefaultStyle(style :KRProgressHUDStyle)  // Default is .White
-public class func setDefaultActivityIndicatorStyle(style :KRActivityIndicatorStyle)  // Default is .Black
+public class func setDefaultActivityIndicatorStyle(style :KRProgressHUDActivityIndicatorStyle)  // Default is .Black
 public class func setDefaultFont(font :UIFont)  // Default is Hiragino Sans W3 13px (When it can't be used, system font 13px)
 ```
 `KRActivityIndicatorView`'s style, please refer to [here](https://github.com/krimpedance/KRActivityIndicator/blob/master/README.md).

@@ -15,7 +15,7 @@ public enum KRProgressHUDStyle {
     case Black, White, BlackColor, WhiteColor
 }
 
-public enum KRActivityIndicatorStyle {
+public enum KRProgressHUDActivityIndicatorStyle {
     case Black, White, Color(UIColor, UIColor)
 }
 
@@ -53,7 +53,7 @@ public final class KRProgressHUD {
             }
         }
     }
-    private var activityIndicatorStyle: KRActivityIndicatorStyle {
+    private var activityIndicatorStyle: KRProgressHUDActivityIndicatorStyle {
         willSet {
             switch newValue {
             case .Black:  activityIndicatorView.activityIndicatorViewStyle = .LargeBlack
@@ -64,7 +64,7 @@ public final class KRProgressHUD {
     }
     private var defaultStyle: KRProgressHUDStyle = .White { willSet { progressHUDStyle = newValue } }
     private var defaultMaskType: KRProgressHUDMaskType = .Black { willSet { maskType = newValue } }
-    private var defaultActivityIndicatorStyle: KRActivityIndicatorStyle = .Black { willSet { activityIndicatorStyle = newValue } }
+    private var defaultActivityIndicatorStyle: KRProgressHUDActivityIndicatorStyle = .Black { willSet { activityIndicatorStyle = newValue } }
     private var defaultMessageFont = UIFont(name: "HiraginoSans-W3", size: 13) ?? UIFont.systemFontOfSize(13) { willSet { messageLabel.font = newValue } }
 
 
@@ -123,7 +123,7 @@ extension KRProgressHUD {
         KRProgressHUD.sharedView().defaultStyle = KRProgressHUD.sharedView().progressHUDStyle
     }
 
-    public class func setDefaultActivityIndicatorStyle(style style: KRActivityIndicatorStyle) {
+    public class func setDefaultActivityIndicatorStyle(style style: KRProgressHUDActivityIndicatorStyle) {
         KRProgressHUD.sharedView().defaultActivityIndicatorStyle = style
     }
 
@@ -140,7 +140,7 @@ extension KRProgressHUD {
     public class func show(
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
             maskType type:KRProgressHUDMaskType? = nil,
-            activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
+            activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
             font: UIFont? = nil, message: String? = nil, image: UIImage? = nil) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
@@ -151,7 +151,7 @@ extension KRProgressHUD {
     public class func showSuccess(
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
             maskType type:KRProgressHUDMaskType? = nil,
-            activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
+            activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
             font: UIFont? = nil, message: String? = nil) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
@@ -167,7 +167,7 @@ extension KRProgressHUD {
     public class func showInfo(
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
             maskType type:KRProgressHUDMaskType? = nil,
-            activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
+            activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
             font: UIFont? = nil, message: String? = nil) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
@@ -183,7 +183,7 @@ extension KRProgressHUD {
     public class func showWarning(
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
             maskType type:KRProgressHUDMaskType? = nil,
-            activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
+            activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
             font: UIFont? = nil, message: String? = nil) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
@@ -199,7 +199,7 @@ extension KRProgressHUD {
     public class func showError(
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
             maskType type:KRProgressHUDMaskType? = nil,
-            activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
+            activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
             font: UIFont? = nil, message: String? = nil) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
@@ -245,7 +245,7 @@ private extension KRProgressHUD {
         }
     }
 
-    func updateStyles(progressHUDStyle progressStyle: KRProgressHUDStyle?, maskType type:KRProgressHUDMaskType?, activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle?) {
+    func updateStyles(progressHUDStyle progressStyle: KRProgressHUDStyle?, maskType type:KRProgressHUDMaskType?, activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle?) {
         if let style = progressStyle {
             KRProgressHUD.sharedView().progressHUDStyle = style
         }
