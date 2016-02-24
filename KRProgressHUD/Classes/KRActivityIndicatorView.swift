@@ -15,22 +15,31 @@ public enum KRActivityIndicatorViewStyle {
 public final class KRActivityIndicatorView: UIView {
     @IBInspectable private(set) var startColor: UIColor = UIColor.blackColor() {
         willSet {
-            if largeStyle { activityIndicatorViewStyle = .LargeColor(newValue, endColor) }
-            else { activityIndicatorViewStyle = .Color(newValue, endColor) }
+            if largeStyle {
+                activityIndicatorViewStyle = .LargeColor(newValue, endColor)
+            } else {
+                activityIndicatorViewStyle = .Color(newValue, endColor)
+            }
         }
     }
 
     @IBInspectable private(set) var endColor: UIColor = UIColor.lightGrayColor() {
         willSet {
-            if largeStyle { activityIndicatorViewStyle = .LargeColor(startColor, newValue) }
-            else { activityIndicatorViewStyle = .Color(startColor, newValue) }
+            if largeStyle {
+                activityIndicatorViewStyle = .LargeColor(startColor, newValue)
+            } else {
+                activityIndicatorViewStyle = .Color(startColor, newValue)
+            }
         }
     }
 
     @IBInspectable var largeStyle: Bool = false {
         willSet {
-            if newValue { activityIndicatorViewStyle.sizeToLarge() }
-            else { activityIndicatorViewStyle.sizeToDefault() }
+            if newValue {
+                activityIndicatorViewStyle.sizeToLarge()
+            } else {
+                activityIndicatorViewStyle.sizeToDefault()
+            }
         }
     }
 
@@ -232,8 +241,11 @@ extension KRActivityIndicatorViewStyle {
 
 
     private func getPaths() -> [CGPath] {
-        if isLargeStyle { return KRActivityIndicator.largePaths }
-        else { return KRActivityIndicator.paths }
+        if isLargeStyle {
+            return KRActivityIndicator.largePaths
+        } else {
+            return KRActivityIndicator.paths
+        }
     }
 }
 
