@@ -5,6 +5,22 @@
 //  Copyright © 2016年 Krimpedance. All rights reserved.
 //
 
+import UIKit
+
+/**
+  KRActivityIndicatorView's style
+
+  - Normal size(20x20)
+    - **Black:**           the color is a gradation to `.lightGrayColor()` from `.blackColor()`.
+    - **White:**           the color is a gradation to `UIColor(white: 0.7, alpha:1)` from `.whiteColor()`.
+    - **Color(startColor, endColor):**   the color is a gradation to `endColor` from `startColor`.
+
+
+  - Large size(50x50)
+    - **LargeBlack:**   the color is same `.Black`.
+    - **LargeWhite:**   the color is same `.White`.
+    - **LargeColor(startColor, endColor):**   the color is same `.Color()`.
+*/
 public enum KRActivityIndicatorViewStyle {
     case Black, White, Color(UIColor, UIColor?)
     case LargeBlack, LargeWhite, LargeColor(UIColor, UIColor?)

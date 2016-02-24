@@ -7,28 +7,36 @@
 
 import UIKit
 
+/**
+ *  KRActivityIndicatorView is a simple and customizable activity indicator
+ */
 @IBDesignable
 public final class KRActivityIndicatorView: UIView {
-    @IBInspectable private(set) var startColor: UIColor = UIColor.blackColor() {
+    /// Activity indicator's head color (read-only).
+    /// If you change color, change activityIndicatorViewStyle property.
+    @IBInspectable private(set) var headColor: UIColor = UIColor.blackColor() {
         willSet {
             if largeStyle {
-                activityIndicatorViewStyle = .LargeColor(newValue, endColor)
+                activityIndicatorViewStyle = .LargeColor(newValue, tailColor)
             } else {
-                activityIndicatorViewStyle = .Color(newValue, endColor)
+                activityIndicatorViewStyle = .Color(newValue, tailColor)
             }
         }
     }
 
-    @IBInspectable private(set) var endColor: UIColor = UIColor.lightGrayColor() {
+    /// Activity indicator's tail color (read-only).
+    /// If you change color, change activityIndicatorViewStyle property.
+    @IBInspectable private(set) var tailColor: UIColor = UIColor.lightGrayColor() {
         willSet {
             if largeStyle {
-                activityIndicatorViewStyle = .LargeColor(startColor, newValue)
+                activityIndicatorViewStyle = .LargeColor(headColor, newValue)
             } else {
-                activityIndicatorViewStyle = .Color(startColor, newValue)
+                activityIndicatorViewStyle = .Color(headColor, newValue)
             }
         }
     }
 
+    /// Size of activity indicator. (`true` is large)
     @IBInspectable var largeStyle: Bool = false {
         willSet {
             if newValue {
@@ -39,25 +47,26 @@ public final class KRActivityIndicatorView: UIView {
         }
     }
 
+    /// Animation of activity indicator when it's shown.
     @IBInspectable var animating: Bool = true
+
+    /// calls `setHidden` when call `stopAnimating()`
     @IBInspectable var hidesWhenStopped: Bool = false
 
-
-    private var animationLayer = CALayer()
-
+    /// Activity indicator color style.
     public var activityIndicatorViewStyle: KRActivityIndicatorViewStyle = .Black {
         didSet { setNeedsDisplay() }
     }
 
+    /// Whether view performs animation
     public var isAnimating: Bool {
         if animationLayer.animationForKey("rotate") != nil { return true }
         else { return false }
     }
 
+    private var animationLayer = CALayer()
 
-    /**
-        Initializer --------------
-    */
+
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -70,6 +79,15 @@ public final class KRActivityIndicatorView: UIView {
         self.init(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
     }
 
+    /**
+     Initializes and returns a newly allocated view object with the specified position.
+     An initialized view object or nil if the object couldn't be created.
+     
+     - parameter position: Object position. Object size is determined automatically.
+     - parameter style:    Activity indicator default color use of KRActivityIndicatorViewStyle
+     
+     - returns: An initialized view object or nil if the object couldn't be created.
+     */
     public convenience init(position: CGPoint, activityIndicatorStyle style: KRActivityIndicatorViewStyle) {
         if style.isLargeStyle {
             self.init(frame: CGRect(x: position.x, y: position.y, width: 50, height: 50))
@@ -80,7 +98,6 @@ public final class KRActivityIndicatorView: UIView {
         activityIndicatorViewStyle = style
         backgroundColor = UIColor.clearColor()
     }
-    // -------------------------
 
 
     public override func drawRect(rect: CGRect) {
@@ -113,8 +130,10 @@ public final class KRActivityIndicatorView: UIView {
         // animation
         if animating { startAnimating() }
     }
+}
 
 
+extension KRActivityIndicatorView {
     public func startAnimating() {
         if let _ = animationLayer.animationForKey("rotate") { return }
 

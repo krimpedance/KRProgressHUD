@@ -5,6 +5,8 @@
 //  Copyright © 2016年 Krimpedance. All rights reserved.
 //
 
+import UIKit
+
 enum KRProgressHUDIconType {
     case Success, Info, Warning, Error
 
