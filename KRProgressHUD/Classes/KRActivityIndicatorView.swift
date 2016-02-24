@@ -180,45 +180,45 @@ private struct KRActivityIndicator {
 extension KRActivityIndicatorViewStyle {
     private mutating func sizeToLarge() {
         switch self {
-            case .Black:  self = .LargeBlack
-            case .White:  self = .LargeWhite
-            case let .Color(sc, ec):  self = .LargeColor(sc, ec)
-            default:  break
+        case .Black:  self = .LargeBlack
+        case .White:  self = .LargeWhite
+        case let .Color(sc, ec):  self = .LargeColor(sc, ec)
+        default:  break
         }         
     }
 
     private mutating func sizeToDefault() {
         switch self {
-            case .LargeBlack:  self = .Black
-            case .LargeWhite:  self = .White
-            case let .LargeColor(sc, ec):  self = .Color(sc, ec)
-            default:  break
+        case .LargeBlack:  self = .Black
+        case .LargeWhite:  self = .White
+        case let .LargeColor(sc, ec):  self = .Color(sc, ec)
+        default:  break
         }         
     }
 
     // privates --------------------
     private var isLargeStyle: Bool {
         switch self {
-            case .Black, .White, .Color(_, _):  return false
-            case .LargeBlack, .LargeWhite, .LargeColor(_, _):  return true
+        case .Black, .White, .Color(_, _):  return false
+        case .LargeBlack, .LargeWhite, .LargeColor(_, _):  return true
         }
     }
 
     private var startColor: UIColor {
         switch self {
-            case .Black, .LargeBlack:  return UIColor.blackColor()
-            case .White, .LargeWhite:  return UIColor.whiteColor()
-            case let .Color(start, _):  return start
-            case let .LargeColor(start, _):  return start
+        case .Black, .LargeBlack:  return UIColor.blackColor()
+        case .White, .LargeWhite:  return UIColor.whiteColor()
+        case let .Color(start, _):  return start
+        case let .LargeColor(start, _):  return start
         }
     }
 
     private var endColor: UIColor {
         switch self {
-            case .Black, .LargeBlack:  return UIColor.lightGrayColor()
-            case .White, .LargeWhite:  return UIColor(white: 0.7, alpha: 1)
-            case let .Color(start, end):  return end ?? start
-            case let .LargeColor(start, end):  return end ?? start
+        case .Black, .LargeBlack:  return UIColor.lightGrayColor()
+        case .White, .LargeWhite:  return UIColor(white: 0.7, alpha: 1)
+        case let .Color(start, end):  return end ?? start
+        case let .LargeColor(start, end):  return end ?? start
         }
     }
 

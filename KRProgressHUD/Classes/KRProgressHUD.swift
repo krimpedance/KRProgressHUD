@@ -150,7 +150,6 @@ extension KRProgressHUD {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(image: image)
-        
         KRProgressHUD.sharedView().show()
     }
 
@@ -164,7 +163,6 @@ extension KRProgressHUD {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Success)
-        
         KRProgressHUD.sharedView().show()
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
@@ -183,7 +181,6 @@ extension KRProgressHUD {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Info)
-                                                             
         KRProgressHUD.sharedView().show()
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
@@ -202,7 +199,6 @@ extension KRProgressHUD {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Warning)
-                                                             
         KRProgressHUD.sharedView().show()
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
@@ -221,7 +217,6 @@ extension KRProgressHUD {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Error)
-                                                             
         KRProgressHUD.sharedView().show()
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
@@ -285,8 +280,7 @@ private extension KRProgressHUD {
             messageLabel.hidden = false
             messageLabel.text = text
             messageLabel.font = font ?? defaultMessageFont
-        }
-        else {
+        } else {
             let center = progressHUDView.center
             var frame = progressHUDView.frame
             frame.size = CGSizeMake(100, 100)
