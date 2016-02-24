@@ -35,9 +35,9 @@ public final class KRProgressHUD {
     private var maskType: KRProgressHUDMaskType {
         willSet {
             switch newValue {
-            case .Clear:  self.window.backgroundColor = UIColor.clearColor()
-            case .White:  self.window.backgroundColor = UIColor(white: 1, alpha: 0.2)
-            case .Black:  self.window.backgroundColor = UIColor(white: 0, alpha: 0.2)
+            case .Clear:  window.backgroundColor = UIColor.clearColor()
+            case .White:  window.backgroundColor = UIColor(white: 1, alpha: 0.2)
+            case .Black:  window.backgroundColor = UIColor(white: 0, alpha: 0.2)
             }
         }
     }
@@ -46,69 +46,69 @@ public final class KRProgressHUD {
         willSet {
             switch newValue {
             case .Black, .BlackColor: 
-                self.progressHUDView.backgroundColor = UIColor.blackColor()
-                self.messageLabel.textColor = UIColor.whiteColor()
+                progressHUDView.backgroundColor = UIColor.blackColor()
+                messageLabel.textColor = UIColor.whiteColor()
             case .White, .WhiteColor: 
-                self.progressHUDView.backgroundColor = UIColor.whiteColor()
-                self.messageLabel.textColor = UIColor.blackColor()
+                progressHUDView.backgroundColor = UIColor.whiteColor()
+                messageLabel.textColor = UIColor.blackColor()
             }
         }
     }
     private var activityIndicatorStyle: KRActivityIndicatorStyle {
         willSet {
             switch newValue {
-            case .Black:  self.activityIndicatorView.activityIndicatorViewStyle = .LargeBlack
-            case .White:  self.activityIndicatorView.activityIndicatorViewStyle = .LargeWhite
-            case let .Color(sc, ec):  self.activityIndicatorView.activityIndicatorViewStyle = .LargeColor(sc, ec)
+            case .Black:  activityIndicatorView.activityIndicatorViewStyle = .LargeBlack
+            case .White:  activityIndicatorView.activityIndicatorViewStyle = .LargeWhite
+            case let .Color(sc, ec):  activityIndicatorView.activityIndicatorViewStyle = .LargeColor(sc, ec)
             }
         }
     }
-    private var defaultStyle: KRProgressHUDStyle = .White { willSet { self.progressHUDStyle = newValue } }
-    private var defaultMaskType: KRProgressHUDMaskType = .Black { willSet { self.maskType = newValue } }
-    private var defaultActivityIndicatorStyle: KRActivityIndicatorStyle = .Black { willSet { self.activityIndicatorStyle = newValue } }
-    private var defaultMessageFont = UIFont(name: "HiraginoSans-W3", size: 13) ?? UIFont.systemFontOfSize(13) { willSet { self.messageLabel.font = newValue } }
+    private var defaultStyle: KRProgressHUDStyle = .White { willSet { progressHUDStyle = newValue } }
+    private var defaultMaskType: KRProgressHUDMaskType = .Black { willSet { maskType = newValue } }
+    private var defaultActivityIndicatorStyle: KRActivityIndicatorStyle = .Black { willSet { activityIndicatorStyle = newValue } }
+    private var defaultMessageFont = UIFont(name: "HiraginoSans-W3", size: 13) ?? UIFont.systemFontOfSize(13) { willSet { messageLabel.font = newValue } }
 
 
     private init() {
-        self.window.windowLevel = UIWindowLevelNormal
-        self.window.backgroundColor = UIColor(white: 0, alpha: 0.4)
+        window.windowLevel = UIWindowLevelNormal
+        window.backgroundColor = UIColor(white: 0, alpha: 0.4)
         
-        self.maskType = .Black
-        self.progressHUDStyle = .White
-        self.activityIndicatorStyle = .Black
+        maskType = .Black
+        progressHUDStyle = .White
+        activityIndicatorStyle = .Black
         
-        self.configureProgressHUDView()
+        configureProgressHUDView()
     }
 
 
     private func configureProgressHUDView() {
         let screenFrame = UIScreen.mainScreen().bounds
-        self.progressHUDView.frame = CGRectMake(0, 0, 100, 100)
-        self.progressHUDView.center = CGPointMake(screenFrame.width/2, screenFrame.height/2 - 100)
-        self.progressHUDView.backgroundColor = UIColor.whiteColor()
-        self.progressHUDView.layer.cornerRadius = 10
-        self.window.addSubview(self.progressHUDView)
+        progressHUDView.frame = CGRectMake(0, 0, 100, 100)
+        progressHUDView.center = CGPointMake(screenFrame.width/2, screenFrame.height/2 - 100)
+        progressHUDView.backgroundColor = UIColor.whiteColor()
+        progressHUDView.layer.cornerRadius = 10
+        window.addSubview(progressHUDView)
 
-        self.iconView.backgroundColor = UIColor.clearColor()
-        self.iconView.center = CGPointMake(50, 50)
-        self.progressHUDView.addSubview(self.iconView)
+        iconView.backgroundColor = UIColor.clearColor()
+        iconView.center = CGPointMake(50, 50)
+        progressHUDView.addSubview(iconView)
 
-        self.activityIndicatorView.hidden = false
-        self.iconView.addSubview(self.activityIndicatorView)
+        activityIndicatorView.hidden = false
+        iconView.addSubview(activityIndicatorView)
 
-        self.drawView.backgroundColor = UIColor.clearColor()
-        self.drawView.hidden = true
-        self.iconView.addSubview(self.drawView)
+        drawView.backgroundColor = UIColor.clearColor()
+        drawView.hidden = true
+        iconView.addSubview(drawView)
 
-        self.messageLabel.center = CGPointMake(150/2, 90)
-        self.messageLabel.backgroundColor = UIColor.clearColor()
-        self.messageLabel.font = self.defaultMessageFont
-        self.messageLabel.textAlignment = .Center
-        self.messageLabel.adjustsFontSizeToFitWidth = true
-        self.messageLabel.minimumScaleFactor = 0.5
-        self.messageLabel.text = nil
-        self.messageLabel.hidden = true
-        self.progressHUDView.addSubview(self.messageLabel)
+        messageLabel.center = CGPointMake(150/2, 90)
+        messageLabel.backgroundColor = UIColor.clearColor()
+        messageLabel.font = defaultMessageFont
+        messageLabel.textAlignment = .Center
+        messageLabel.adjustsFontSizeToFitWidth = true
+        messageLabel.minimumScaleFactor = 0.5
+        messageLabel.text = nil
+        messageLabel.hidden = true
+        progressHUDView.addSubview(messageLabel)
     }
 }
 
@@ -268,68 +268,68 @@ extension KRProgressHUD {
 
     private func updateProgressHUDViewText(font font: UIFont?, message: String?) {
         if let text = message {
-            let center = self.progressHUDView.center
-            var frame = self.progressHUDView.frame
+            let center = progressHUDView.center
+            var frame = progressHUDView.frame
             frame.size = CGSizeMake(150, 110)
-            self.progressHUDView.frame = frame
-            self.progressHUDView.center = center
+            progressHUDView.frame = frame
+            progressHUDView.center = center
 
-            self.iconView.center = CGPointMake(150/2, 40)
+            iconView.center = CGPointMake(150/2, 40)
 
-            self.messageLabel.hidden = false
-            self.messageLabel.text = text
-            self.messageLabel.font = font ?? defaultMessageFont
+            messageLabel.hidden = false
+            messageLabel.text = text
+            messageLabel.font = font ?? defaultMessageFont
         }
         else {
-            let center = self.progressHUDView.center
-            var frame = self.progressHUDView.frame
+            let center = progressHUDView.center
+            var frame = progressHUDView.frame
             frame.size = CGSizeMake(100, 100)
-            self.progressHUDView.frame = frame
-            self.progressHUDView.center = center
+            progressHUDView.frame = frame
+            progressHUDView.center = center
 
-            self.iconView.center = CGPointMake(50, 50)
+            iconView.center = CGPointMake(50, 50)
 
-            self.messageLabel.hidden = true
+            messageLabel.hidden = true
         }
     }
 
     private func updateProgressHUDViewIcon(iconType iconType: KRProgressHUDIconType? = nil, image: UIImage? = nil) {
-        self.drawView.subviews.forEach{ $0.removeFromSuperview() }
-        self.drawView.layer.sublayers?.forEach{ $0.removeFromSuperlayer() }
+        drawView.subviews.forEach{ $0.removeFromSuperview() }
+        drawView.layer.sublayers?.forEach{ $0.removeFromSuperlayer() }
 
         switch (iconType, image) {
         case (nil, nil): 
-            self.drawView.hidden = true
-            self.activityIndicatorView.hidden = false
-            self.activityIndicatorView.startAnimating()
+            drawView.hidden = true
+            activityIndicatorView.hidden = false
+            activityIndicatorView.startAnimating()
 
         case let (nil, image): 
-            self.activityIndicatorView.hidden = true
-            self.activityIndicatorView.stopAnimating()
-            self.drawView.hidden = false
+            activityIndicatorView.hidden = true
+            activityIndicatorView.stopAnimating()
+            drawView.hidden = false
 
             let imageView = UIImageView(image: image)
             imageView.frame = KRProgressHUD.sharedView().drawView.bounds
             imageView.contentMode = .ScaleAspectFit
-            self.drawView.addSubview(imageView)
+            drawView.addSubview(imageView)
 
         case let (type, _): 
-            self.drawView.hidden = false
-            self.activityIndicatorView.hidden = true
-            self.activityIndicatorView.stopAnimating()
+            drawView.hidden = false
+            activityIndicatorView.hidden = true
+            activityIndicatorView.stopAnimating()
 
             let pathLayer = CAShapeLayer()
-            pathLayer.frame = self.drawView.layer.bounds
+            pathLayer.frame = drawView.layer.bounds
             pathLayer.lineWidth = 0
             pathLayer.path = KRProgressHUDIconType.getPath(type!)
 
-            switch self.progressHUDStyle {
+            switch progressHUDStyle {
                 case .Black:  pathLayer.fillColor = UIColor.whiteColor().CGColor
                 case .White:  pathLayer.fillColor = UIColor.blackColor().CGColor
                 default:  pathLayer.fillColor = KRProgressHUDIconType.getColor(type!)
             }
 
-            self.drawView.layer.addSublayer(pathLayer)
+            drawView.layer.addSublayer(pathLayer)
         }
     }
     // ---------------------------------------------------------------------------------

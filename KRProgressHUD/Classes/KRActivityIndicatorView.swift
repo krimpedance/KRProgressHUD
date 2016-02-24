@@ -15,22 +15,22 @@ public enum KRActivityIndicatorViewStyle {
 public final class KRActivityIndicatorView: UIView {
     @IBInspectable private(set) var startColor: UIColor = UIColor.blackColor() {
         willSet {
-            if self.largeStyle { self.activityIndicatorViewStyle = .LargeColor(newValue, self.endColor) }
-            else { self.activityIndicatorViewStyle = .Color(newValue, self.endColor) }
+            if largeStyle { activityIndicatorViewStyle = .LargeColor(newValue, endColor) }
+            else { activityIndicatorViewStyle = .Color(newValue, endColor) }
         }
     }
 
     @IBInspectable private(set) var endColor: UIColor = UIColor.lightGrayColor() {
         willSet {
-            if self.largeStyle { self.activityIndicatorViewStyle = .LargeColor(self.startColor, newValue) }
-            else { self.activityIndicatorViewStyle = .Color(self.startColor, newValue) }
+            if largeStyle { activityIndicatorViewStyle = .LargeColor(startColor, newValue) }
+            else { activityIndicatorViewStyle = .Color(startColor, newValue) }
         }
     }
 
     @IBInspectable var largeStyle: Bool = false {
         willSet {
-            if newValue { self.activityIndicatorViewStyle.sizeToLarge() }
-            else { self.activityIndicatorViewStyle.sizeToDefault() }
+            if newValue { activityIndicatorViewStyle.sizeToLarge() }
+            else { activityIndicatorViewStyle.sizeToDefault() }
         }
     }
 
@@ -41,11 +41,11 @@ public final class KRActivityIndicatorView: UIView {
     private var animationLayer = CALayer()
 
     public var activityIndicatorViewStyle: KRActivityIndicatorViewStyle = .Black {
-        didSet { self.setNeedsDisplay() }
+        didSet { setNeedsDisplay() }
     }
 
     public var isAnimating: Bool {
-        if self.animationLayer.animationForKey("rotate") != nil { return true }
+        if animationLayer.animationForKey("rotate") != nil { return true }
         else { return false }
     }
 
@@ -72,46 +72,46 @@ public final class KRActivityIndicatorView: UIView {
             self.init(frame: CGRectMake(position.x, position.y, 20, 20))
         }
 
-        self.activityIndicatorViewStyle = style
-        self.backgroundColor = UIColor.clearColor()
+        activityIndicatorViewStyle = style
+        backgroundColor = UIColor.clearColor()
     }
     // -------------------------
 
 
     public override func drawRect(rect: CGRect) {
         // recreate AnimationLayer
-        self.animationLayer.removeFromSuperlayer()
-        self.animationLayer = CALayer()
+        animationLayer.removeFromSuperlayer()
+        animationLayer = CALayer()
 
-        if self.activityIndicatorViewStyle.isLargeStyle {
-            self.animationLayer.frame = CGRectMake(0, 0, 50, 50)
+        if activityIndicatorViewStyle.isLargeStyle {
+            animationLayer.frame = CGRectMake(0, 0, 50, 50)
         } else {
-            self.animationLayer.frame = CGRectMake(0, 0, 20, 20)
+            animationLayer.frame = CGRectMake(0, 0, 20, 20)
         }
 
-        self.animationLayer.position = CGPointMake(self.layer.position.x-self.layer.frame.origin.x, self.layer.position.y-self.layer.frame.origin.y)
-        self.layer.addSublayer(self.animationLayer)
+        animationLayer.position = CGPointMake(layer.position.x-layer.frame.origin.x, layer.position.y-layer.frame.origin.y)
+        layer.addSublayer(animationLayer)
 
         // draw ActivityIndicator
-        let colors: [CGColor] = self.activityIndicatorViewStyle.getGradientColors()
-        let paths: [CGPath] = self.activityIndicatorViewStyle.getPaths()
+        let colors: [CGColor] = activityIndicatorViewStyle.getGradientColors()
+        let paths: [CGPath] = activityIndicatorViewStyle.getPaths()
 
         for i in 0..<8 {
             let pathLayer = CAShapeLayer()
-            pathLayer.frame = self.animationLayer.bounds
+            pathLayer.frame = animationLayer.bounds
             pathLayer.fillColor = colors[i]
             pathLayer.lineWidth = 0
             pathLayer.path = paths[i]
-            self.animationLayer.addSublayer(pathLayer)
+            animationLayer.addSublayer(pathLayer)
         }
 
         // animation
-        if self.animating { self.startAnimating() }
+        if animating { startAnimating() }
     }
 
 
     public func startAnimating() {
-        if let _ = self.animationLayer.animationForKey("rotate") { return }
+        if let _ = animationLayer.animationForKey("rotate") { return }
 
         let animation = CABasicAnimation(keyPath: "transform.rotation")
         animation.fromValue = 0
@@ -123,15 +123,15 @@ public final class KRActivityIndicatorView: UIView {
         animation.fillMode = kCAFillModeForwards
         animation.autoreverses = false
 
-        self.animationLayer.hidden = false
-        self.animationLayer.addAnimation(animation, forKey: "rotate")
+        animationLayer.hidden = false
+        animationLayer.addAnimation(animation, forKey: "rotate")
     }
 
     public func stopAnimating() {
-        self.animationLayer.removeAllAnimations()
+        animationLayer.removeAllAnimations()
 
-        if self.hidesWhenStopped {
-            self.animationLayer.hidden = true
+        if hidesWhenStopped {
+            animationLayer.hidden = true
         }
     }
 }
@@ -216,23 +216,23 @@ extension KRActivityIndicatorViewStyle {
     private func getGradientColors() -> [CGColor] {
         let gradient = CAGradientLayer()
         gradient.frame = CGRectMake(0, 0, 1, 70)
-        gradient.colors = [self.startColor.CGColor, self.endColor.CGColor]
+        gradient.colors = [startColor.CGColor, endColor.CGColor]
 
-        var colors: [CGColor] = [self.startColor.CGColor]
+        var colors: [CGColor] = [startColor.CGColor]
         colors.appendContentsOf( // 中間色
             (1..<7).map {
                 let point = CGPointMake(0, 10*CGFloat($0))
                 return gradient.colorOfPoint(point).CGColor
             }
         )
-        colors.append(self.endColor.CGColor)
+        colors.append(endColor.CGColor)
 
         return colors
     }
 
 
     private func getPaths() -> [CGPath] {
-        if self.isLargeStyle { return KRActivityIndicator.largePaths }
+        if isLargeStyle { return KRActivityIndicator.largePaths }
         else { return KRActivityIndicator.paths }
     }
 }
@@ -249,7 +249,7 @@ private extension CAGradientLayer {
         let context = CGBitmapContextCreate(&pixel, 1, 1, 8, 4, colorSpace, bitmap.rawValue)
 
         CGContextTranslateCTM(context, -point.x, -point.y)
-        self.renderInContext(context!)
+        renderInContext(context!)
 
         let red:CGFloat = CGFloat(pixel[0])/255.0
         let green:CGFloat = CGFloat(pixel[1])/255.0
