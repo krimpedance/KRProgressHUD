@@ -12,39 +12,39 @@ public enum KRActivityIndicatorViewStyle {
 }
 
 @IBDesignable
-public final class KRActivityIndicatorView :UIView {
-    @IBInspectable private(set) var startColor :UIColor = UIColor.blackColor() {
+public final class KRActivityIndicatorView: UIView {
+    @IBInspectable private(set) var startColor: UIColor = UIColor.blackColor() {
         willSet {
             if self.largeStyle { self.activityIndicatorViewStyle = .LargeColor(newValue, self.endColor) }
             else { self.activityIndicatorViewStyle = .Color(newValue, self.endColor) }
         }
     }
 
-    @IBInspectable private(set) var endColor :UIColor = UIColor.lightGrayColor() {
+    @IBInspectable private(set) var endColor: UIColor = UIColor.lightGrayColor() {
         willSet {
             if self.largeStyle { self.activityIndicatorViewStyle = .LargeColor(self.startColor, newValue) }
             else { self.activityIndicatorViewStyle = .Color(self.startColor, newValue) }
         }
     }
 
-    @IBInspectable var largeStyle :Bool = false {
+    @IBInspectable var largeStyle: Bool = false {
         willSet {
             if newValue { self.activityIndicatorViewStyle.sizeToLarge() }
             else { self.activityIndicatorViewStyle.sizeToDefault() }
         }
     }
 
-    @IBInspectable var animating :Bool = true
-    @IBInspectable var hidesWhenStopped :Bool = false
+    @IBInspectable var animating: Bool = true
+    @IBInspectable var hidesWhenStopped: Bool = false
 
 
     private var animationLayer = CALayer()
 
-    public var activityIndicatorViewStyle :KRActivityIndicatorViewStyle = .Black {
+    public var activityIndicatorViewStyle: KRActivityIndicatorViewStyle = .Black {
         didSet { self.setNeedsDisplay() }
     }
 
-    public var isAnimating :Bool {
+    public var isAnimating: Bool {
         if self.animationLayer.animationForKey("rotate") != nil { return true }
         else { return false }
     }
@@ -57,7 +57,7 @@ public final class KRActivityIndicatorView :UIView {
         super.init(coder: aDecoder)
     }
 
-    public override init(frame :CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
     }
 
@@ -65,7 +65,7 @@ public final class KRActivityIndicatorView :UIView {
         self.init(frame: CGRectMake(0, 0, 20, 20))
     }
 
-    public convenience init(position :CGPoint, activityIndicatorStyle style :KRActivityIndicatorViewStyle) {
+    public convenience init(position: CGPoint, activityIndicatorStyle style: KRActivityIndicatorViewStyle) {
         if style.isLargeStyle {
             self.init(frame: CGRectMake(position.x, position.y, 50, 50))
         } else {
@@ -92,10 +92,9 @@ public final class KRActivityIndicatorView :UIView {
         self.animationLayer.position = CGPointMake(self.layer.position.x-self.layer.frame.origin.x, self.layer.position.y-self.layer.frame.origin.y)
         self.layer.addSublayer(self.animationLayer)
 
-
         // draw ActivityIndicator
-        let colors :[CGColor] = self.activityIndicatorViewStyle.getGradientColors()
-        let paths :[CGPath] = self.activityIndicatorViewStyle.getPaths()
+        let colors: [CGColor] = self.activityIndicatorViewStyle.getGradientColors()
+        let paths: [CGPath] = self.activityIndicatorViewStyle.getPaths()
 
         for i in 0..<8 {
             let pathLayer = CAShapeLayer()
@@ -142,7 +141,7 @@ public final class KRActivityIndicatorView :UIView {
  *  KRActivityIndicator Path ---------
  */
 private struct KRActivityIndicator {
-    static let paths :[CGPath] = [
+    static let paths: [CGPath] = [
         UIBezierPath(ovalInRect: CGRectMake(4.472, 0.209, 4.801, 4.801)).CGPath,
         UIBezierPath(ovalInRect: CGRectMake(0.407, 5.154, 4.321, 4.321)).CGPath,
         UIBezierPath(ovalInRect: CGRectMake(0.93, 11.765, 3.841, 3.841)).CGPath,
@@ -153,7 +152,7 @@ private struct KRActivityIndicator {
         UIBezierPath(ovalInRect: CGRectMake(12.293, 1.374, 1.901, 1.901)).CGPath,
     ]
 
-    static let largePaths :[CGPath] = [
+    static let largePaths: [CGPath] = [
         UIBezierPath(ovalInRect: CGRectMake(12.013, 1.962, 8.336, 8.336)).CGPath,
         UIBezierPath(ovalInRect: CGRectMake(1.668, 14.14, 7.502, 7.502)).CGPath,
         UIBezierPath(ovalInRect: CGRectMake(2.792, 30.484, 6.668, 6.668)).CGPath,
@@ -172,45 +171,45 @@ private struct KRActivityIndicator {
 extension KRActivityIndicatorViewStyle {
     private mutating func sizeToLarge() {
         switch self {
-            case .Black : self = .LargeBlack
-            case .White : self = .LargeWhite
-            case let .Color(sc, ec) : self = .LargeColor(sc, ec)
-            default : break
+            case .Black:  self = .LargeBlack
+            case .White:  self = .LargeWhite
+            case let .Color(sc, ec):  self = .LargeColor(sc, ec)
+            default:  break
         }         
     }
 
     private mutating func sizeToDefault() {
         switch self {
-            case .LargeBlack : self = .Black
-            case .LargeWhite : self = .White
-            case let .LargeColor(sc, ec) : self = .Color(sc, ec)
-            default : break
+            case .LargeBlack:  self = .Black
+            case .LargeWhite:  self = .White
+            case let .LargeColor(sc, ec):  self = .Color(sc, ec)
+            default:  break
         }         
     }
 
     // privates --------------------
-    private var isLargeStyle :Bool {
+    private var isLargeStyle: Bool {
         switch self {
-            case .Black, .White, .Color(_, _) : return false
-            case .LargeBlack, .LargeWhite, .LargeColor(_, _) : return true
+            case .Black, .White, .Color(_, _):  return false
+            case .LargeBlack, .LargeWhite, .LargeColor(_, _):  return true
         }
     }
 
-    private var startColor :UIColor {
+    private var startColor: UIColor {
         switch self {
-            case .Black, .LargeBlack : return UIColor.blackColor()
-            case .White, .LargeWhite : return UIColor.whiteColor()
-            case let .Color(start, _) : return start
-            case let .LargeColor(start, _) : return start
+            case .Black, .LargeBlack:  return UIColor.blackColor()
+            case .White, .LargeWhite:  return UIColor.whiteColor()
+            case let .Color(start, _):  return start
+            case let .LargeColor(start, _):  return start
         }
     }
 
-    private var endColor :UIColor {
+    private var endColor: UIColor {
         switch self {
-            case .Black, .LargeBlack : return UIColor.lightGrayColor()
-            case .White, .LargeWhite : return UIColor(white: 0.7, alpha: 1)
-            case let .Color(start, end) : return end ?? start
-            case let .LargeColor(start, end) : return end ?? start
+            case .Black, .LargeBlack:  return UIColor.lightGrayColor()
+            case .White, .LargeWhite:  return UIColor(white: 0.7, alpha: 1)
+            case let .Color(start, end):  return end ?? start
+            case let .LargeColor(start, end):  return end ?? start
         }
     }
 
@@ -219,7 +218,7 @@ extension KRActivityIndicatorViewStyle {
         gradient.frame = CGRectMake(0, 0, 1, 70)
         gradient.colors = [self.startColor.CGColor, self.endColor.CGColor]
 
-        var colors :[CGColor] = [self.startColor.CGColor]
+        var colors: [CGColor] = [self.startColor.CGColor]
         colors.appendContentsOf( // 中間色
             (1..<7).map {
                 let point = CGPointMake(0, 10*CGFloat($0))

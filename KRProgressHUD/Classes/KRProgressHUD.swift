@@ -32,40 +32,40 @@ public final class KRProgressHUD {
     private let drawView = UIView(frame: CGRectMake(0, 0, 50, 50))
     private let messageLabel = UILabel(frame: CGRectMake(0, 0, 150, 20))
 
-    private var maskType :KRProgressHUDMaskType {
+    private var maskType: KRProgressHUDMaskType {
         willSet {
             switch newValue {
-            case .Clear : self.window.backgroundColor = UIColor.clearColor()
-            case .White : self.window.backgroundColor = UIColor(white: 1, alpha: 0.2)
-            case .Black : self.window.backgroundColor = UIColor(white: 0, alpha: 0.2)
+            case .Clear:  self.window.backgroundColor = UIColor.clearColor()
+            case .White:  self.window.backgroundColor = UIColor(white: 1, alpha: 0.2)
+            case .Black:  self.window.backgroundColor = UIColor(white: 0, alpha: 0.2)
             }
         }
     }
 
-    private var progressHUDStyle :KRProgressHUDStyle {
+    private var progressHUDStyle: KRProgressHUDStyle {
         willSet {
             switch newValue {
-            case .Black, .BlackColor :
+            case .Black, .BlackColor: 
                 self.progressHUDView.backgroundColor = UIColor.blackColor()
                 self.messageLabel.textColor = UIColor.whiteColor()
-            case .White, .WhiteColor :
+            case .White, .WhiteColor: 
                 self.progressHUDView.backgroundColor = UIColor.whiteColor()
                 self.messageLabel.textColor = UIColor.blackColor()
             }
         }
     }
-    private var activityIndicatorStyle :KRActivityIndicatorStyle {
+    private var activityIndicatorStyle: KRActivityIndicatorStyle {
         willSet {
             switch newValue {
-            case .Black : self.activityIndicatorView.activityIndicatorViewStyle = .LargeBlack
-            case .White : self.activityIndicatorView.activityIndicatorViewStyle = .LargeWhite
-            case let .Color(sc, ec) : self.activityIndicatorView.activityIndicatorViewStyle = .LargeColor(sc, ec)
+            case .Black:  self.activityIndicatorView.activityIndicatorViewStyle = .LargeBlack
+            case .White:  self.activityIndicatorView.activityIndicatorViewStyle = .LargeWhite
+            case let .Color(sc, ec):  self.activityIndicatorView.activityIndicatorViewStyle = .LargeColor(sc, ec)
             }
         }
     }
-    private var defaultStyle :KRProgressHUDStyle = .White { willSet { self.progressHUDStyle = newValue } }
-    private var defaultMaskType :KRProgressHUDMaskType = .Black { willSet { self.maskType = newValue } }
-    private var defaultActivityIndicatorStyle :KRActivityIndicatorStyle = .Black { willSet { self.activityIndicatorStyle = newValue } }
+    private var defaultStyle: KRProgressHUDStyle = .White { willSet { self.progressHUDStyle = newValue } }
+    private var defaultMaskType: KRProgressHUDMaskType = .Black { willSet { self.maskType = newValue } }
+    private var defaultActivityIndicatorStyle: KRActivityIndicatorStyle = .Black { willSet { self.activityIndicatorStyle = newValue } }
     private var defaultMessageFont = UIFont(name: "HiraginoSans-W3", size: 13) ?? UIFont.systemFontOfSize(13) { willSet { self.messageLabel.font = newValue } }
 
 
@@ -117,19 +117,19 @@ public final class KRProgressHUD {
  *  KRProgressHUD Setter --------------------------
  */
 extension KRProgressHUD {
-    public class func setDefaultMaskType(type :KRProgressHUDMaskType) {
+    public class func setDefaultMaskType(type: KRProgressHUDMaskType) {
         KRProgressHUD.sharedView().defaultMaskType = type
     }
 
-    public class func setDefaultStyle(style :KRProgressHUDStyle) {
+    public class func setDefaultStyle(style: KRProgressHUDStyle) {
         KRProgressHUD.sharedView().defaultStyle = KRProgressHUD.sharedView().progressHUDStyle
     }
 
-    public class func setDefaultActivityIndicatorStyle(style :KRActivityIndicatorStyle) {
+    public class func setDefaultActivityIndicatorStyle(style: KRActivityIndicatorStyle) {
         KRProgressHUD.sharedView().defaultActivityIndicatorStyle = style
     }
 
-    public class func setDefaultFont(font :UIFont) {
+    public class func setDefaultFont(font: UIFont) {
         KRProgressHUD.sharedView().defaultMessageFont = font
     }
 }
@@ -141,12 +141,12 @@ extension KRProgressHUD {
  */
 extension KRProgressHUD {
     public class func show(
-        progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
+        progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
         maskType type:KRProgressHUDMaskType? = nil,
-        activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
-        font :UIFont? = nil,
-        message :String? = nil,
-        image :UIImage? = nil
+        activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
+        font: UIFont? = nil,
+        message: String? = nil,
+        image: UIImage? = nil
     ) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
@@ -156,11 +156,11 @@ extension KRProgressHUD {
     }
 
     public class func showSuccess(
-        progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
+        progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
         maskType type:KRProgressHUDMaskType? = nil,
-        activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
-        font :UIFont? = nil,
-        message :String? = nil
+        activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
+        font: UIFont? = nil,
+        message: String? = nil
     ) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
@@ -175,11 +175,11 @@ extension KRProgressHUD {
     }
 
     public class func showInfo(
-        progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
+        progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
         maskType type:KRProgressHUDMaskType? = nil,
-        activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
-        font :UIFont? = nil,
-        message :String? = nil
+        activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
+        font: UIFont? = nil,
+        message: String? = nil
     ) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
@@ -194,11 +194,11 @@ extension KRProgressHUD {
     }
 
     public class func showWarning(
-        progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
+        progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
         maskType type:KRProgressHUDMaskType? = nil,
-        activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
-        font :UIFont? = nil,
-        message :String? = nil
+        activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
+        font: UIFont? = nil,
+        message: String? = nil
     ) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
@@ -213,11 +213,11 @@ extension KRProgressHUD {
     }
 
     public class func showError(
-        progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
+        progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
         maskType type:KRProgressHUDMaskType? = nil,
-        activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
-        font :UIFont? = nil,
-        message :String? = nil
+        activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
+        font: UIFont? = nil,
+        message: String? = nil
     ) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
@@ -260,13 +260,13 @@ extension KRProgressHUD {
         }
     }
 
-    private func updateStyles(progressHUDStyle progressStyle :KRProgressHUDStyle?, maskType type:KRProgressHUDMaskType?, activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle?) {
+    private func updateStyles(progressHUDStyle progressStyle: KRProgressHUDStyle?, maskType type:KRProgressHUDMaskType?, activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle?) {
         if let style = progressStyle { KRProgressHUD.sharedView().progressHUDStyle = style }
         if let type = type { KRProgressHUD.sharedView().maskType = type }
         if let style = indicatorStyle { KRProgressHUD.sharedView().activityIndicatorStyle = style }
     }
 
-    private func updateProgressHUDViewText(font font :UIFont?, message :String?) {
+    private func updateProgressHUDViewText(font font: UIFont?, message: String?) {
         if let text = message {
             let center = self.progressHUDView.center
             var frame = self.progressHUDView.frame
@@ -293,17 +293,17 @@ extension KRProgressHUD {
         }
     }
 
-    private func updateProgressHUDViewIcon(iconType iconType :KRProgressHUDIconType? = nil, image :UIImage? = nil) {
+    private func updateProgressHUDViewIcon(iconType iconType: KRProgressHUDIconType? = nil, image: UIImage? = nil) {
         self.drawView.subviews.forEach{ $0.removeFromSuperview() }
         self.drawView.layer.sublayers?.forEach{ $0.removeFromSuperlayer() }
 
         switch (iconType, image) {
-        case (nil, nil) :
+        case (nil, nil): 
             self.drawView.hidden = true
             self.activityIndicatorView.hidden = false
             self.activityIndicatorView.startAnimating()
 
-        case let (nil, image) :
+        case let (nil, image): 
             self.activityIndicatorView.hidden = true
             self.activityIndicatorView.stopAnimating()
             self.drawView.hidden = false
@@ -313,7 +313,7 @@ extension KRProgressHUD {
             imageView.contentMode = .ScaleAspectFit
             self.drawView.addSubview(imageView)
 
-        case let (type, _) :
+        case let (type, _): 
             self.drawView.hidden = false
             self.activityIndicatorView.hidden = true
             self.activityIndicatorView.stopAnimating()
@@ -324,9 +324,9 @@ extension KRProgressHUD {
             pathLayer.path = KRProgressHUDIconType.getPath(type!)
 
             switch self.progressHUDStyle {
-                case .Black : pathLayer.fillColor = UIColor.whiteColor().CGColor
-                case .White : pathLayer.fillColor = UIColor.blackColor().CGColor
-                default : pathLayer.fillColor = KRProgressHUDIconType.getColor(type!)
+                case .Black:  pathLayer.fillColor = UIColor.whiteColor().CGColor
+                case .White:  pathLayer.fillColor = UIColor.blackColor().CGColor
+                default:  pathLayer.fillColor = KRProgressHUDIconType.getColor(type!)
             }
 
             self.drawView.layer.addSublayer(pathLayer)
@@ -342,7 +342,7 @@ extension KRProgressHUD {
 private enum KRProgressHUDIconType {
     case Success, Info, Warning, Error
 
-    private var success :CGPath {
+    private var success: CGPath {
         let path = UIBezierPath()
         path.moveToPoint(CGPointMake(19.886, 45.665))
         path.addLineToPoint(CGPointMake(0.644, 24.336))
@@ -354,7 +354,7 @@ private enum KRProgressHUDIconType {
         return path.CGPath
     }
 
-    private var info :CGPath {
+    private var info: CGPath {
         let path = UIBezierPath(ovalInRect: CGRectMake(21.078, 5, 7.843, 7.843))
         path.moveToPoint(CGPointMake(28.137, 43.431))
         path.addLineToPoint(CGPointMake(28.137, 18.333))
@@ -370,7 +370,7 @@ private enum KRProgressHUDIconType {
         return path.CGPath
     }
 
-    private var warning :CGPath {
+    private var warning: CGPath {
         let path = UIBezierPath()
         path.moveToPoint(CGPointMake(29.821, 42.679))
         path.addCurveToPoint(CGPointMake(25, 47.5), controlPoint1:CGPointMake(29.821, 45.341), controlPoint2:CGPointMake(27.663, 47.5))
@@ -409,7 +409,7 @@ private enum KRProgressHUDIconType {
         return path.CGPath
     }
 
-    private var error :CGPath {
+    private var error: CGPath {
         let path = UIBezierPath()
         path.moveToPoint(CGPointMake(48.535, 8.535))
         path.addLineToPoint(CGPointMake(41.465, 1.465))
@@ -427,21 +427,21 @@ private enum KRProgressHUDIconType {
         return path.CGPath
     }
 
-    static func getPath(type :KRProgressHUDIconType) -> CGPath {
+    static func getPath(type: KRProgressHUDIconType) -> CGPath {
         switch type {
-        case .Success : return type.success
-        case .Info : return type.info
-        case .Warning : return type.warning
-        case .Error : return type.error
+        case .Success:  return type.success
+        case .Info:  return type.info
+        case .Warning:  return type.warning
+        case .Error:  return type.error
         }
     }
 
-    static func getColor(type :KRProgressHUDIconType) -> CGColor {
+    static func getColor(type: KRProgressHUDIconType) -> CGColor {
         switch type {
-        case .Success : return UIColor(red: 0.353, green: 0.620, blue: 0.431, alpha: 1).CGColor
-        case .Info : return UIColor(red: 0.361, green: 0.522, blue: 0.800, alpha: 1).CGColor
-        case .Warning : return UIColor(red: 0.918, green: 0.855, blue: 0.110, alpha: 1).CGColor
-        case .Error : return UIColor(red: 0.718, green: 0.255, blue: 0.255, alpha: 1).CGColor
+        case .Success:  return UIColor(red: 0.353, green: 0.620, blue: 0.431, alpha: 1).CGColor
+        case .Info:  return UIColor(red: 0.361, green: 0.522, blue: 0.800, alpha: 1).CGColor
+        case .Warning:  return UIColor(red: 0.918, green: 0.855, blue: 0.110, alpha: 1).CGColor
+        case .Error:  return UIColor(red: 0.718, green: 0.255, blue: 0.255, alpha: 1).CGColor
         }
     }
 }
