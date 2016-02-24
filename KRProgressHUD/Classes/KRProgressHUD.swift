@@ -2,7 +2,6 @@
 //  KRProgressHUD.swift
 //  KRProgressHUD
 //
-//  Created by Ryunosuke Kirikihira on 2016/02/02.
 //  Copyright © 2016年 Krimpedance. All rights reserved.
 //
 
