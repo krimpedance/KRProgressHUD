@@ -26,11 +26,11 @@ public final class KRProgressHUD {
     public class func sharedView() -> KRProgressHUD { return view }
 
     private let window = UIWindow(frame: UIScreen.mainScreen().bounds)
-    private let progressHUDView = UIView(frame: CGRectMake(0, 0, 100, 100))
-    private let iconView = UIView(frame: CGRectMake(0,0,50,50))
+    private let progressHUDView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+    private let iconView = UIView(frame: CGRect(x: 0,y: 0,width: 50,height: 50))
     private let activityIndicatorView = KRActivityIndicatorView(position: CGPointZero, activityIndicatorStyle: .LargeBlack)
-    private let drawView = UIView(frame: CGRectMake(0, 0, 50, 50))
-    private let messageLabel = UILabel(frame: CGRectMake(0, 0, 150, 20))
+    private let drawView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    private let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 20))
 
     private var maskType: KRProgressHUDMaskType {
         willSet {
@@ -83,13 +83,13 @@ public final class KRProgressHUD {
 
     private func configureProgressHUDView() {
         let screenFrame = UIScreen.mainScreen().bounds
-        progressHUDView.center = CGPointMake(screenFrame.width/2, screenFrame.height/2 - 100)
+        progressHUDView.center = CGPoint(x: screenFrame.width/2, y: screenFrame.height/2 - 100)
         progressHUDView.backgroundColor = UIColor.whiteColor()
         progressHUDView.layer.cornerRadius = 10
         window.addSubview(progressHUDView)
 
         iconView.backgroundColor = UIColor.clearColor()
-        iconView.center = CGPointMake(50, 50)
+        iconView.center = CGPoint(x: 50, y: 50)
         progressHUDView.addSubview(iconView)
 
         activityIndicatorView.hidden = false
@@ -99,7 +99,7 @@ public final class KRProgressHUD {
         drawView.hidden = true
         iconView.addSubview(drawView)
 
-        messageLabel.center = CGPointMake(150/2, 90)
+        messageLabel.center = CGPoint(x: 150/2, y: 90)
         messageLabel.backgroundColor = UIColor.clearColor()
         messageLabel.font = defaultMessageFont
         messageLabel.textAlignment = .Center
@@ -140,13 +140,10 @@ extension KRProgressHUD {
  */
 extension KRProgressHUD {
     public class func show(
-        progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
-        maskType type:KRProgressHUDMaskType? = nil,
-        activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
-        font: UIFont? = nil,
-        message: String? = nil,
-        image: UIImage? = nil
-    ) {
+            progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
+            maskType type:KRProgressHUDMaskType? = nil,
+            activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
+            font: UIFont? = nil, message: String? = nil, image: UIImage? = nil) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(image: image)
@@ -154,12 +151,10 @@ extension KRProgressHUD {
     }
 
     public class func showSuccess(
-        progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
-        maskType type:KRProgressHUDMaskType? = nil,
-        activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
-        font: UIFont? = nil,
-        message: String? = nil
-    ) {
+            progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
+            maskType type:KRProgressHUDMaskType? = nil,
+            activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
+            font: UIFont? = nil, message: String? = nil) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Success)
@@ -172,12 +167,10 @@ extension KRProgressHUD {
     }
 
     public class func showInfo(
-        progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
-        maskType type:KRProgressHUDMaskType? = nil,
-        activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
-        font: UIFont? = nil,
-        message: String? = nil
-    ) {
+            progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
+            maskType type:KRProgressHUDMaskType? = nil,
+            activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
+            font: UIFont? = nil, message: String? = nil) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Info)
@@ -190,12 +183,10 @@ extension KRProgressHUD {
     }
 
     public class func showWarning(
-        progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
-        maskType type:KRProgressHUDMaskType? = nil,
-        activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
-        font: UIFont? = nil,
-        message: String? = nil
-    ) {
+            progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
+            maskType type:KRProgressHUDMaskType? = nil,
+            activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
+            font: UIFont? = nil, message: String? = nil) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Warning)
@@ -208,12 +199,10 @@ extension KRProgressHUD {
     }
 
     public class func showError(
-        progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
-        maskType type:KRProgressHUDMaskType? = nil,
-        activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
-        font: UIFont? = nil,
-        message: String? = nil
-    ) {
+            progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
+            maskType type:KRProgressHUDMaskType? = nil,
+            activityIndicatorStyle indicatorStyle: KRActivityIndicatorStyle? = nil,
+            font: UIFont? = nil, message: String? = nil) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Error)
@@ -271,11 +260,11 @@ private extension KRProgressHUD {
         if let text = message {
             let center = progressHUDView.center
             var frame = progressHUDView.frame
-            frame.size = CGSizeMake(150, 110)
+            frame.size = CGSize(width: 150, height: 110)
             progressHUDView.frame = frame
             progressHUDView.center = center
 
-            iconView.center = CGPointMake(150/2, 40)
+            iconView.center = CGPoint(x: 150/2, y: 40)
 
             messageLabel.hidden = false
             messageLabel.text = text
@@ -283,11 +272,11 @@ private extension KRProgressHUD {
         } else {
             let center = progressHUDView.center
             var frame = progressHUDView.frame
-            frame.size = CGSizeMake(100, 100)
+            frame.size = CGSize(width: 100, height: 100)
             progressHUDView.frame = frame
             progressHUDView.center = center
 
-            iconView.center = CGPointMake(50, 50)
+            iconView.center = CGPoint(x: 50, y: 50)
 
             messageLabel.hidden = true
         }
@@ -343,86 +332,86 @@ private enum KRProgressHUDIconType {
 
     private var success: CGPath {
         let path = UIBezierPath()
-        path.moveToPoint(CGPointMake(19.886, 45.665))
-        path.addLineToPoint(CGPointMake(0.644, 24.336))
-        path.addLineToPoint(CGPointMake(4.356, 20.987))
-        path.addLineToPoint(CGPointMake(19.712, 38.007))
-        path.addLineToPoint(CGPointMake(45.569, 6.575))
-        path.addLineToPoint(CGPointMake(49.431, 9.752))
-        path.addLineToPoint(CGPointMake(19.886, 45.665))
+        path.moveToPoint(CGPoint(x: 19.886, y: 45.665))
+        path.addLineToPoint(CGPoint(x: 0.644, y: 24.336))
+        path.addLineToPoint(CGPoint(x: 4.356, y: 20.987))
+        path.addLineToPoint(CGPoint(x: 19.712, y: 38.007))
+        path.addLineToPoint(CGPoint(x: 45.569, y: 6.575))
+        path.addLineToPoint(CGPoint(x: 49.431, y: 9.752))
+        path.addLineToPoint(CGPoint(x: 19.886, y: 45.665))
         return path.CGPath
     }
 
     private var info: CGPath {
-        let path = UIBezierPath(ovalInRect: CGRectMake(21.078, 5, 7.843, 7.843))
-        path.moveToPoint(CGPointMake(28.137, 43.431))
-        path.addLineToPoint(CGPointMake(28.137, 18.333))
-        path.addLineToPoint(CGPointMake(18.725, 18.333))
-        path.addLineToPoint(CGPointMake(18.725, 19.902))
-        path.addLineToPoint(CGPointMake(21.863, 19.902))
-        path.addLineToPoint(CGPointMake(21.863, 43.431))
-        path.addLineToPoint(CGPointMake(18.725, 43.431))
-        path.addLineToPoint(CGPointMake(18.725, 45))
-        path.addLineToPoint(CGPointMake(31.275, 45))
-        path.addLineToPoint(CGPointMake(31.275, 43.431))
-        path.addLineToPoint(CGPointMake(28.137, 43.431))
+        let path = UIBezierPath(ovalInRect: CGRect(x: 21.078, y: 5, width: 7.843, height: 7.843))
+        path.moveToPoint(CGPoint(x: 28.137, y: 43.431))
+        path.addLineToPoint(CGPoint(x: 28.137, y: 18.333))
+        path.addLineToPoint(CGPoint(x: 18.725, y: 18.333))
+        path.addLineToPoint(CGPoint(x: 18.725, y: 19.902))
+        path.addLineToPoint(CGPoint(x: 21.863, y: 19.902))
+        path.addLineToPoint(CGPoint(x: 21.863, y: 43.431))
+        path.addLineToPoint(CGPoint(x: 18.725, y: 43.431))
+        path.addLineToPoint(CGPoint(x: 18.725, y: 45))
+        path.addLineToPoint(CGPoint(x: 31.275, y: 45))
+        path.addLineToPoint(CGPoint(x: 31.275, y: 43.431))
+        path.addLineToPoint(CGPoint(x: 28.137, y: 43.431))
         return path.CGPath
     }
 
     private var warning: CGPath {
         let path = UIBezierPath()
-        path.moveToPoint(CGPointMake(29.821, 42.679))
-        path.addCurveToPoint(CGPointMake(25, 47.5), controlPoint1:CGPointMake(29.821, 45.341), controlPoint2:CGPointMake(27.663, 47.5))
-        path.addCurveToPoint(CGPointMake(20.179, 42.679), controlPoint1:CGPointMake(22.337, 47.5), controlPoint2:CGPointMake(20.179, 45.341))
-        path.addCurveToPoint(CGPointMake(25, 37.857), controlPoint1:CGPointMake(20.179, 40.016), controlPoint2:CGPointMake(22.337, 37.857))
-        path.addCurveToPoint(CGPointMake(29.821, 42.679), controlPoint1:CGPointMake(27.663, 37.857), controlPoint2:CGPointMake(29.821, 40.016))
-        path.moveToPoint(CGPointMake(24.5, 32.5))
-        path.addCurveToPoint(CGPointMake(24.112, 31.211), controlPoint1:CGPointMake(24.5, 32.5), controlPoint2:CGPointMake(24.359, 32.031))
-        path.addCurveToPoint(CGPointMake(23.698, 29.731), controlPoint1:CGPointMake(23.988, 30.801), controlPoint2:CGPointMake(23.849, 30.303))
-        path.addCurveToPoint(CGPointMake(23.19, 27.813), controlPoint1:CGPointMake(23.548, 29.16), controlPoint2:CGPointMake(23.36, 28.516))
-        path.addCurveToPoint(CGPointMake(22.046, 23.008), controlPoint1:CGPointMake(22.844, 26.406), controlPoint2:CGPointMake(22.435, 24.766))
-        path.addCurveToPoint(CGPointMake(21, 17.5), controlPoint1:CGPointMake(21.658, 21.25), controlPoint2:CGPointMake(21.314, 19.375))
-        path.addCurveToPoint(CGPointMake(20.309, 14.702), controlPoint1:CGPointMake(20.841, 16.563), controlPoint2:CGPointMake(20.578, 15.625))
-        path.addCurveToPoint(CGPointMake(19.791, 11.992), controlPoint1:CGPointMake(20.043, 13.779), controlPoint2:CGPointMake(19.813, 12.871))
-        path.addCurveToPoint(CGPointMake(20.145, 9.458), controlPoint1:CGPointMake(19.769, 11.113), controlPoint2:CGPointMake(19.906, 10.264))
-        path.addCurveToPoint(CGPointMake(20.985, 7.188), controlPoint1:CGPointMake(20.361, 8.652), controlPoint2:CGPointMake(20.65, 7.891))
-        path.addCurveToPoint(CGPointMake(22.07, 5.269), controlPoint1:CGPointMake(21.307, 6.484), controlPoint2:CGPointMake(21.69, 5.84))
-        path.addCurveToPoint(CGPointMake(23.207, 3.789), controlPoint1:CGPointMake(22.437, 4.697), controlPoint2:CGPointMake(22.857, 4.199))
-        path.addCurveToPoint(CGPointMake(24.124, 2.837), controlPoint1:CGPointMake(23.562, 3.379), controlPoint2:CGPointMake(23.878, 3.057))
-        path.addCurveToPoint(CGPointMake(24.5, 2.5), controlPoint1:CGPointMake(24.369, 2.617), controlPoint2:CGPointMake(24.5, 2.5))
-        path.addLineToPoint(CGPointMake(25.5, 2.5))
-        path.addCurveToPoint(CGPointMake(25.876, 2.837), controlPoint1:CGPointMake(25.5, 2.5), controlPoint2:CGPointMake(25.631, 2.617))
-        path.addCurveToPoint(CGPointMake(26.793, 3.789), controlPoint1:CGPointMake(26.122, 3.057), controlPoint2:CGPointMake(26.438, 3.379))
-        path.addCurveToPoint(CGPointMake(27.93, 5.269), controlPoint1:CGPointMake(27.143, 4.199), controlPoint2:CGPointMake(27.563, 4.697))
-        path.addCurveToPoint(CGPointMake(29.015, 7.188), controlPoint1:CGPointMake(28.31, 5.84), controlPoint2:CGPointMake(28.693, 6.484))
-        path.addCurveToPoint(CGPointMake(29.855, 9.458), controlPoint1:CGPointMake(29.35, 7.891), controlPoint2:CGPointMake(29.639, 8.652))
-        path.addCurveToPoint(CGPointMake(30.209, 11.992), controlPoint1:CGPointMake(30.094, 10.264), controlPoint2:CGPointMake(30.231, 11.113))
-        path.addCurveToPoint(CGPointMake(29.691, 14.702), controlPoint1:CGPointMake(30.187, 12.871), controlPoint2:CGPointMake(29.957, 13.779))
-        path.addCurveToPoint(CGPointMake(29, 17.5), controlPoint1:CGPointMake(29.422, 15.625), controlPoint2:CGPointMake(29.159, 16.563))
-        path.addCurveToPoint(CGPointMake(27.954, 23.008), controlPoint1:CGPointMake(28.686, 19.375), controlPoint2:CGPointMake(28.342, 21.25))
-        path.addCurveToPoint(CGPointMake(26.81, 27.813), controlPoint1:CGPointMake(27.565, 24.766), controlPoint2:CGPointMake(27.156, 26.406))
-        path.addCurveToPoint(CGPointMake(26.302, 29.731), controlPoint1:CGPointMake(26.64, 28.516), controlPoint2:CGPointMake(26.452, 29.16))
-        path.addCurveToPoint(CGPointMake(25.888, 31.211), controlPoint1:CGPointMake(26.151, 30.303), controlPoint2:CGPointMake(26.012, 30.801))
-        path.addCurveToPoint(CGPointMake(25.5, 32.5), controlPoint1:CGPointMake(25.641, 32.031), controlPoint2:CGPointMake(25.5, 32.5))
-        path.addLineToPoint(CGPointMake(24.5, 32.5))
+        path.moveToPoint(CGPoint(x: 29.821, y: 42.679))
+        path.addCurveToPoint(CGPoint(x: 25, y: 47.5), controlPoint1:CGPoint(x: 29.821, y: 45.341), controlPoint2:CGPoint(x: 27.663, y: 47.5))
+        path.addCurveToPoint(CGPoint(x: 20.179, y: 42.679), controlPoint1:CGPoint(x: 22.337, y: 47.5), controlPoint2:CGPoint(x: 20.179, y: 45.341))
+        path.addCurveToPoint(CGPoint(x: 25, y: 37.857), controlPoint1:CGPoint(x: 20.179, y: 40.016), controlPoint2:CGPoint(x: 22.337, y: 37.857))
+        path.addCurveToPoint(CGPoint(x: 29.821, y: 42.679), controlPoint1:CGPoint(x: 27.663, y: 37.857), controlPoint2:CGPoint(x: 29.821, y: 40.016))
+        path.moveToPoint(CGPoint(x: 24.5, y: 32.5))
+        path.addCurveToPoint(CGPoint(x: 24.112, y: 31.211), controlPoint1:CGPoint(x: 24.5, y: 32.5), controlPoint2:CGPoint(x: 24.359, y: 32.031))
+        path.addCurveToPoint(CGPoint(x: 23.698, y: 29.731), controlPoint1:CGPoint(x: 23.988, y: 30.801), controlPoint2:CGPoint(x: 23.849, y: 30.303))
+        path.addCurveToPoint(CGPoint(x: 23.19, y: 27.813), controlPoint1:CGPoint(x: 23.548, y: 29.16), controlPoint2:CGPoint(x: 23.36, y: 28.516))
+        path.addCurveToPoint(CGPoint(x: 22.046, y: 23.008), controlPoint1:CGPoint(x: 22.844, y: 26.406), controlPoint2:CGPoint(x: 22.435, y: 24.766))
+        path.addCurveToPoint(CGPoint(x: 21, y: 17.5), controlPoint1:CGPoint(x: 21.658, y: 21.25), controlPoint2:CGPoint(x: 21.314, y: 19.375))
+        path.addCurveToPoint(CGPoint(x: 20.309, y: 14.702), controlPoint1:CGPoint(x: 20.841, y: 16.563), controlPoint2:CGPoint(x: 20.578, y: 15.625))
+        path.addCurveToPoint(CGPoint(x: 19.791, y: 11.992), controlPoint1:CGPoint(x: 20.043, y: 13.779), controlPoint2:CGPoint(x: 19.813, y: 12.871))
+        path.addCurveToPoint(CGPoint(x: 20.145, y: 9.458), controlPoint1:CGPoint(x: 19.769, y: 11.113), controlPoint2:CGPoint(x: 19.906, y: 10.264))
+        path.addCurveToPoint(CGPoint(x: 20.985, y: 7.188), controlPoint1:CGPoint(x: 20.361, y: 8.652), controlPoint2:CGPoint(x: 20.65, y: 7.891))
+        path.addCurveToPoint(CGPoint(x: 22.07, y: 5.269), controlPoint1:CGPoint(x: 21.307, y: 6.484), controlPoint2:CGPoint(x: 21.69, y: 5.84))
+        path.addCurveToPoint(CGPoint(x: 23.207, y: 3.789), controlPoint1:CGPoint(x: 22.437, y: 4.697), controlPoint2:CGPoint(x: 22.857, y: 4.199))
+        path.addCurveToPoint(CGPoint(x: 24.124, y: 2.837), controlPoint1:CGPoint(x: 23.562, y: 3.379), controlPoint2:CGPoint(x: 23.878, y: 3.057))
+        path.addCurveToPoint(CGPoint(x: 24.5, y: 2.5), controlPoint1:CGPoint(x: 24.369, y: 2.617), controlPoint2:CGPoint(x: 24.5, y: 2.5))
+        path.addLineToPoint(CGPoint(x: 25.5, y: 2.5))
+        path.addCurveToPoint(CGPoint(x: 25.876, y: 2.837), controlPoint1:CGPoint(x: 25.5, y: 2.5), controlPoint2:CGPoint(x: 25.631, y: 2.617))
+        path.addCurveToPoint(CGPoint(x: 26.793, y: 3.789), controlPoint1:CGPoint(x: 26.122, y: 3.057), controlPoint2:CGPoint(x: 26.438, y: 3.379))
+        path.addCurveToPoint(CGPoint(x: 27.93, y: 5.269), controlPoint1:CGPoint(x: 27.143, y: 4.199), controlPoint2:CGPoint(x: 27.563, y: 4.697))
+        path.addCurveToPoint(CGPoint(x: 29.015, y: 7.188), controlPoint1:CGPoint(x: 28.31, y: 5.84), controlPoint2:CGPoint(x: 28.693, y: 6.484))
+        path.addCurveToPoint(CGPoint(x: 29.855, y: 9.458), controlPoint1:CGPoint(x: 29.35, y: 7.891), controlPoint2:CGPoint(x: 29.639, y: 8.652))
+        path.addCurveToPoint(CGPoint(x: 30.209, y: 11.992), controlPoint1:CGPoint(x: 30.094, y: 10.264), controlPoint2:CGPoint(x: 30.231, y: 11.113))
+        path.addCurveToPoint(CGPoint(x: 29.691, y: 14.702), controlPoint1:CGPoint(x: 30.187, y: 12.871), controlPoint2:CGPoint(x: 29.957, y: 13.779))
+        path.addCurveToPoint(CGPoint(x: 29, y: 17.5), controlPoint1:CGPoint(x: 29.422, y: 15.625), controlPoint2:CGPoint(x: 29.159, y: 16.563))
+        path.addCurveToPoint(CGPoint(x: 27.954, y: 23.008), controlPoint1:CGPoint(x: 28.686, y: 19.375), controlPoint2:CGPoint(x: 28.342, y: 21.25))
+        path.addCurveToPoint(CGPoint(x: 26.81, y: 27.813), controlPoint1:CGPoint(x: 27.565, y: 24.766), controlPoint2:CGPoint(x: 27.156, y: 26.406))
+        path.addCurveToPoint(CGPoint(x: 26.302, y: 29.731), controlPoint1:CGPoint(x: 26.64, y: 28.516), controlPoint2:CGPoint(x: 26.452, y: 29.16))
+        path.addCurveToPoint(CGPoint(x: 25.888, y: 31.211), controlPoint1:CGPoint(x: 26.151, y: 30.303), controlPoint2:CGPoint(x: 26.012, y: 30.801))
+        path.addCurveToPoint(CGPoint(x: 25.5, y: 32.5), controlPoint1:CGPoint(x: 25.641, y: 32.031), controlPoint2:CGPoint(x: 25.5, y: 32.5))
+        path.addLineToPoint(CGPoint(x: 24.5, y: 32.5))
         return path.CGPath
     }
 
     private var error: CGPath {
         let path = UIBezierPath()
-        path.moveToPoint(CGPointMake(48.535, 8.535))
-        path.addLineToPoint(CGPointMake(41.465, 1.465))
-        path.addLineToPoint(CGPointMake(25, 17.93))
-        path.addLineToPoint(CGPointMake(8.535, 1.465))
-        path.addLineToPoint(CGPointMake(1.465, 8.535))
-        path.addLineToPoint(CGPointMake(17.93, 25))
-        path.addLineToPoint(CGPointMake(1.465, 41.465))
-        path.addLineToPoint(CGPointMake(8.535, 48.535))
-        path.addLineToPoint(CGPointMake(25, 32.07))
-        path.addLineToPoint(CGPointMake(41.465, 48.535))
-        path.addLineToPoint(CGPointMake(48.535, 41.465))
-        path.addLineToPoint(CGPointMake(32.07, 25))
-        path.addLineToPoint(CGPointMake(48.535, 8.535))
+        path.moveToPoint(CGPoint(x: 48.535, y: 8.535))
+        path.addLineToPoint(CGPoint(x: 41.465, y: 1.465))
+        path.addLineToPoint(CGPoint(x: 25, y: 17.93))
+        path.addLineToPoint(CGPoint(x: 8.535, y: 1.465))
+        path.addLineToPoint(CGPoint(x: 1.465, y: 8.535))
+        path.addLineToPoint(CGPoint(x: 17.93, y: 25))
+        path.addLineToPoint(CGPoint(x: 1.465, y: 41.465))
+        path.addLineToPoint(CGPoint(x: 8.535, y: 48.535))
+        path.addLineToPoint(CGPoint(x: 25, y: 32.07))
+        path.addLineToPoint(CGPoint(x: 41.465, y: 48.535))
+        path.addLineToPoint(CGPoint(x: 48.535, y: 41.465))
+        path.addLineToPoint(CGPoint(x: 32.07, y: 25))
+        path.addLineToPoint(CGPoint(x: 48.535, y: 8.535))
         return path.CGPath
     }
 
