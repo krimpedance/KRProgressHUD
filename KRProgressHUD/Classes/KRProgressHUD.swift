@@ -343,7 +343,7 @@ extension KRProgressHUD {
 private enum KRProgressHUDIconType {
     case Success, Info, Warning, Error
     
-    private var success :CGPath { get {
+    private var success :CGPath {
         let path = UIBezierPath()
         path.moveToPoint(CGPointMake(19.886, 45.665))
         path.addLineToPoint(CGPointMake(0.644, 24.336))
@@ -353,9 +353,9 @@ private enum KRProgressHUDIconType {
         path.addLineToPoint(CGPointMake(49.431, 9.752))
         path.addLineToPoint(CGPointMake(19.886, 45.665))
         return path.CGPath
-    }}
+    }
     
-    private var info :CGPath { get {
+    private var info :CGPath {
         let path = UIBezierPath(ovalInRect: CGRectMake(21.078, 5, 7.843, 7.843))
         path.moveToPoint(CGPointMake(28.137, 43.431))
         path.addLineToPoint(CGPointMake(28.137, 18.333))
@@ -369,9 +369,9 @@ private enum KRProgressHUDIconType {
         path.addLineToPoint(CGPointMake(31.275, 43.431))
         path.addLineToPoint(CGPointMake(28.137, 43.431))
         return path.CGPath
-    }}
+    }
     
-    private var warning :CGPath { get {
+    private var warning :CGPath {
         let path = UIBezierPath()
         path.moveToPoint(CGPointMake(29.821, 42.679))
         path.addCurveToPoint(CGPointMake(25, 47.5), controlPoint1:CGPointMake(29.821, 45.341), controlPoint2:CGPointMake(27.663, 47.5))
@@ -408,9 +408,9 @@ private enum KRProgressHUDIconType {
         path.addCurveToPoint(CGPointMake(25.5, 32.5), controlPoint1:CGPointMake(25.641, 32.031), controlPoint2:CGPointMake(25.5, 32.5))
         path.addLineToPoint(CGPointMake(24.5, 32.5))
         return path.CGPath
-    }}
+    }
     
-    private var error :CGPath { get {
+    private var error :CGPath {
         let path = UIBezierPath()
         path.moveToPoint(CGPointMake(48.535, 8.535))
         path.addLineToPoint(CGPointMake(41.465, 1.465))
@@ -426,7 +426,7 @@ private enum KRProgressHUDIconType {
         path.addLineToPoint(CGPointMake(32.07, 25))
         path.addLineToPoint(CGPointMake(48.535, 8.535))
         return path.CGPath
-    }}
+    }
     
     static func getPath(type :KRProgressHUDIconType) -> CGPath {
         switch type {

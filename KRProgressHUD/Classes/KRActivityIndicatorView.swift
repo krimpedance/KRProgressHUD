@@ -45,10 +45,8 @@ public final class KRActivityIndicatorView :UIView {
     }
     
     public var isAnimating :Bool {
-        get {
-            if self.animationLayer.animationForKey("rotate") != nil { return true }
-            else { return false }
-        }
+        if self.animationLayer.animationForKey("rotate") != nil { return true }
+        else { return false }
     }
     
     
@@ -174,19 +172,19 @@ private struct KRActivityIndicator {
 extension KRActivityIndicatorViewStyle {
     private mutating func sizeToLarge() {
         switch self {
-        case .Black : self = .LargeBlack
-        case .White : self = .LargeWhite
-        case let .Color(sc, ec) : self = .LargeColor(sc, ec)
-        default : break
+            case .Black : self = .LargeBlack
+            case .White : self = .LargeWhite
+            case let .Color(sc, ec) : self = .LargeColor(sc, ec)
+            default : break
         }         
     }
     
     private mutating func sizeToDefault() {
         switch self {
-        case .LargeBlack : self = .Black
-        case .LargeWhite : self = .White
-        case let .LargeColor(sc, ec) : self = .Color(sc, ec)
-        default : break
+            case .LargeBlack : self = .Black
+            case .LargeWhite : self = .White
+            case let .LargeColor(sc, ec) : self = .Color(sc, ec)
+            default : break
         }         
     }
     
