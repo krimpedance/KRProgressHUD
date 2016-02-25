@@ -15,6 +15,8 @@ This library is inspired by [SVProgressHUD](https://github.com/SVProgressHUD/SVP
 ## DEMO
 To run the example project, clone the repo, and run `pod install` from the DEMO directory first.
 
+or [appetize.io](https://appetize.io/app/nw022juw0znkf1n5u6ynga5ntm?device=iphone5s&scale=75&orientation=portrait&osVersion=9.2)
+
 ## Installation
 KRProgressHUD is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
