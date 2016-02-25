@@ -20,6 +20,8 @@
 `DEMO/`以下にあるサンプルプロジェクトから確認してください．
 実行前は，`pod install`を行ってください．
 
+または，[Appetize.io](https://appetize.io/app/nw022juw0znkf1n5u6ynga5ntm?device=iphone5s&scale=75&orientation=portrait&osVersion=9.2)にてシュミレートしてください．
+
 ## インストール
 KRProgressHUDは[CocoaPods](http://cocoapods.org)ライブラリです．
 `Podfile`に以下を追記してください．
