@@ -150,7 +150,7 @@ extension KRProgressHUD {
     /// Set default HUD style
     /// - parameter style: `KRProgressHUDStyle`
     public class func setDefaultStyle(style style: KRProgressHUDStyle) {
-        KRProgressHUD.sharedView().defaultStyle = KRProgressHUD.sharedView().progressHUDStyle
+        KRProgressHUD.sharedView().defaultStyle = style
     }
 
     /// Set default KRActivityIndicatorView style.
