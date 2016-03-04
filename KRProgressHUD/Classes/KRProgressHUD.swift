@@ -95,9 +95,6 @@ public final class KRProgressHUD {
 
 
     private init() {
-        window.windowLevel = UIWindowLevelNormal
-        window.backgroundColor = UIColor(white: 0, alpha: 0.4)
-        
         maskType = .Black
         progressHUDStyle = .White
         activityIndicatorStyle = .Black
@@ -107,11 +104,17 @@ public final class KRProgressHUD {
 
 
     private func configureProgressHUDView() {
+        let rootViewController = UIViewController()
+        rootViewController.view.backgroundColor = UIColor(white: 0, alpha: 0.4)
+        window.rootViewController = rootViewController
+        window.windowLevel = UIWindowLevelNormal
+        
         let screenFrame = UIScreen.mainScreen().bounds
         progressHUDView.center = CGPoint(x: screenFrame.width/2, y: screenFrame.height/2 - 100)
         progressHUDView.backgroundColor = UIColor.whiteColor()
         progressHUDView.layer.cornerRadius = 10
-        window.addSubview(progressHUDView)
+        progressHUDView.autoresizingMask = [.FlexibleBottomMargin, .FlexibleLeftMargin, .FlexibleRightMargin, .FlexibleTopMargin]
+        window.rootViewController?.view.addSubview(progressHUDView)
 
         iconView.backgroundColor = UIColor.clearColor()
         iconView.center = CGPoint(x: 50, y: 50)
