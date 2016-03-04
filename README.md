@@ -106,5 +106,10 @@ public class func setDefaultFont(font :UIFont)  // Default is Hiragino Sans W3 1
 I'm seeking bug reports and feature requests.
 (And please teach me if my English is wrong :| )
 
+## Release Note
+- 1.3.0 : Corresponded to Landscape.
+- 1.2.1 : Fixed bug(Don't display glyph color)
+- 1.2.0 : Add document comments.
+
 ## License
 KRProgressHUD is available under the MIT license. See the LICENSE file for more info.
