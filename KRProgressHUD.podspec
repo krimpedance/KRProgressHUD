@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "KRProgressHUD"
-  s.version      = "1.3.0"
+  s.version      = "1.4.0"
   s.summary      = "A beautiful progress HUD for your iOS."
   s.description  = "KRProgressHUD is a beautiful and easy-to-use HUD meant to display the progress on iOS."
   s.homepage     = "https://github.com/krimpedance/KRProgressHUD"
