@@ -48,7 +48,7 @@ public enum KRProgressHUDActivityIndicatorStyle {
 public final class KRProgressHUD {
     private static let view = KRProgressHUD()
     /// Shared instance. KRProgressHUD is created as singleton.
-    public class func sharedView() -> KRProgressHUD { return view }
+    class func sharedView() -> KRProgressHUD { return view }
 
     private let window = UIWindow(frame: UIScreen.mainScreen().bounds)
     private let progressHUDView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
@@ -321,6 +321,16 @@ extension KRProgressHUD {
                 KRProgressHUD.sharedView().messageLabel.font = KRProgressHUD.sharedView().defaultMessageFont
             }
         }
+    }
+}
+
+
+/**
+ *  KRProgressHUD update during show --------------------------
+ */
+extension KRProgressHUD {
+    public class func updateLabel(text: String) {
+        sharedView().messageLabel.text = text
     }
 }
 
