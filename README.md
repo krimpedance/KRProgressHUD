@@ -14,16 +14,22 @@ This library is inspired by [SVProgressHUD](https://github.com/SVProgressHUD/SVP
 <img src="./Images/styles.png" height=300>
 
 ## DEMO
-To run the example project, clone the repo, and run `pod install` from the DEMO directory first.
+To run the example project, clone the repo, and open `KRProgressHUDDemo.xcodeproj` from the DEMO directory.
 
 or [appetize.io](https://appetize.io/app/nw022juw0znkf1n5u6ynga5ntm?device=iphone5s&scale=75&orientation=portrait&osVersion=9.2)
 
 ## Installation
-KRProgressHUD is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+KRProgressHUD is available through [CocoaPods](http://cocoapods.org) and [Carthege](https://github.com/Carthage/Carthage). 
+To install it, simply add the following line to your Podfile:
 
-```ruby
+```ruby:
+# CocoaPods
 pod "KRProgressHUD"
+```
+
+```ruby:
+# Carthege
+github "Krimpedance/KRProgressHUD"
 ```
 
 ## Usage
@@ -32,7 +38,7 @@ pod "KRProgressHUD"
 ###### Caution :
 **Only use it if you absolutely need to perform a task before taking the user forward.**
 
-**If you want to use it width other cases (ex. pull to refresh), I suggest using [KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator).**
+**If you want to use it with other cases (ex. pull to refresh), I suggest using [KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator).**
 
 　　
 
@@ -70,10 +76,20 @@ class func show(
     image :UIImage? = nil
 )
 
+// Example
 KRProgressHUD.show()
 KRProgressHUD.show(message: "Loading...")
 KRProgressHUD.show(progressHUDStyle: .Black, message: "Loading...")
 ...
+```
+
+#### Update the HUD's message
+The HUD can update message.
+```
+class func updateLabel(text: String)
+
+// Example
+KRProgressHUD.updateLabel("20%")
 ```
 
 #### Dismissing the HUD
