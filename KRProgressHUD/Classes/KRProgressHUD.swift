@@ -60,9 +60,9 @@ public final class KRProgressHUD {
     private var maskType: KRProgressHUDMaskType {
         willSet {
             switch newValue {
-            case .Clear:  window.backgroundColor = UIColor.clearColor()
-            case .White:  window.backgroundColor = UIColor(white: 1, alpha: 0.2)
-            case .Black:  window.backgroundColor = UIColor(white: 0, alpha: 0.2)
+            case .Clear:  window.rootViewController?.view.backgroundColor = UIColor.clearColor()
+            case .White:  window.rootViewController?.view.backgroundColor = UIColor(white: 1, alpha: 0.2)
+            case .Black:  window.rootViewController?.view.backgroundColor = UIColor(white: 0, alpha: 0.2)
             }
         }
     }
