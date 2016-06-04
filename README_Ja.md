@@ -19,16 +19,21 @@
 
 ## デモ
 `DEMO/`以下にあるサンプルプロジェクトから確認してください．
-実行前は，`pod install`を行ってください．
 
 または，[Appetize.io](https://appetize.io/app/nw022juw0znkf1n5u6ynga5ntm?device=iphone5s&scale=75&orientation=portrait&osVersion=9.2)にてシュミレートしてください．
 
 ## インストール
-KRProgressHUDは[CocoaPods](http://cocoapods.org)ライブラリです．
-`Podfile`に以下を追記してください．
+KRProgressHUDは[CocoaPods](http://cocoapods.org)と[Carthege](https://github.com/Carthage/Carthage)で
+インストールすることができます．
 
 ```ruby
+# Podfile
 pod "KRProgressHUD"
+```
+
+```ruby
+# Cartfile
+github "Krimpedance/KRProgressHUD"
 ```
 
 ## 使い方
@@ -40,7 +45,6 @@ pod "KRProgressHUD"
 **PullRefreshなど，他の場面で使用したい場合は，[KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator)を使用することをお勧めします**
 
 　　
-
 `KRProgressHUD`はシングルトンパターンで作られています．
 
 まず，`KRProgressHUD`をインポートします．
@@ -75,9 +79,19 @@ class func show(
     image :UIImage? = nil
 )
 
+// 例
 KRProgressHUD.show()
 KRProgressHUD.show(message: "Loading...")
 KRProgressHUD.show(progressHUDStyle: .Black, message: "Loading...")
+```
+
+#### HUDのメッセージの更新
+パーセンテージの表示などのために，メッセージの更新メソッドがあります．
+```
+class func updateLabel(text: String)
+
+// 例
+KRProgressHUD.updateLabel("20%")
 ```
 
 #### HUDを閉じる
