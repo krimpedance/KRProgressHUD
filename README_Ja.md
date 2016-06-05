@@ -23,7 +23,7 @@
 または，[Appetize.io](https://appetize.io/app/nw022juw0znkf1n5u6ynga5ntm?device=iphone5s&scale=75&orientation=portrait&osVersion=9.2)にてシュミレートしてください．
 
 ## インストール
-KRProgressHUDは[CocoaPods](http://cocoapods.org)と[Carthege](https://github.com/Carthage/Carthage)で
+KRProgressHUDは[CocoaPods](http://cocoapods.org)と[Carthage](https://github.com/Carthage/Carthage)で
 インストールすることができます．
 
 ```ruby
