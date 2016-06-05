@@ -28,7 +28,7 @@ pod "KRProgressHUD"
 ```
 
 ```ruby:
-# Carthege
+# Carthage
 github "Krimpedance/KRProgressHUD"
 ```
 
