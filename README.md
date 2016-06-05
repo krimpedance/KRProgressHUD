@@ -19,7 +19,7 @@ To run the example project, clone the repo, and open `KRProgressHUDDemo.xcodepro
 or [appetize.io](https://appetize.io/app/nw022juw0znkf1n5u6ynga5ntm?device=iphone5s&scale=75&orientation=portrait&osVersion=9.2)
 
 ## Installation
-KRProgressHUD is available through [CocoaPods](http://cocoapods.org) and [Carthege](https://github.com/Carthage/Carthage). 
+KRProgressHUD is available through [CocoaPods](http://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage). 
 To install it, simply add the following line to your Podfile:
 
 ```ruby:
