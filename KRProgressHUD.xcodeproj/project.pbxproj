@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B7576D61D1BC6AB003FF258 /* KRProgressHUDExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7576D51D1BC6AB003FF258 /* KRProgressHUDExtensions.swift */; };
+		4B7576D81D1BC838003FF258 /* KRProgressHUDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7576D71D1BC838003FF258 /* KRProgressHUDViewController.swift */; };
+		4B7576E01D1BCD56003FF258 /* KRProgressHUDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7576DF1D1BCD56003FF258 /* KRProgressHUDTests.swift */; };
+		4B7576E21D1BCD56003FF258 /* KRProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA70C301D02F28D009EB743 /* KRProgressHUD.framework */; };
 		4BA70C341D02F28D009EB743 /* KRProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BA70C331D02F28D009EB743 /* KRProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4BA70C411D02F2ED009EB743 /* KRActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA70C3D1D02F2ED009EB743 /* KRActivityIndicatorView.swift */; };
 		4BA70C421D02F2ED009EB743 /* KRActivityIndicatorViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA70C3E1D02F2ED009EB743 /* KRActivityIndicatorViewStyle.swift */; };
@@ -14,7 +18,22 @@
 		4BA70C441D02F2ED009EB743 /* KRProgressHUDIconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA70C401D02F2ED009EB743 /* KRProgressHUDIconType.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4B7576E31D1BCD56003FF258 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BA70C271D02F28D009EB743 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4BA70C2F1D02F28D009EB743;
+			remoteInfo = KRProgressHUD;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		4B7576D51D1BC6AB003FF258 /* KRProgressHUDExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KRProgressHUDExtensions.swift; sourceTree = "<group>"; };
+		4B7576D71D1BC838003FF258 /* KRProgressHUDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KRProgressHUDViewController.swift; sourceTree = "<group>"; };
+		4B7576DD1D1BCD56003FF258 /* KRProgressHUDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KRProgressHUDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B7576DF1D1BCD56003FF258 /* KRProgressHUDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KRProgressHUDTests.swift; sourceTree = "<group>"; };
+		4B7576E11D1BCD56003FF258 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BA70C301D02F28D009EB743 /* KRProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KRProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA70C331D02F28D009EB743 /* KRProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KRProgressHUD.h; sourceTree = "<group>"; };
 		4BA70C351D02F28D009EB743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -25,6 +44,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4B7576DA1D1BCD56003FF258 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B7576E21D1BCD56003FF258 /* KRProgressHUD.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4BA70C2C1D02F28D009EB743 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -35,10 +62,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B7576DE1D1BCD56003FF258 /* KRProgressHUDTests */ = {
+			isa = PBXGroup;
+			children = (
+				4B7576DF1D1BCD56003FF258 /* KRProgressHUDTests.swift */,
+				4B7576E11D1BCD56003FF258 /* Info.plist */,
+			);
+			path = KRProgressHUDTests;
+			sourceTree = "<group>";
+		};
 		4BA70C261D02F28D009EB743 = {
 			isa = PBXGroup;
 			children = (
 				4BA70C321D02F28D009EB743 /* KRProgressHUD */,
+				4B7576DE1D1BCD56003FF258 /* KRProgressHUDTests */,
 				4BA70C311D02F28D009EB743 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				4BA70C301D02F28D009EB743 /* KRProgressHUD.framework */,
+				4B7576DD1D1BCD56003FF258 /* KRProgressHUDTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,7 +104,9 @@
 			children = (
 				4BA70C3C1D02F2ED009EB743 /* KRActivityIndicatorView */,
 				4BA70C3F1D02F2ED009EB743 /* KRProgressHUD.swift */,
+				4B7576D51D1BC6AB003FF258 /* KRProgressHUDExtensions.swift */,
 				4BA70C401D02F2ED009EB743 /* KRProgressHUDIconType.swift */,
+				4B7576D71D1BC838003FF258 /* KRProgressHUDViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -94,6 +134,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		4B7576DC1D1BCD56003FF258 /* KRProgressHUDTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B7576E51D1BCD56003FF258 /* Build configuration list for PBXNativeTarget "KRProgressHUDTests" */;
+			buildPhases = (
+				4B7576D91D1BCD56003FF258 /* Sources */,
+				4B7576DA1D1BCD56003FF258 /* Frameworks */,
+				4B7576DB1D1BCD56003FF258 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B7576E41D1BCD56003FF258 /* PBXTargetDependency */,
+			);
+			name = KRProgressHUDTests;
+			productName = KRProgressHUDTests;
+			productReference = 4B7576DD1D1BCD56003FF258 /* KRProgressHUDTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4BA70C2F1D02F28D009EB743 /* KRProgressHUD */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4BA70C381D02F28D009EB743 /* Build configuration list for PBXNativeTarget "KRProgressHUD" */;
@@ -118,9 +176,13 @@
 		4BA70C271D02F28D009EB743 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Krimpedance;
 				TargetAttributes = {
+					4B7576DC1D1BCD56003FF258 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					4BA70C2F1D02F28D009EB743 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
@@ -139,11 +201,19 @@
 			projectRoot = "";
 			targets = (
 				4BA70C2F1D02F28D009EB743 /* KRProgressHUD */,
+				4B7576DC1D1BCD56003FF258 /* KRProgressHUDTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4B7576DB1D1BCD56003FF258 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4BA70C2E1D02F28D009EB743 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -154,11 +224,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4B7576D91D1BCD56003FF258 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B7576E01D1BCD56003FF258 /* KRProgressHUDTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4BA70C2B1D02F28D009EB743 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4BA70C441D02F2ED009EB743 /* KRProgressHUDIconType.swift in Sources */,
+				4B7576D61D1BC6AB003FF258 /* KRProgressHUDExtensions.swift in Sources */,
+				4B7576D81D1BC838003FF258 /* KRProgressHUDViewController.swift in Sources */,
 				4BA70C421D02F2ED009EB743 /* KRActivityIndicatorViewStyle.swift in Sources */,
 				4BA70C411D02F2ED009EB743 /* KRActivityIndicatorView.swift in Sources */,
 				4BA70C431D02F2ED009EB743 /* KRProgressHUD.swift in Sources */,
@@ -167,7 +247,41 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4B7576E41D1BCD56003FF258 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4BA70C2F1D02F28D009EB743 /* KRProgressHUD */;
+			targetProxy = 4B7576E31D1BCD56003FF258 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		4B7576E61D1BCD56003FF258 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "";
+				INFOPLIST_FILE = KRProgressHUDTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.mond.krimpedance.KRProgressHUDTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "";
+			};
+			name = Debug;
+		};
+		4B7576E71D1BCD56003FF258 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "";
+				INFOPLIST_FILE = KRProgressHUDTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.mond.krimpedance.KRProgressHUDTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "";
+			};
+			name = Release;
+		};
 		4BA70C361D02F28D009EB743 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -298,6 +412,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4B7576E51D1BCD56003FF258 /* Build configuration list for PBXNativeTarget "KRProgressHUDTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B7576E61D1BCD56003FF258 /* Debug */,
+				4B7576E71D1BCD56003FF258 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		4BA70C2A1D02F28D009EB743 /* Build configuration list for PBXProject "KRProgressHUD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

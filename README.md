@@ -4,6 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/KRProgressHUD.svg?style=flat)](http://cocoapods.org/pods/KRProgressHUD)
 [![Platform](https://img.shields.io/cocoapods/p/KRProgressHUD.svg?style=flat)](http://cocoapods.org/pods/KRProgressHUD)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CI Status](http://img.shields.io/travis/krimpedance/KRProgressHUD.svg?style=flat)](https://travis-ci.org/krimpedance/KRProgressHUD)
 
 `KRProgressHUD` is a beautiful and easy-to-use progress HUD for your iOS written by Swift 2.
 
@@ -124,6 +125,7 @@ I'm seeking bug reports and feature requests.
 (And please teach me if my English is wrong :| )
 
 ## Release Note
+- 1.4.2 : Fixed bug which HUD doesn't respect status bar appearance.
 - 1.4.1 : Add Carthage. And, **fixed bug which HUD mask view isn't switched over**.
 - 1.4.0 : Add the update function of message label.
 - 1.3.0 : Corresponded to Landscape.

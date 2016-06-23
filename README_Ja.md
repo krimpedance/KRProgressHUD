@@ -4,6 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/KRProgressHUD.svg?style=flat)](http://cocoapods.org/pods/KRProgressHUD)
 [![Platform](https://img.shields.io/cocoapods/p/KRProgressHUD.svg?style=flat)](http://cocoapods.org/pods/KRProgressHUD)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CI Status](http://img.shields.io/travis/krimpedance/KRProgressHUD.svg?style=flat)](https://travis-ci.org/krimpedance/KRProgressHUD)
 
 `KRProgressHUD`は，Swiftでかかれた綺麗で使いやすいローディング画面を表示するライブラリです．
 
@@ -123,6 +124,7 @@ public class func setDefaultFont(font :UIFont)  // デフォルト: ヒラギノ
 バグや機能のリクエストがありましたら，気軽にコメントしてください．
 
 ## リリースノート
+- 1.4.2 : ステータスバーの表示設定を反映していないバグを修正
 - 1.4.1 : Carthage対応． **HUDのマスクビューが切り替わらないバグを修正**
 - 1.4.0 : メッセージラベルの更新機能を追加．
 - 1.3.0 : 横画面に対応．

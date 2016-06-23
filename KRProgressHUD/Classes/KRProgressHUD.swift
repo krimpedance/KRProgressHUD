@@ -104,11 +104,10 @@ public final class KRProgressHUD {
 
 
     private func configureProgressHUDView() {
-        let rootViewController = UIViewController()
-        rootViewController.view.backgroundColor = UIColor(white: 0, alpha: 0.4)
+        let rootViewController = KRProgressHUDViewController()
         window.rootViewController = rootViewController
         window.windowLevel = UIWindowLevelNormal
-        
+
         let screenFrame = UIScreen.mainScreen().bounds
         progressHUDView.center = CGPoint(x: screenFrame.width/2, y: screenFrame.height/2 - 100)
         progressHUDView.backgroundColor = UIColor.whiteColor()
@@ -216,7 +215,7 @@ extension KRProgressHUD {
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Success)
         KRProgressHUD.sharedView().show()
-        
+
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             sleep(1)
             KRProgressHUD.dismiss()
@@ -297,7 +296,7 @@ extension KRProgressHUD {
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Error)
         KRProgressHUD.sharedView().show()
-        
+
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             sleep(1)
             KRProgressHUD.dismiss()
@@ -314,7 +313,7 @@ extension KRProgressHUD {
             }) { _ in
                 KRProgressHUD.sharedView().window.hidden = true
                 KRProgressHUD.sharedView().activityIndicatorView.stopAnimating()
-             
+
                 KRProgressHUD.sharedView().progressHUDStyle = KRProgressHUD.sharedView().defaultStyle
                 KRProgressHUD.sharedView().maskType = KRProgressHUD.sharedView().defaultMaskType
                 KRProgressHUD.sharedView().activityIndicatorStyle = KRProgressHUD.sharedView().defaultActivityIndicatorStyle

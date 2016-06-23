@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4B7576DC1D1BCD56003FF258"
+               BuildableName = "KRProgressHUDTests.xctest"
+               BlueprintName = "KRProgressHUDTests"
+               ReferencedContainer = "container:KRProgressHUD.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "4BA70C2F1D02F28D009EB743"
+            BuildableName = "KRProgressHUD.framework"
+            BlueprintName = "KRProgressHUD"
+            ReferencedContainer = "container:KRProgressHUD.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
