@@ -12,8 +12,7 @@
 # - set -o pipefail && xcodebuild test -scheme KRProgressHUD -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
 # - pod lib lint
 
-language: generic
-# language: objective-c
+language: objective-c
 osx_image: xcode7.3
 xcode_project: KRProgressHUD.xcodeproj
 xcode_scheme: KRProgressHUD
