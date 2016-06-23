@@ -9,10 +9,7 @@
 /* Begin PBXBuildFile section */
 		4B7576D61D1BC6AB003FF258 /* KRProgressHUDExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7576D51D1BC6AB003FF258 /* KRProgressHUDExtensions.swift */; };
 		4B7576D81D1BC838003FF258 /* KRProgressHUDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7576D71D1BC838003FF258 /* KRProgressHUDViewController.swift */; };
-		4B7576E01D1BCD56003FF258 /* KRProgressHUDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7576DF1D1BCD56003FF258 /* KRProgressHUDTests.swift */; };
 		4B7576E21D1BCD56003FF258 /* KRProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA70C301D02F28D009EB743 /* KRProgressHUD.framework */; };
-		4B7576E91D1BE5E8003FF258 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B7576E11D1BCD56003FF258 /* Info.plist */; };
-		4B7576EA1D1BE5EC003FF258 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BA70C351D02F28D009EB743 /* Info.plist */; };
 		4BA70C341D02F28D009EB743 /* KRProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BA70C331D02F28D009EB743 /* KRProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4BA70C411D02F2ED009EB743 /* KRActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA70C3D1D02F2ED009EB743 /* KRActivityIndicatorView.swift */; };
 		4BA70C421D02F2ED009EB743 /* KRActivityIndicatorViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA70C3E1D02F2ED009EB743 /* KRActivityIndicatorViewStyle.swift */; };
@@ -213,7 +210,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B7576E91D1BE5E8003FF258 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +217,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B7576EA1D1BE5EC003FF258 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +227,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B7576E01D1BCD56003FF258 /* KRProgressHUDTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
