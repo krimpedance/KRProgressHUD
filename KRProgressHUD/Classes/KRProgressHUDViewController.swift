@@ -15,6 +15,9 @@ class KRProgressHUDViewController: UIViewController {
 
     override func prefersStatusBarHidden() -> Bool {
         guard let vc = UIApplication.topViewController() else { return false }
+        if vc.isKindOfClass(KRProgressHUDViewController) {
+            return false
+        }
         return vc.prefersStatusBarHidden()
     }
 }
