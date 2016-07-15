@@ -125,6 +125,7 @@ I'm seeking bug reports and feature requests.
 (And please teach me if my English is wrong :| )
 
 ## Release Note
+- 1.4.3 : Fixed bug which infinite recursion `prefersStatusBarHidden()`.
 - 1.4.2 : Fixed bug which HUD doesn't respect status bar appearance.
 - 1.4.1 : Add Carthage. And, **fixed bug which HUD mask view isn't switched over**.
 - 1.4.0 : Add the update function of message label.
