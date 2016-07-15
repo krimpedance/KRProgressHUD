@@ -192,7 +192,6 @@ extension KRProgressHUD {
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(image: image)
         KRProgressHUD.sharedView().show()
-        KRProgressHUD.show()
     }
 
     /**
@@ -305,19 +304,24 @@ extension KRProgressHUD {
 
     /**
      Dismissing HUD.
-    */
-    public class func dismiss() {
+
+     - parameter completion: handler when dismissed.
+
+     - returns: No return value
+     */
+    public class func dismiss(completion completion: (()->())? = nil) {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             UIView.animateWithDuration(0.5, animations: {
                 KRProgressHUD.sharedView().window.alpha = 0
             }) { _ in
                 KRProgressHUD.sharedView().window.hidden = true
                 KRProgressHUD.sharedView().activityIndicatorView.stopAnimating()
-
                 KRProgressHUD.sharedView().progressHUDStyle = KRProgressHUD.sharedView().defaultStyle
                 KRProgressHUD.sharedView().maskType = KRProgressHUD.sharedView().defaultMaskType
                 KRProgressHUD.sharedView().activityIndicatorStyle = KRProgressHUD.sharedView().defaultActivityIndicatorStyle
                 KRProgressHUD.sharedView().messageLabel.font = KRProgressHUD.sharedView().defaultMessageFont
+
+                completion?()
             }
         }
     }
