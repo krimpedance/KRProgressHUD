@@ -182,16 +182,21 @@ extension KRProgressHUD {
      - parameter font:           HUD's message font
      - parameter message:        HUD's message
      - parameter image:          image that Alternative to confirmation glyph.
+     - parameter completion:          completion handler.
+
+     - returns: No return value.
      */
     public class func show(
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
             maskType type: KRProgressHUDMaskType? = nil,
             activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
-            font: UIFont? = nil, message: String? = nil, image: UIImage? = nil) {
+            font: UIFont? = nil, message: String? = nil, image: UIImage? = nil,
+            completion: (()->())? = nil
+        ) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(image: image)
-        KRProgressHUD.sharedView().show()
+        KRProgressHUD.sharedView().show() { completion?() }
     }
 
     /**
@@ -309,7 +314,7 @@ extension KRProgressHUD {
 
      - returns: No return value
      */
-    public class func dismiss(completion completion: (()->())? = nil) {
+    public class func dismiss(completion: (()->())? = nil) {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             UIView.animateWithDuration(0.5, animations: {
                 KRProgressHUD.sharedView().window.alpha = 0
@@ -342,13 +347,15 @@ extension KRProgressHUD {
  *  KRProgressHUD update style method --------------------------
  */
 private extension KRProgressHUD {
-    func show() {
+    func show(completion: (()->())? = nil) {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self.window.alpha = 0
             self.window.makeKeyAndVisible()
 
-            UIView.animateWithDuration(0.5) {
+            UIView.animateWithDuration(0.5, animations: {
                 KRProgressHUD.sharedView().window.alpha = 1
+            }) { _ in
+                completion?()
             }
         }
     }
