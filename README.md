@@ -96,7 +96,7 @@ KRProgressHUD.updateLabel("20%")
 #### Dismissing the HUD
 The HUD can be dismissed using:
 ```
-class func dismiss()
+class func dismiss(completion: (()->())?)
 ```
 Show a confirmation glyph before getting dismissed a little bit later.
 (The display time is 1 sec.)
@@ -125,6 +125,7 @@ I'm seeking bug reports and feature requests.
 (And please teach me if my English is wrong :| )
 
 ## Release Note
+- 1.5.0 : Add completion handler to `dismiss()` and `show()`.
 - 1.4.3 : Fixed bug which infinite recursion `prefersStatusBarHidden()`.
 - 1.4.2 : Fixed bug which HUD doesn't respect status bar appearance.
 - 1.4.1 : Add Carthage. And, **fixed bug which HUD mask view isn't switched over**.
