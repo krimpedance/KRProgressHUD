@@ -74,7 +74,8 @@ class func show(
     activityIndicatorStyle indicatorStyle :KRProgressHUDActivityIndicatorStyle? = nil,
     message :String? = nil,
     font :UIFont? = nil,
-    image :UIImage? = nil
+    image :UIImage? = nil,
+    completion: (()->())? = nil
 )
 
 // Example
@@ -86,7 +87,7 @@ KRProgressHUD.show(progressHUDStyle: .Black, message: "Loading...")
 
 #### Update the HUD's message
 The HUD can update message.
-```
+```Swift
 class func updateLabel(text: String)
 
 // Example
@@ -95,7 +96,7 @@ KRProgressHUD.updateLabel("20%")
 
 #### Dismissing the HUD
 The HUD can be dismissed using:
-```
+```Swift
 class func dismiss(completion: (()->())?)
 ```
 Show a confirmation glyph before getting dismissed a little bit later.
@@ -103,7 +104,7 @@ Show a confirmation glyph before getting dismissed a little bit later.
 
 These can appoint some args like `show()`, too.
 
-```
+```Swift
 class func showSuccess()
 class func showInfo()
 class func showWarning()
@@ -112,7 +113,7 @@ class func showError()
 
 ## Customization
 `KRProgressHUD` can be customized via the following methods.
-```
+```Swift
 public class func setDefaultMaskType(type :KRProgressHUDMaskType)  // Default is .Black
 public class func setDefaultStyle(style :KRProgressHUDStyle)  // Default is .White
 public class func setDefaultActivityIndicatorStyle(style :KRProgressHUDActivityIndicatorStyle)  // Default is .Black

@@ -77,7 +77,8 @@ class func show(
     activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
     message :String? = nil,
     font :UIFont? = nil,
-    image :UIImage? = nil
+    image :UIImage? = nil,
+    completion: (()->())? = nil
 )
 
 // 例
@@ -88,7 +89,7 @@ KRProgressHUD.show(progressHUDStyle: .Black, message: "Loading...")
 
 #### HUDのメッセージの更新
 パーセンテージの表示などのために，メッセージの更新メソッドがあります．
-```
+```Swift
 class func updateLabel(text: String)
 
 // 例
@@ -97,13 +98,13 @@ KRProgressHUD.updateLabel("20%")
 
 #### HUDを閉じる
 HUDを閉じるときは，以下を実行します．
-```
+```Swift
 class func dismiss(completion: (()->())?)
 ```
 HUDを閉じる前に，成功やエラーなどの情報をアイコン付きで表示することもできます．
 (表示は1秒間)
 
-```
+```Swift
 class func showSuccess()
 class func showInfo()
 class func showWarning()
@@ -112,7 +113,7 @@ class func showError()
 
 ## カスタマイズ
 `KRProgressHUD`は，以下の設定が可能です．
-```
+```Swift
 public class func setDefaultMaskType(type :KRProgressHUDMaskType)  // デフォルト: .Black
 public class func setDefaultStyle(style :KRProgressHUDStyle)  // デフォルト: .White
 public class func setDefaultActivityIndicatorStyle(style :KRActivityIndicatorStyle)  // デフォルト: .Black
@@ -124,7 +125,7 @@ public class func setDefaultFont(font :UIFont)  // デフォルト: ヒラギノ
 バグや機能のリクエストがありましたら，気軽にコメントしてください．
 
 ## リリースノート
-- 1.5.0 : `show()`, `dismiss()`の完了時の処理をかけるようになりました．
+- 1.5.0 : `show()`, `dismiss()`で完了時の処理をかけるようになりました．
 - 1.4.3 : ステータスバーの表示設定が無限ループするバグを修正
 - 1.4.2 : ステータスバーの表示設定を反映していないバグを修正
 - 1.4.1 : Carthage対応． **HUDのマスクビューが切り替わらないバグを修正**
