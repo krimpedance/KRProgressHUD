@@ -1,0 +1,13 @@
+disabled_rules: # 適用したくないチェック項目を記述
+  - line_length
+  - file_length
+included: # Lint対象のファイルのあるパスを記述、通常はプロジェクト名になると思います
+  - KRProgressHUDDEMO
+excluded: # Lint対象から外すファイルのあるパスを記述、CocoaPodsやCarthage
+  - Pods
+# パラメータ（ここではline_lengthの値）をカスタマイズする、warningを出す値でerrorは出なくなる
+line_length: 360
+# パラメータ（ここではtype_body_lengthの値）をカスタマイズする、最初の値がwarningで２つ目の値がerror
+type_body_length:
+  - 400 # warning
+  - 500 # error

@@ -4,6 +4,7 @@
 //
 //  Copyright © 2016年 Krimpedance. All rights reserved.
 //
+// swiftlint:disable legacy_constant
 
 import UIKit
 
@@ -25,7 +26,7 @@ public enum KRProgressHUDMaskType {
  - **White:**          HUD's backgroundColor is `.whiteColor()`. HUD's text color is `.blackColor()`. Default style.
  - **BlackColor:**   same `.Black` and confirmation glyphs become original color.
  - **WhiteColor:**  same `.Black` and confirmation glyphs become original color.
- */             
+ */
 public enum KRProgressHUDStyle {
     case Black, White, BlackColor, WhiteColor
 }
@@ -36,7 +37,7 @@ public enum KRProgressHUDStyle {
  - **Black:**   the color is `.blackColor()`. Default style.
  - **White:**  the color is `.blackColor()`.
  - **Color(startColor, endColor):**   the color is a gradation to `endColor` from `startColor`.
- */                                                                          
+ */
 public enum KRProgressHUDActivityIndicatorStyle {
     case Black, White, Color(UIColor, UIColor)
 }
@@ -47,12 +48,11 @@ public enum KRProgressHUDActivityIndicatorStyle {
  */
 public final class KRProgressHUD {
     private static let view = KRProgressHUD()
-    /// Shared instance. KRProgressHUD is created as singleton.
     class func sharedView() -> KRProgressHUD { return view }
 
     private let window = UIWindow(frame: UIScreen.mainScreen().bounds)
     private let progressHUDView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-    private let iconView = UIView(frame: CGRect(x: 0,y: 0,width: 50,height: 50))
+    private let iconView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     private let activityIndicatorView = KRActivityIndicatorView(position: CGPointZero, activityIndicatorStyle: .LargeBlack)
     private let drawView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     private let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 20))
@@ -70,10 +70,10 @@ public final class KRProgressHUD {
     private var progressHUDStyle: KRProgressHUDStyle {
         willSet {
             switch newValue {
-            case .Black, .BlackColor: 
+            case .Black, .BlackColor:
                 progressHUDView.backgroundColor = UIColor.blackColor()
                 messageLabel.textColor = UIColor.whiteColor()
-            case .White, .WhiteColor: 
+            case .White, .WhiteColor:
                 progressHUDView.backgroundColor = UIColor.whiteColor()
                 messageLabel.textColor = UIColor.blackColor()
             }
@@ -98,7 +98,6 @@ public final class KRProgressHUD {
         maskType = .Black
         progressHUDStyle = .White
         activityIndicatorStyle = .Black
-        
         configureProgressHUDView()
     }
 
@@ -177,22 +176,23 @@ extension KRProgressHUD {
      Showing HUD with some args. You can appoint only the args which You want to appoint.
      (Args is reflected only this time.)
 
-     - parameter progressStyle  KRProgressHUDStyle
-     - parameter type           KRProgressHUDMaskType
-     - parameter indicatorStyle KRProgressHUDActivityIndicatorStyle
-     - parameter font           HUD's message font
-     - parameter message        HUD's message
-     - parameter image          image that Alternative to confirmation glyph.
-     */                               
+     - parameter progressHUDStyle:   KRProgressHUDStyle
+     - parameter maskType:           KRProgressHUDMaskType
+     - parameter activityIndicatorStyle: KRProgressHUDActivityIndicatorStyle
+     - parameter font:           HUD's message font
+     - parameter message:        HUD's message
+     - parameter image:          image that Alternative to confirmation glyph.
+     */
     public class func show(
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
-            maskType type:KRProgressHUDMaskType? = nil,
+            maskType type: KRProgressHUDMaskType? = nil,
             activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
             font: UIFont? = nil, message: String? = nil, image: UIImage? = nil) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(image: image)
         KRProgressHUD.sharedView().show()
+        KRProgressHUD.show()
     }
 
     /**
@@ -200,15 +200,15 @@ extension KRProgressHUD {
      You can appoint only the args which You want to appoint.
      (Args is reflected only this time.)
 
-     - parameter progressStyle  KRProgressHUDStyle
-     - parameter type           KRProgressHUDMaskType
-     - parameter indicatorStyle KRProgressHUDActivityIndicatorStyle
-     - parameter font           HUD's message font
-     - parameter message        HUD's message
+     - parameter progressHUDStyle:   KRProgressHUDStyle
+     - parameter maskType:           KRProgressHUDMaskType
+     - parameter activityIndicatorStyle: KRProgressHUDActivityIndicatorStyle
+     - parameter font:           HUD's message font
+     - parameter message:        HUD's message
      */
     public class func showSuccess(
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
-            maskType type:KRProgressHUDMaskType? = nil,
+            maskType type: KRProgressHUDMaskType? = nil,
             activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
             font: UIFont? = nil, message: String? = nil) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
@@ -227,22 +227,22 @@ extension KRProgressHUD {
      You can appoint only the args which You want to appoint.
      (Args is reflected only this time.)
 
-     - parameter progressStyle  KRProgressHUDStyle
-     - parameter type           KRProgressHUDMaskType
-     - parameter indicatorStyle KRProgressHUDActivityIndicatorStyle
-     - parameter font           HUD's message font
-     - parameter message        HUD's message
+     - parameter progressHUDStyle:   KRProgressHUDStyle
+     - parameter maskType:           KRProgressHUDMaskType
+     - parameter activityIndicatorStyle: KRProgressHUDActivityIndicatorStyle
+     - parameter font:           HUD's message font
+     - parameter message:        HUD's message
      */
     public class func showInfo(
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
-            maskType type:KRProgressHUDMaskType? = nil,
+            maskType type: KRProgressHUDMaskType? = nil,
             activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
             font: UIFont? = nil, message: String? = nil) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Info)
         KRProgressHUD.sharedView().show()
-        
+
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             sleep(1)
             KRProgressHUD.dismiss()
@@ -254,22 +254,22 @@ extension KRProgressHUD {
      You can appoint only the args which You want to appoint.
      (Args is reflected only this time.)
 
-     - parameter progressStyle  KRProgressHUDStyle
-     - parameter type           KRProgressHUDMaskType
-     - parameter indicatorStyle KRProgressHUDActivityIndicatorStyle
-     - parameter font           HUD's message font
-     - parameter message        HUD's message
+     - parameter progressHUDStyle:   KRProgressHUDStyle
+     - parameter maskType:           KRProgressHUDMaskType
+     - parameter activityIndicatorStyle: KRProgressHUDActivityIndicatorStyle
+     - parameter font:           HUD's message font
+     - parameter message:        HUD's message
      */
     public class func showWarning(
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
-            maskType type:KRProgressHUDMaskType? = nil,
+            maskType type: KRProgressHUDMaskType? = nil,
             activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
             font: UIFont? = nil, message: String? = nil) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Warning)
         KRProgressHUD.sharedView().show()
-        
+
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             sleep(1)
             KRProgressHUD.dismiss()
@@ -281,15 +281,15 @@ extension KRProgressHUD {
      You can appoint only the args which You want to appoint.
      (Args is reflected only this time.)
 
-     - parameter progressStyle  KRProgressHUDStyle
-     - parameter type           KRProgressHUDMaskType
-     - parameter indicatorStyle KRProgressHUDActivityIndicatorStyle
-     - parameter font           HUD's message font
-     - parameter message        HUD's message
+     - parameter progressHUDStyle:   KRProgressHUDStyle
+     - parameter maskType:           KRProgressHUDMaskType
+     - parameter activityIndicatorStyle: KRProgressHUDActivityIndicatorStyle
+     - parameter font:           HUD's message font
+     - parameter message:        HUD's message
      */
     public class func showError(
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
-            maskType type:KRProgressHUDMaskType? = nil,
+            maskType type: KRProgressHUDMaskType? = nil,
             activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
             font: UIFont? = nil, message: String? = nil) {
         KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
@@ -342,14 +342,14 @@ private extension KRProgressHUD {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self.window.alpha = 0
             self.window.makeKeyAndVisible()
-            
+
             UIView.animateWithDuration(0.5) {
                 KRProgressHUD.sharedView().window.alpha = 1
             }
         }
     }
 
-    func updateStyles(progressHUDStyle progressStyle: KRProgressHUDStyle?, maskType type:KRProgressHUDMaskType?, activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle?) {
+    func updateStyles(progressHUDStyle progressStyle: KRProgressHUDStyle?, maskType type: KRProgressHUDMaskType?, activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle?) {
         if let style = progressStyle {
             KRProgressHUD.sharedView().progressHUDStyle = style
         }
@@ -388,16 +388,16 @@ private extension KRProgressHUD {
     }
 
     func updateProgressHUDViewIcon(iconType iconType: KRProgressHUDIconType? = nil, image: UIImage? = nil) {
-        drawView.subviews.forEach{ $0.removeFromSuperview() }
-        drawView.layer.sublayers?.forEach{ $0.removeFromSuperlayer() }
+        drawView.subviews.forEach { $0.removeFromSuperview() }
+        drawView.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
 
         switch (iconType, image) {
-        case (nil, nil): 
+        case (nil, nil):
             drawView.hidden = true
             activityIndicatorView.hidden = false
             activityIndicatorView.startAnimating()
 
-        case let (nil, image): 
+        case let (nil, image):
             activityIndicatorView.hidden = true
             activityIndicatorView.stopAnimating()
             drawView.hidden = false
@@ -407,7 +407,7 @@ private extension KRProgressHUD {
             imageView.contentMode = .ScaleAspectFit
             drawView.addSubview(imageView)
 
-        case let (type, _): 
+        case let (type, _):
             drawView.hidden = false
             activityIndicatorView.hidden = true
             activityIndicatorView.stopAnimating()

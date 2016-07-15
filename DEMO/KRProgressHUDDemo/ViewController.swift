@@ -44,8 +44,11 @@ class ViewController: UIViewController {
  */
 extension ViewController {
     @IBAction func showButtonTapped(sender: UIButton) {
-        if messageControl.selectedSegmentIndex == 0 { KRProgressHUD.show() }
-        else { KRProgressHUD.show(message: "Loading...") }
+        if messageControl.selectedSegmentIndex == 0 {
+            KRProgressHUD.show()
+        } else {
+            KRProgressHUD.show(message: "Loading...")
+        }
 
         let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
         dispatch_after(delay, dispatch_get_main_queue()) {
@@ -54,23 +57,35 @@ extension ViewController {
     }
 
     @IBAction func showSuccessButtonTapped(sender: UIButton) {
-        if messageControl.selectedSegmentIndex == 0 { KRProgressHUD.showSuccess() }
-        else { KRProgressHUD.showSuccess(message: "Success!") }
+        if messageControl.selectedSegmentIndex == 0 {
+            KRProgressHUD.showSuccess()
+        } else {
+            KRProgressHUD.showSuccess(message: "Success!")
+        }
     }
 
     @IBAction func showInfoButtonTapped(sender: UIButton) {
-        if messageControl.selectedSegmentIndex == 0 { KRProgressHUD.showInfo() }
-        else { KRProgressHUD.showInfo(message: "Info") }
+        if messageControl.selectedSegmentIndex == 0 {
+            KRProgressHUD.showInfo()
+        } else {
+            KRProgressHUD.showInfo(message: "Info")
+        }
     }
 
     @IBAction func showWarningButtonTapped(sender: UIButton) {
-        if messageControl.selectedSegmentIndex == 0 { KRProgressHUD.showWarning() }
-        else { KRProgressHUD.showWarning(message: "Warning!") }
+        if messageControl.selectedSegmentIndex == 0 {
+            KRProgressHUD.showWarning()
+        } else {
+            KRProgressHUD.showWarning(message: "Warning!")
+        }
     }
 
     @IBAction func showErrorButtonTapped(sender: UIButton) {
-        if messageControl.selectedSegmentIndex == 0 { KRProgressHUD.showError() }
-        else { KRProgressHUD.showError(message: "Error...") }
+        if messageControl.selectedSegmentIndex == 0 {
+            KRProgressHUD.showError()
+        } else {
+            KRProgressHUD.showError(message: "Error...")
+        }
     }
 }
 
@@ -94,7 +109,7 @@ extension ViewController {
         case 1:  KRProgressHUD.setDefaultStyle(style: .Black)
         case 2:  KRProgressHUD.setDefaultStyle(style: .WhiteColor)
         case 3:  KRProgressHUD.setDefaultStyle(style: .BlackColor)
-        default:  break                        
+        default:  break
         }
     }
 
@@ -104,7 +119,7 @@ extension ViewController {
         switch sender.selectedSegmentIndex {
         case 0:  KRProgressHUD.setDefaultActivityIndicatorStyle(style: .Black)
         case 1:  KRProgressHUD.setDefaultActivityIndicatorStyle(style: .White)
-        case 2:                                                 
+        case 2:
             switchColorPartsHidden(hidden: false)
             let startColor = colors[startColorControl.selectedSegmentIndex]
             let endColor = colors[endColorControl.selectedSegmentIndex]
@@ -117,11 +132,11 @@ extension ViewController {
         let startColor = colors[startColorControl.selectedSegmentIndex]
         let endColor = colors[endColorControl.selectedSegmentIndex]
         KRProgressHUD.setDefaultActivityIndicatorStyle(style: .Color(startColor, endColor))
-    }                                                  
+    }
 
     @IBAction func changedEndColorControlValue(sender: UISegmentedControl) {
         let startColor = colors[startColorControl.selectedSegmentIndex]
         let endColor = colors[endColorControl.selectedSegmentIndex]
         KRProgressHUD.setDefaultActivityIndicatorStyle(style: .Color(startColor, endColor))
-    }                                                  
+    }
 }

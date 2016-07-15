@@ -60,8 +60,11 @@ public final class KRActivityIndicatorView: UIView {
 
     /// Whether view performs animation
     public var isAnimating: Bool {
-        if animationLayer.animationForKey("rotate") != nil { return true }
-        else { return false }
+        if animationLayer.animationForKey("rotate") != nil {
+            return true
+        } else {
+            return false
+        }
     }
 
     private var animationLayer = CALayer()
@@ -82,11 +85,9 @@ public final class KRActivityIndicatorView: UIView {
     /**
      Initializes and returns a newly allocated view object with the specified position.
      An initialized view object or nil if the object couldn't be created.
-     
+
      - parameter position: Object position. Object size is determined automatically.
-     - parameter style:    Activity indicator default color use of KRActivityIndicatorViewStyle
-     
-     - returns: An initialized view object or nil if the object couldn't be created.
+     - parameter activityIndicatorStyle:    Activity indicator default color use of KRActivityIndicatorViewStyle
      */
     public convenience init(position: CGPoint, activityIndicatorStyle style: KRActivityIndicatorViewStyle) {
         if style.isLargeStyle {
@@ -112,7 +113,7 @@ public final class KRActivityIndicatorView: UIView {
         }
 
         animationLayer.position = CGPoint(x: layer.position.x-layer.frame.origin.x, y: layer.position.y-layer.frame.origin.y)
-        layer.addSublayer(animationLayer)                                        
+        layer.addSublayer(animationLayer)
 
         // draw ActivityIndicator
         let colors: [CGColor] = activityIndicatorViewStyle.getGradientColors()

@@ -33,7 +33,7 @@ extension KRActivityIndicatorViewStyle {
         case .White:  self = .LargeWhite
         case let .Color(sc, ec):  self = .LargeColor(sc, ec)
         default:  break
-        }         
+        }
     }
 
     mutating func sizeToDefault() {
@@ -42,7 +42,7 @@ extension KRActivityIndicatorViewStyle {
         case .LargeWhite:  self = .White
         case let .LargeColor(sc, ec):  self = .Color(sc, ec)
         default:  break
-        }         
+        }
     }
 
     var isLargeStyle: Bool {
@@ -130,8 +130,8 @@ private struct KRActivityIndicatorPath {
 *   CAGradientLayer Extension ------------------------------
 */
 private extension CAGradientLayer {
-    func colorOfPoint(point:CGPoint)->UIColor {
-        var pixel:[CUnsignedChar] = [0,0,0,0]
+    func colorOfPoint(point: CGPoint) -> UIColor {
+        var pixel: [CUnsignedChar] = [0, 0, 0, 0]
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmap = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue)
         let context = CGBitmapContextCreate(&pixel, 1, 1, 8, 4, colorSpace, bitmap.rawValue)
@@ -139,10 +139,10 @@ private extension CAGradientLayer {
         CGContextTranslateCTM(context, -point.x, -point.y)
         renderInContext(context!)
 
-        let red:CGFloat = CGFloat(pixel[0])/255.0
-        let green:CGFloat = CGFloat(pixel[1])/255.0
-        let blue:CGFloat = CGFloat(pixel[2])/255.0
-        let alpha:CGFloat = CGFloat(pixel[3])/255.0
+        let red: CGFloat = CGFloat(pixel[0])/255.0
+        let green: CGFloat = CGFloat(pixel[1])/255.0
+        let blue: CGFloat = CGFloat(pixel[2])/255.0
+        let alpha: CGFloat = CGFloat(pixel[3])/255.0
 
         return UIColor(red:red, green: green, blue:blue, alpha:alpha)
     }
