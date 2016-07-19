@@ -126,6 +126,7 @@ I'm seeking bug reports and feature requests.
 (And please teach me if my English is wrong :| )
 
 ## Release Note
+- 1.5.1 : Fixed bug from which keyWindow doesn't switch when call `dismiss()`.
 - 1.5.0 : Add completion handler to `dismiss()` and `show()`.
 - 1.4.3 : Fixed bug which infinite recursion `prefersStatusBarHidden()`.
 - 1.4.2 : Fixed bug which HUD doesn't respect status bar appearance.
