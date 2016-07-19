@@ -57,6 +57,8 @@ public final class KRProgressHUD {
     private let drawView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     private let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 20))
 
+    private var tmpWindow: UIWindow?
+
     private var maskType: KRProgressHUDMaskType {
         willSet {
             switch newValue {
@@ -320,6 +322,7 @@ extension KRProgressHUD {
                 KRProgressHUD.sharedView().window.alpha = 0
             }) { _ in
                 KRProgressHUD.sharedView().window.hidden = true
+                KRProgressHUD.sharedView().tmpWindow?.makeKeyWindow()
                 KRProgressHUD.sharedView().activityIndicatorView.stopAnimating()
                 KRProgressHUD.sharedView().progressHUDStyle = KRProgressHUD.sharedView().defaultStyle
                 KRProgressHUD.sharedView().maskType = KRProgressHUD.sharedView().defaultMaskType
@@ -349,6 +352,7 @@ extension KRProgressHUD {
 private extension KRProgressHUD {
     func show(completion: (()->())? = nil) {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.tmpWindow = UIApplication.sharedApplication().keyWindow
             self.window.alpha = 0
             self.window.makeKeyAndVisible()
 
