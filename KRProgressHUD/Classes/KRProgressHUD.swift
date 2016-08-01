@@ -19,11 +19,6 @@ public enum KRProgressHUDMaskType {
     case Clear, White, Black
 }
 
-func afterDelay(delayTime: Double, completion: () -> Void) {
-    let when = dispatch_time(DISPATCH_TIME_NOW, Int64(delayTime * Double(NSEC_PER_SEC)))
-    dispatch_after(when, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), completion)
-}
-
 /**
  Style of KRProgressHUD.
 
@@ -222,14 +217,14 @@ extension KRProgressHUD {
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
             maskType type: KRProgressHUDMaskType? = nil,
             activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
-			font: UIFont? = nil, message: String? = nil) {
-		KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
-		KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
-		KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Success)
-		KRProgressHUD.sharedView().show()
-		afterDelay(1.0) {
-			KRProgressHUD.dismiss()
-		}
+            font: UIFont? = nil, message: String? = nil) {
+        KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
+        KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
+        KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Success)
+        KRProgressHUD.sharedView().show()
+        NSThread.afterDelay(1.0) {
+        	KRProgressHUD.dismiss()
+        }
 	}
 
     /**
@@ -253,9 +248,9 @@ extension KRProgressHUD {
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Info)
         KRProgressHUD.sharedView().show()
 
-		afterDelay(1.0) {
-			KRProgressHUD.dismiss()
-		}
+        NSThread.afterDelay(1.0) {
+        	KRProgressHUD.dismiss()
+        }
     }
 
     /**
@@ -279,9 +274,9 @@ extension KRProgressHUD {
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Warning)
         KRProgressHUD.sharedView().show()
 
-		afterDelay(1.0) {
-			KRProgressHUD.dismiss()
-		}
+        NSThread.afterDelay(1.0) {
+        	KRProgressHUD.dismiss()
+        }
     }
 
     /**
@@ -305,9 +300,9 @@ extension KRProgressHUD {
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Error)
         KRProgressHUD.sharedView().show()
 
-		afterDelay(1.0) {
-			KRProgressHUD.dismiss()
-		}
+        NSThread.afterDelay(1.0) {
+        	KRProgressHUD.dismiss()
+        }
     }
 
     /**
