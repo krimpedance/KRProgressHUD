@@ -95,6 +95,10 @@ public final class KRProgressHUD {
     private var defaultActivityIndicatorStyle: KRProgressHUDActivityIndicatorStyle = .Black { willSet { activityIndicatorStyle = newValue } }
     private var defaultMessageFont = UIFont(name: "HiraginoSans-W3", size: 13) ?? UIFont.systemFontOfSize(13) { willSet { messageLabel.font = newValue } }
 
+    public static var isVisible: Bool {
+        return sharedView().window.alpha == 0 ? false : true
+    }
+
 
     private init() {
         maskType = .Black
@@ -108,6 +112,7 @@ public final class KRProgressHUD {
         let rootViewController = KRProgressHUDViewController()
         window.rootViewController = rootViewController
         window.windowLevel = UIWindowLevelNormal
+        window.alpha = 0
 
         let screenFrame = UIScreen.mainScreen().bounds
         progressHUDView.center = CGPoint(x: screenFrame.width/2, y: screenFrame.height/2 - 100)
