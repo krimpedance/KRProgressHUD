@@ -21,14 +21,14 @@ or [appetize.io](https://appetize.io/app/nw022juw0znkf1n5u6ynga5ntm?device=iphon
 
 ## Installation
 KRProgressHUD is available through [CocoaPods](http://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage). 
-To install it, simply add the following line to your Podfile:
+To install it, simply add the following line to your Podfile or Cartfile:
 
-```ruby:
+```ruby
 # CocoaPods
 pod "KRProgressHUD"
 ```
 
-```ruby:
+```ruby
 # Carthage
 github "Krimpedance/KRProgressHUD"
 ```
