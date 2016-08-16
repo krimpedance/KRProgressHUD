@@ -118,6 +118,7 @@ public class func setDefaultMaskType(type :KRProgressHUDMaskType)  // デフォ�
 public class func setDefaultStyle(style :KRProgressHUDStyle)  // デフォルト: .White
 public class func setDefaultActivityIndicatorStyle(style :KRActivityIndicatorStyle)  // デフォルト: .Black
 public class func setDefaultFont(font :UIFont)  // デフォルト: ヒラギノ角ゴ W3 13px(ない場合はシステムフォント13px)
+public class func setDefaultCenterPosition(position :CGPoint)  // デフォルト: デバイスの画面の中央
 ```
 `KRActivityIndicatorView`のスタイルは[こちら](https://github.com/krimpedance/KRActivityIndicator/blob/master/README.md)を参考にしてください．
 
@@ -125,6 +126,8 @@ public class func setDefaultFont(font :UIFont)  // デフォルト: ヒラギノ
 バグや機能のリクエストがありましたら，気軽にコメントしてください．
 
 ## リリースノート
+- 1.6.0 : HUDの標準表示位置を画面中央にしました
+          HUDの表示位置を変える関数を追加しました．
 - 1.5.2 : `KRProgressHUD.isVisible`でHUDが表示されているか確認可能
 - 1.5.1 : HUDを閉じた時，keyWindowが切り替わらないバグを修正
 - 1.5.0 : `show()`, `dismiss()`で完了時の処理をかけるようになりました
@@ -132,9 +135,6 @@ public class func setDefaultFont(font :UIFont)  // デフォルト: ヒラギノ
 - 1.4.2 : ステータスバーの表示設定を反映していないバグを修正
 - 1.4.1 : Carthage対応, **HUDのマスクビューが切り替わらないバグを修正**
 - 1.4.0 : メッセージラベルの更新機能を追加
-- 1.3.0 : 横画面に対応
-- 1.2.1 : アイコンがカラーリングされない問題を修正
-- 1.2.0 : ドキュメントコメントを追加
 
 
 ## ライセンス

@@ -17,7 +17,7 @@ This library is inspired by [SVProgressHUD](https://github.com/SVProgressHUD/SVP
 ## DEMO
 To run the example project, clone the repo, and open `KRProgressHUDDemo.xcodeproj` from the DEMO directory.
 
-or [appetize.io](https://appetize.io/app/nw022juw0znkf1n5u6ynga5ntm?device=iphone5s&scale=75&orientation=portrait&osVersion=9.2)
+or [appetize.io](https://appetize.io/app/nw022juw0znkf1n5u6ynga5ntm)
 
 ## Installation
 KRProgressHUD is available through [CocoaPods](http://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage). 
@@ -118,6 +118,7 @@ public class func setDefaultMaskType(type :KRProgressHUDMaskType)  // Default is
 public class func setDefaultStyle(style :KRProgressHUDStyle)  // Default is .White
 public class func setDefaultActivityIndicatorStyle(style :KRProgressHUDActivityIndicatorStyle)  // Default is .Black
 public class func setDefaultFont(font :UIFont)  // Default is Hiragino Sans W3 13px (When it can't be used, system font 13px)
+public class func setDefaultCenterPosition(position :CGPoint)  // Default is center of device screen.
 ```
 `KRActivityIndicatorView`'s style, please refer to [here](https://github.com/krimpedance/KRActivityIndicator/blob/master/README.md).
 
@@ -126,6 +127,8 @@ I'm seeking bug reports and feature requests.
 (And please teach me if my English is wrong :| )
 
 ## Release Note
+- 1.6.0 : Changed center position of HUD to UIScreen's center. 
+          And, added function to which the position can be changed.
 - 1.5.2 : Add `KRProgressHUD.isVisible` parameter.
 - 1.5.1 : Fixed bug from which keyWindow doesn't switch when call `dismiss()`.
 - 1.5.0 : Add completion handler to `dismiss()` and `show()`.
@@ -133,9 +136,6 @@ I'm seeking bug reports and feature requests.
 - 1.4.2 : Fixed bug which HUD doesn't respect status bar appearance.
 - 1.4.1 : Add Carthage. And, **fixed bug which HUD mask view isn't switched over**.
 - 1.4.0 : Add the update function of message label.
-- 1.3.0 : Corresponded to Landscape.
-- 1.2.1 : Fixed bug(Don't display glyph color)
-- 1.2.0 : Add document comments.
 
 ## License
 KRProgressHUD is available under the MIT license. See the LICENSE file for more info.
