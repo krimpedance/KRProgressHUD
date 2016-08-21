@@ -127,6 +127,7 @@ I'm seeking bug reports and feature requests.
 (And please teach me if my English is wrong :| )
 
 ## Release Note
+- 1.6.1 : Fixed bug which HUD doesn't respect status bar style.
 - 1.6.0 : Changed center position of HUD to UIScreen's center. 
           And, added function to which the position can be changed.
 - 1.5.2 : Add `KRProgressHUD.isVisible` parameter.

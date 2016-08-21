@@ -126,6 +126,7 @@ public class func setDefaultCenterPosition(position :CGPoint)  // デフォル�
 バグや機能のリクエストがありましたら，気軽にコメントしてください．
 
 ## リリースノート
+- 1.6.1 : ステータスバーのスタイルを反映していないバグを修正
 - 1.6.0 : HUDの標準表示位置を画面中央にしました
           HUDの表示位置を変える関数を追加しました．
 - 1.5.2 : `KRProgressHUD.isVisible`でHUDが表示されているか確認可能
