@@ -67,7 +67,7 @@ public final class KRActivityIndicatorView: UIView {
         }
     }
 
-    private var animationLayer = CALayer()
+    fileprivate var animationLayer = CALayer()
 
 
     public required init?(coder aDecoder: NSCoder) {

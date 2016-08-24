@@ -27,7 +27,7 @@ extension UIApplication {
 }
 
 extension Thread {
-    static func afterDelay(_ delayTime: Double, completion: () -> Void) {
+    static func afterDelay(_ delayTime: Double, completion: @escaping () -> Void) {
         let when = DispatchTime.now() + Double(Int64(delayTime * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.global(qos: DispatchQoS.QoSClass.default).asyncAfter(deadline: when, execute: completion)
     }

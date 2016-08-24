@@ -50,16 +50,16 @@ public final class KRProgressHUD {
     private static let view = KRProgressHUD()
     class func sharedView() -> KRProgressHUD { return view }
 
-    private let window = UIWindow(frame: UIScreen.main.bounds)
-    private let progressHUDView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-    private let iconView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-    private let activityIndicatorView = KRActivityIndicatorView(position: CGPoint.zero, activityIndicatorStyle: .largeBlack)
-    private let drawView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-    private let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 20))
+    fileprivate let window = UIWindow(frame: UIScreen.main.bounds)
+    fileprivate let progressHUDView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+    fileprivate let iconView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    fileprivate let activityIndicatorView = KRActivityIndicatorView(position: CGPoint.zero, activityIndicatorStyle: .largeBlack)
+    fileprivate let drawView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    fileprivate let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 20))
 
-    private var tmpWindow: UIWindow?
+    fileprivate var tmpWindow: UIWindow?
 
-    private var maskType: KRProgressHUDMaskType {
+    fileprivate var maskType: KRProgressHUDMaskType {
         willSet {
             switch newValue {
             case .clear:  window.rootViewController?.view.backgroundColor = UIColor.clear
@@ -69,7 +69,7 @@ public final class KRProgressHUD {
         }
     }
 
-    private var progressHUDStyle: KRProgressHUDStyle {
+    fileprivate var progressHUDStyle: KRProgressHUDStyle {
         willSet {
             switch newValue {
             case .black, .blackColor:
@@ -81,7 +81,7 @@ public final class KRProgressHUD {
             }
         }
     }
-    private var activityIndicatorStyle: KRProgressHUDActivityIndicatorStyle {
+    fileprivate var activityIndicatorStyle: KRProgressHUDActivityIndicatorStyle {
         willSet {
             switch newValue {
             case .black:  activityIndicatorView.activityIndicatorViewStyle = .largeBlack
@@ -90,10 +90,10 @@ public final class KRProgressHUD {
             }
         }
     }
-    private var defaultStyle: KRProgressHUDStyle = .white { willSet { progressHUDStyle = newValue } }
-    private var defaultMaskType: KRProgressHUDMaskType = .black { willSet { maskType = newValue } }
-    private var defaultActivityIndicatorStyle: KRProgressHUDActivityIndicatorStyle = .black { willSet { activityIndicatorStyle = newValue } }
-    private var defaultMessageFont = UIFont(name: "HiraginoSans-W3", size: 13) ?? UIFont.systemFont(ofSize: 13) { willSet { messageLabel.font = newValue } }
+    fileprivate var defaultStyle: KRProgressHUDStyle = .white { willSet { progressHUDStyle = newValue } }
+    fileprivate var defaultMaskType: KRProgressHUDMaskType = .black { willSet { maskType = newValue } }
+    fileprivate var defaultActivityIndicatorStyle: KRProgressHUDActivityIndicatorStyle = .black { willSet { activityIndicatorStyle = newValue } }
+    fileprivate var defaultMessageFont = UIFont(name: "HiraginoSans-W3", size: 13) ?? UIFont.systemFont(ofSize: 13) { willSet { messageLabel.font = newValue } }
 
     public static var isVisible: Bool {
         return sharedView().window.alpha == 0 ? false : true
