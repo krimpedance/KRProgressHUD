@@ -90,12 +90,12 @@ public final class KRProgressHUD {
             }
         }
     }
-    private var defaultStyle: KRProgressHUDStyle = .White { willSet { progressHUDStyle = newValue } }
-    private var defaultMaskType: KRProgressHUDMaskType = .Black { willSet { maskType = newValue } }
-    private var defaultActivityIndicatorStyle: KRProgressHUDActivityIndicatorStyle = .Black { willSet { activityIndicatorStyle = newValue } }
-    private var defaultMessageFont = UIFont(name: "HiraginoSans-W3", size: 13) ?? UIFont.systemFontOfSize(13) { willSet { messageLabel.font = newValue } }
-    private var defaultPosition: CGPoint = {
-        let screenFrame = UIScreen.mainScreen().bounds
+    fileprivate var defaultStyle: KRProgressHUDStyle = .white { willSet { progressHUDStyle = newValue } }
+    fileprivate var defaultMaskType: KRProgressHUDMaskType = .black { willSet { maskType = newValue } }
+    fileprivate var defaultActivityIndicatorStyle: KRProgressHUDActivityIndicatorStyle = .black { willSet { activityIndicatorStyle = newValue } }
+    fileprivate var defaultMessageFont = UIFont(name: "HiraginoSans-W3", size: 13) ?? UIFont.systemFont(ofSize: 13) { willSet { messageLabel.font = newValue } }
+    fileprivate var defaultPosition: CGPoint = {
+        let screenFrame = UIScreen.main.bounds
         return CGPoint(x: screenFrame.width/2, y: screenFrame.height/2)
     }() {
         willSet { progressHUDView.center = newValue }
@@ -121,7 +121,7 @@ public final class KRProgressHUD {
         window.alpha = 0
 
         progressHUDView.center = defaultPosition
-        progressHUDView.backgroundColor = UIColor.whiteColor()
+        progressHUDView.backgroundColor = UIColor.white
         progressHUDView.layer.cornerRadius = 10
         progressHUDView.autoresizingMask = [.flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin]
         window.rootViewController?.view.addSubview(progressHUDView)
