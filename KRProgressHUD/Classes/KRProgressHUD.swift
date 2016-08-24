@@ -90,10 +90,16 @@ public final class KRProgressHUD {
             }
         }
     }
-    fileprivate var defaultStyle: KRProgressHUDStyle = .white { willSet { progressHUDStyle = newValue } }
-    fileprivate var defaultMaskType: KRProgressHUDMaskType = .black { willSet { maskType = newValue } }
-    fileprivate var defaultActivityIndicatorStyle: KRProgressHUDActivityIndicatorStyle = .black { willSet { activityIndicatorStyle = newValue } }
-    fileprivate var defaultMessageFont = UIFont(name: "HiraginoSans-W3", size: 13) ?? UIFont.systemFont(ofSize: 13) { willSet { messageLabel.font = newValue } }
+    private var defaultStyle: KRProgressHUDStyle = .White { willSet { progressHUDStyle = newValue } }
+    private var defaultMaskType: KRProgressHUDMaskType = .Black { willSet { maskType = newValue } }
+    private var defaultActivityIndicatorStyle: KRProgressHUDActivityIndicatorStyle = .Black { willSet { activityIndicatorStyle = newValue } }
+    private var defaultMessageFont = UIFont(name: "HiraginoSans-W3", size: 13) ?? UIFont.systemFontOfSize(13) { willSet { messageLabel.font = newValue } }
+    private var defaultPosition: CGPoint = {
+        let screenFrame = UIScreen.mainScreen().bounds
+        return CGPoint(x: screenFrame.width/2, y: screenFrame.height/2)
+    }() {
+        willSet { progressHUDView.center = newValue }
+    }
 
     public static var isVisible: Bool {
         return sharedView().window.alpha == 0 ? false : true
@@ -114,9 +120,8 @@ public final class KRProgressHUD {
         window.windowLevel = UIWindowLevelNormal
         window.alpha = 0
 
-        let screenFrame = UIScreen.main.bounds
-        progressHUDView.center = CGPoint(x: screenFrame.width/2, y: screenFrame.height/2 - 100)
-        progressHUDView.backgroundColor = UIColor.white
+        progressHUDView.center = defaultPosition
+        progressHUDView.backgroundColor = UIColor.whiteColor()
         progressHUDView.layer.cornerRadius = 10
         progressHUDView.autoresizingMask = [.flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin]
         window.rootViewController?.view.addSubview(progressHUDView)
@@ -171,6 +176,12 @@ extension KRProgressHUD {
     /// - parameter font: text font
     public class func setDefaultFont(font: UIFont) {
         KRProgressHUD.sharedView().defaultMessageFont = font
+    }
+
+    /// Set default HUD center's position.
+    /// - parameter position: center position
+    public class func setDefaultCenterPosition(position: CGPoint) {
+        KRProgressHUD.sharedView().defaultPosition = position
     }
 }
 
