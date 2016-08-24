@@ -6,7 +6,8 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CI Status](http://img.shields.io/travis/krimpedance/KRProgressHUD.svg?style=flat)](https://travis-ci.org/krimpedance/KRProgressHUD)
 
-`KRProgressHUD` is a beautiful and easy-to-use progress HUD for your iOS written by Swift 2.
+`KRProgressHUD` is a beautiful and easy-to-use progress HUD for your iOS.
+**This branch support Xcode8-beta6.**
 
 This library is inspired by [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD).
 
