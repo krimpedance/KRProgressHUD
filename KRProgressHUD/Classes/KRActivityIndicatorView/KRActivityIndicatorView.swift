@@ -27,7 +27,7 @@ public final class KRActivityIndicatorView: UIView {
     /// Activity indicator's tail color (read-only).
     /// If you change color, change activityIndicatorViewStyle property.
     @IBInspectable public private(set) var tailColor: UIColor = UIColor.lightGrayColor() {
-        willSet {  
+        willSet {
             if largeStyle {
                 activityIndicatorViewStyle = .LargeColor(headColor, newValue)
             } else {
@@ -38,7 +38,7 @@ public final class KRActivityIndicatorView: UIView {
 
     /// Size of activity indicator. (`true` is large)
     @IBInspectable public var largeStyle: Bool = false {
-        willSet {  
+        willSet {
             if newValue {
                 activityIndicatorViewStyle.sizeToLarge()
             } else {
@@ -49,10 +49,10 @@ public final class KRActivityIndicatorView: UIView {
 
     /// Animation of activity indicator when it's shown.
     @IBInspectable public var animating: Bool = true
-                   
+
     /// calls `setHidden` when call `stopAnimating()`
     @IBInspectable public var hidesWhenStopped: Bool = false
-                   
+
     /// Activity indicator color style.
     public var activityIndicatorViewStyle: KRActivityIndicatorViewStyle = .Black {
         didSet { setNeedsDisplay() }

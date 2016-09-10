@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B5D62AE1D8411730027D21E /* KRActivityIndicatorView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4BA70C3D1D02F2ED009EB743 /* KRActivityIndicatorView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		4B5D62AF1D8411730027D21E /* KRProgressHUD.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4BA70C3F1D02F2ED009EB743 /* KRProgressHUD.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B7576D61D1BC6AB003FF258 /* KRProgressHUDExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7576D51D1BC6AB003FF258 /* KRProgressHUDExtensions.swift */; };
 		4B7576D81D1BC838003FF258 /* KRProgressHUDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7576D71D1BC838003FF258 /* KRProgressHUDViewController.swift */; };
 		4B7576E21D1BCD56003FF258 /* KRProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA70C301D02F28D009EB743 /* KRProgressHUD.framework */; };
@@ -128,6 +130,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BA70C341D02F28D009EB743 /* KRProgressHUD.h in Headers */,
+				4B5D62AE1D8411730027D21E /* KRActivityIndicatorView.swift in Headers */,
+				4B5D62AF1D8411730027D21E /* KRProgressHUD.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
