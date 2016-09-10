@@ -14,7 +14,7 @@ import UIKit
 public final class KRActivityIndicatorView: UIView {
     /// Activity indicator's head color (read-only).
     /// If you change color, change activityIndicatorViewStyle property.
-    @IBInspectable private(set) var headColor: UIColor = UIColor.blackColor() {
+    @IBInspectable public private(set) var headColor: UIColor = UIColor.blackColor() {
         willSet {
             if largeStyle {
                 activityIndicatorViewStyle = .LargeColor(newValue, tailColor)
@@ -26,8 +26,8 @@ public final class KRActivityIndicatorView: UIView {
 
     /// Activity indicator's tail color (read-only).
     /// If you change color, change activityIndicatorViewStyle property.
-    @IBInspectable private(set) var tailColor: UIColor = UIColor.lightGrayColor() {
-        willSet {
+    @IBInspectable public private(set) var tailColor: UIColor = UIColor.lightGrayColor() {
+        willSet {  
             if largeStyle {
                 activityIndicatorViewStyle = .LargeColor(headColor, newValue)
             } else {
@@ -37,8 +37,8 @@ public final class KRActivityIndicatorView: UIView {
     }
 
     /// Size of activity indicator. (`true` is large)
-    @IBInspectable var largeStyle: Bool = false {
-        willSet {
+    @IBInspectable public var largeStyle: Bool = false {
+        willSet {  
             if newValue {
                 activityIndicatorViewStyle.sizeToLarge()
             } else {
@@ -48,11 +48,11 @@ public final class KRActivityIndicatorView: UIView {
     }
 
     /// Animation of activity indicator when it's shown.
-    @IBInspectable var animating: Bool = true
-
+    @IBInspectable public var animating: Bool = true
+                   
     /// calls `setHidden` when call `stopAnimating()`
-    @IBInspectable var hidesWhenStopped: Bool = false
-
+    @IBInspectable public var hidesWhenStopped: Bool = false
+                   
     /// Activity indicator color style.
     public var activityIndicatorViewStyle: KRActivityIndicatorViewStyle = .Black {
         didSet { setNeedsDisplay() }
@@ -74,7 +74,7 @@ public final class KRActivityIndicatorView: UIView {
         super.init(coder: aDecoder)
     }
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
     }
 
