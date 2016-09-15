@@ -155,31 +155,31 @@ public final class KRProgressHUD {
 extension KRProgressHUD {
     /// Set default mask type.
     /// - parameter type: `KRProgressHUDMaskType`
-    public class func setDefaultMaskType(type: KRProgressHUDMaskType) {
+    public class func set(maskType type: KRProgressHUDMaskType) {
         KRProgressHUD.sharedView().defaultMaskType = type
     }
 
     /// Set default HUD style
     /// - parameter style: `KRProgressHUDStyle`
-    public class func setDefaultStyle(style: KRProgressHUDStyle) {
+    public class func set(style: KRProgressHUDStyle) {
         KRProgressHUD.sharedView().defaultStyle = style
     }
 
     /// Set default KRActivityIndicatorView style.
     /// - parameter style: `KRProgresHUDActivityIndicatorStyle`
-    public class func setDefaultActivityIndicatorStyle(style: KRProgressHUDActivityIndicatorStyle) {
+    public class func set(activityIndicatorStyle style: KRProgressHUDActivityIndicatorStyle) {
         KRProgressHUD.sharedView().defaultActivityIndicatorStyle = style
     }
 
     /// Set default HUD text font.
     /// - parameter font: text font
-    public class func setDefaultFont(font: UIFont) {
+    public class func set(font: UIFont) {
         KRProgressHUD.sharedView().defaultMessageFont = font
     }
 
     /// Set default HUD center's position.
     /// - parameter position: center position
-    public class func setDefaultCenterPosition(_ position: CGPoint) {
+    public class func set(centerPosition position: CGPoint) {
         KRProgressHUD.sharedView().defaultPosition = position
     }
 }
@@ -351,7 +351,7 @@ extension KRProgressHUD {
  *  KRProgressHUD update during show --------------------------
  */
 extension KRProgressHUD {
-    public class func updateLabel(_ text: String) {
+    public class func update(text: String) {
         sharedView().messageLabel.text = text
     }
 }

@@ -50,7 +50,7 @@ extension ViewController {
             KRProgressHUD.show(message: "Loading...")
         }
 
-        let delay = DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        let delay = DispatchTime.now() + 1
         DispatchQueue.main.asyncAfter(deadline: delay) {
             KRProgressHUD.dismiss()
         }
@@ -96,19 +96,19 @@ extension ViewController {
 extension ViewController {
     @IBAction func changedMaskTypeControlValue(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 0:  KRProgressHUD.setDefaultMaskType(type: .black)
-        case 1:  KRProgressHUD.setDefaultMaskType(type: .white)
-        case 2:  KRProgressHUD.setDefaultMaskType(type: .clear)
+        case 0:  KRProgressHUD.set(maskType: .black)
+        case 1:  KRProgressHUD.set(maskType: .white)
+        case 2:  KRProgressHUD.set(maskType: .clear)
         default:  break
         }
     }
 
     @IBAction func changedProgressHUDStyleControlValue(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 0:  KRProgressHUD.setDefaultStyle(style: .white)
-        case 1:  KRProgressHUD.setDefaultStyle(style: .black)
-        case 2:  KRProgressHUD.setDefaultStyle(style: .whiteColor)
-        case 3:  KRProgressHUD.setDefaultStyle(style: .blackColor)
+        case 0:  KRProgressHUD.set(style: .white)
+        case 1:  KRProgressHUD.set(style: .black)
+        case 2:  KRProgressHUD.set(style: .whiteColor)
+        case 3:  KRProgressHUD.set(style: .blackColor)
         default:  break
         }
     }
@@ -117,13 +117,13 @@ extension ViewController {
         switchColorPartsHidden(hidden: true)
 
         switch sender.selectedSegmentIndex {
-        case 0:  KRProgressHUD.setDefaultActivityIndicatorStyle(style: .black)
-        case 1:  KRProgressHUD.setDefaultActivityIndicatorStyle(style: .white)
+        case 0:  KRProgressHUD.set(activityIndicatorStyle: .black)
+        case 1:  KRProgressHUD.set(activityIndicatorStyle: .white)
         case 2:
             switchColorPartsHidden(hidden: false)
             let startColor = colors[startColorControl.selectedSegmentIndex]
             let endColor = colors[endColorControl.selectedSegmentIndex]
-            KRProgressHUD.setDefaultActivityIndicatorStyle(style: .color(startColor, endColor))
+            KRProgressHUD.set(activityIndicatorStyle: .color(startColor, endColor))
         default:  break
         }
     }
@@ -131,12 +131,12 @@ extension ViewController {
     @IBAction func changedStartColorControlValue(_ sender: UISegmentedControl) {
         let startColor = colors[startColorControl.selectedSegmentIndex]
         let endColor = colors[endColorControl.selectedSegmentIndex]
-        KRProgressHUD.setDefaultActivityIndicatorStyle(style: .color(startColor, endColor))
+        KRProgressHUD.set(activityIndicatorStyle: .color(startColor, endColor))
     }
 
     @IBAction func changedEndColorControlValue(_ sender: UISegmentedControl) {
         let startColor = colors[startColorControl.selectedSegmentIndex]
         let endColor = colors[endColorControl.selectedSegmentIndex]
-        KRProgressHUD.setDefaultActivityIndicatorStyle(style: .color(startColor, endColor))
+        KRProgressHUD.set(activityIndicatorStyle: .color(startColor, endColor))
     }
 }
