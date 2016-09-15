@@ -14,24 +14,24 @@ import UIKit
 public final class KRActivityIndicatorView: UIView {
     /// Activity indicator's head color (read-only).
     /// If you change color, change activityIndicatorViewStyle property.
-    @IBInspectable public private(set) var headColor: UIColor = UIColor.blackColor() {
+    @IBInspectable public fileprivate(set) var headColor: UIColor = UIColor.black {
         willSet {
             if largeStyle {
-                activityIndicatorViewStyle = .LargeColor(newValue, tailColor)
+                activityIndicatorViewStyle = .largeColor(newValue, tailColor)
             } else {
-                activityIndicatorViewStyle = .Color(newValue, tailColor)
+                activityIndicatorViewStyle = .color(newValue, tailColor)
             }
         }
     }
 
     /// Activity indicator's tail color (read-only).
     /// If you change color, change activityIndicatorViewStyle property.
-    @IBInspectable public private(set) var tailColor: UIColor = UIColor.lightGrayColor() {
+    @IBInspectable public fileprivate(set) var tailColor: UIColor = UIColor.lightGray {
         willSet {
             if largeStyle {
-                activityIndicatorViewStyle = .LargeColor(headColor, newValue)
+                activityIndicatorViewStyle = .largeColor(headColor, newValue)
             } else {
-                activityIndicatorViewStyle = .Color(headColor, newValue)
+                activityIndicatorViewStyle = .color(headColor, newValue)
             }
         }
     }
@@ -54,20 +54,20 @@ public final class KRActivityIndicatorView: UIView {
     @IBInspectable public var hidesWhenStopped: Bool = false
 
     /// Activity indicator color style.
-    public var activityIndicatorViewStyle: KRActivityIndicatorViewStyle = .Black {
+    public var activityIndicatorViewStyle: KRActivityIndicatorViewStyle = .black {
         didSet { setNeedsDisplay() }
     }
 
     /// Whether view performs animation
     public var isAnimating: Bool {
-        if animationLayer.animationForKey("rotate") != nil {
+        if animationLayer.animation(forKey: "rotate") != nil {
             return true
         } else {
             return false
         }
     }
 
-    private var animationLayer = CALayer()
+    fileprivate var animationLayer = CALayer()
 
 
     public required init?(coder aDecoder: NSCoder) {
@@ -97,11 +97,11 @@ public final class KRActivityIndicatorView: UIView {
         }
 
         activityIndicatorViewStyle = style
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear
     }
 
 
-    public override func drawRect(rect: CGRect) {
+    public override func draw(_ rect: CGRect) {
         // recreate AnimationLayer
         animationLayer.removeFromSuperlayer()
         animationLayer = CALayer()
@@ -136,27 +136,27 @@ public final class KRActivityIndicatorView: UIView {
 
 extension KRActivityIndicatorView {
     public func startAnimating() {
-        if let _ = animationLayer.animationForKey("rotate") { return }
+        if let _ = animationLayer.animation(forKey: "rotate") { return }
 
         let animation = CABasicAnimation(keyPath: "transform.rotation")
         animation.fromValue = 0
         animation.toValue = M_PI*2
         animation.duration = 1.1
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        animation.removedOnCompletion = false
+        animation.isRemovedOnCompletion = false
         animation.repeatCount = Float(NSIntegerMax)
         animation.fillMode = kCAFillModeForwards
         animation.autoreverses = false
 
-        animationLayer.hidden = false
-        animationLayer.addAnimation(animation, forKey: "rotate")
+        animationLayer.isHidden = false
+        animationLayer.add(animation, forKey: "rotate")
     }
 
     public func stopAnimating() {
         animationLayer.removeAllAnimations()
 
         if hidesWhenStopped {
-            animationLayer.hidden = true
+            animationLayer.isHidden = true
         }
     }
 }

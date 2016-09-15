@@ -11,7 +11,7 @@ import UIKit
  *  UIApplication -----------
  */
 extension UIApplication {
-    class func topViewController(base: UIViewController? = UIApplication.sharedApplication().keyWindow?.rootViewController) -> UIViewController? {
+    class func topViewController(_ base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         if let nav = base as? UINavigationController {
             return topViewController(nav.visibleViewController)
         }
@@ -26,9 +26,9 @@ extension UIApplication {
     }
 }
 
-extension NSThread {
-    static func afterDelay(delayTime: Double, completion: () -> Void) {
-        let when = dispatch_time(DISPATCH_TIME_NOW, Int64(delayTime * Double(NSEC_PER_SEC)))
-        dispatch_after(when, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), completion)
+extension Thread {
+    static func afterDelay(_ delayTime: Double, completion: @escaping () -> Void) {
+        let when = DispatchTime.now() + delayTime
+        DispatchQueue.global().asyncAfter(deadline: when, execute: completion)
     }
 }
