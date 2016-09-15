@@ -136,7 +136,7 @@ private extension CAGradientLayer {
         let bitmap = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue)
         let context = CGBitmapContextCreate(&pixel, 1, 1, 8, 4, colorSpace, bitmap.rawValue)
 
-        CGContextTranslateCTM(context, -point.x, -point.y)
+        CGContextTranslateCTM(context!, -point.x, -point.y)
         renderInContext(context!)
 
         let red: CGFloat = CGFloat(pixel[0])/255.0
