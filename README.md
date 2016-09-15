@@ -1,3 +1,5 @@
+[日本語](./README_Ja.md)
+
 # KRProgressHUD
 
 [![Version](https://img.shields.io/cocoapods/v/KRProgressHUD.svg?style=flat)](http://cocoapods.org/pods/KRProgressHUD)
@@ -6,13 +8,27 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CI Status](http://img.shields.io/travis/krimpedance/KRProgressHUD.svg?style=flat)](https://travis-ci.org/krimpedance/KRProgressHUD)
 
-`KRProgressHUD` is a beautiful and easy-to-use progress HUD for your iOS written by Swift 2.
-
-This library is inspired by [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD).
+`KRProgressHUD` is a beautiful and easy-to-use progress HUD for your iOS written by Swift.
 
 [KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator) is used for loading view.
 
 <img src="./Images/styles.png" height=300>
+
+## Requirements
+#### ver. 2.\* 
+- iOS 9.0+
+- Xcode 8.0+
+- Swift 3.\*
+
+#### ver. 1.7.0+ (current version)
+- iOS 8.0+
+- Xcode 8.0+
+- Swift 2.3.\*
+
+#### ver. 1.6.2-
+- iOS 8.0+
+- Xcode 7.\*
+- Swift 2.2.\*
 
 ## DEMO
 To run the example project, clone the repo, and open `KRProgressHUDDemo.xcodeproj` from the DEMO directory.
@@ -127,6 +143,7 @@ I'm seeking bug reports and feature requests.
 (And please teach me if my English is wrong :| )
 
 ## Release Note
+- 1.7.0 : Corresponding to Swift2.3.
 - 1.6.2 : Fixed bug which `@IBInspectable` isn't applied.
 - 1.6.1 : Fixed bug which HUD doesn't respect status bar style.
 - 1.6.0 : Changed center position of HUD to UIScreen's center. 
@@ -134,10 +151,6 @@ I'm seeking bug reports and feature requests.
 - 1.5.2 : Add `KRProgressHUD.isVisible` parameter.
 - 1.5.1 : Fixed bug from which keyWindow doesn't switch when call `dismiss()`.
 - 1.5.0 : Add completion handler to `dismiss()` and `show()`.
-- 1.4.3 : Fixed bug which infinite recursion `prefersStatusBarHidden()`.
-- 1.4.2 : Fixed bug which HUD doesn't respect status bar appearance.
-- 1.4.1 : Add Carthage. And, **fixed bug which HUD mask view isn't switched over**.
-- 1.4.0 : Add the update function of message label.
 
 ## License
 KRProgressHUD is available under the MIT license. See the LICENSE file for more info.

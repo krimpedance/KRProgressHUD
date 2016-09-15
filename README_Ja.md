@@ -1,3 +1,5 @@
+[English](./README.md)
+
 # KRProgressHUD
 
 [![Version](https://img.shields.io/cocoapods/v/KRProgressHUD.svg?style=flat)](http://cocoapods.org/pods/KRProgressHUD)
@@ -8,15 +10,30 @@
 
 `KRProgressHUD`は，Swiftでかかれた綺麗で使いやすいローディング画面を表示するライブラリです．
 
-[SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD)を参考にしており，
+#### 特徴
 
 - 丸いインジケータ
 - カラーのカスタマイズ性
 
-を意識して作っています．
 インジケータには[KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator)を使用しています．
 
 <img src="./Images/styles.png" height=300>
+
+## 必要環境
+#### ver. 2.\*系 
+- iOS 9.0+
+- Xcode 8.0+
+- Swift 3.\*
+
+#### ver. 1.\*系(1.7.0以上) (現在のバージョン)
+- iOS 8.0+
+- Xcode 8.0+
+- Swift 2.3.\*
+
+#### ver. 1.\*系(1.7.0未満)
+- iOS 8.0+
+- Xcode 7.\*
+- Swift 2.2.\*
 
 ## デモ
 `DEMO/`以下にあるサンプルプロジェクトから確認してください．
@@ -126,6 +143,7 @@ public class func setDefaultCenterPosition(position :CGPoint)  // デフォル�
 バグや機能のリクエストがありましたら，気軽にコメントしてください．
 
 ## リリースノート
+- 1.7.0 : Swift2.3に対応
 - 1.6.2 : `IBInspectable`が正常に動作しないバグを修正
 - 1.6.1 : ステータスバーのスタイルを反映していないバグを修正
 - 1.6.0 : HUDの標準表示位置を画面中央にしました
@@ -133,10 +151,6 @@ public class func setDefaultCenterPosition(position :CGPoint)  // デフォル�
 - 1.5.2 : `KRProgressHUD.isVisible`でHUDが表示されているか確認可能
 - 1.5.1 : HUDを閉じた時，keyWindowが切り替わらないバグを修正
 - 1.5.0 : `show()`, `dismiss()`で完了時の処理をかけるようになりました
-- 1.4.3 : ステータスバーの表示設定が無限ループするバグを修正
-- 1.4.2 : ステータスバーの表示設定を反映していないバグを修正
-- 1.4.1 : Carthage対応, **HUDのマスクビューが切り替わらないバグを修正**
-- 1.4.0 : メッセージラベルの更新機能を追加
 
 
 ## ライセンス
