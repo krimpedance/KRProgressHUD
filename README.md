@@ -20,12 +20,12 @@
 - Xcode 8.0+
 - Swift 3.\*
 
-#### ver. 1.7.0+ (current version)
+#### ver. 1.\*(1.7.0 and over) (current version)
 - iOS 8.0+
 - Xcode 8.0+
 - Swift 2.3.\*
 
-#### ver. 1.6.2-
+#### ver. 1.\*(under 1.7.0)
 - iOS 8.0+
 - Xcode 7.\*
 - Swift 2.2.\*
