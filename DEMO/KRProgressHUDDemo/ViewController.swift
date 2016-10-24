@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     }
 
 
-    func switchColorPartsHidden(hidden: Bool) {
+    func switchColorPartsHidden(_ hidden: Bool) {
         startColorLabel.isHidden = hidden
         startColorControl.isHidden = hidden
         endColorLabel.isHidden = hidden
@@ -57,7 +57,7 @@ extension ViewController {
     }
 
     @IBAction func showTextButtonTapped(withSender sender: UIButton) {
-        KRProgressHUD.showText("Single line message :)")
+        KRProgressHUD.showText(message: "Single line message :)")
     }
 
     @IBAction func showSuccessButtonTapped(withSender sender: UIButton) {

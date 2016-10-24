@@ -89,12 +89,12 @@ public final class KRProgressHUD {
             }
         }
     }
-    private var defaultStyle: KRProgressHUDStyle = .White { willSet { progressHUDStyle = newValue } }
-    private var defaultMaskType: KRProgressHUDMaskType = .Black { willSet { maskType = newValue } }
-    private var defaultActivityIndicatorStyle: KRProgressHUDActivityIndicatorStyle = .Black { willSet { activityIndicatorStyle = newValue } }
-    private var defaultMessageFont = UIFont.systemFontOfSize(13) { willSet { messageLabel.font = newValue } }
-    private var defaultPosition: CGPoint = {
-        let screenFrame = UIScreen.mainScreen().bounds
+    fileprivate var defaultStyle: KRProgressHUDStyle = .white { willSet { progressHUDStyle = newValue } }
+    fileprivate var defaultMaskType: KRProgressHUDMaskType = .black { willSet { maskType = newValue } }
+    fileprivate var defaultActivityIndicatorStyle: KRProgressHUDActivityIndicatorStyle = .black { willSet { activityIndicatorStyle = newValue } }
+    fileprivate var defaultMessageFont = UIFont.systemFont(ofSize: 13) { willSet { messageLabel.font = newValue } }
+    fileprivate var defaultPosition: CGPoint = {
+        let screenFrame = UIScreen.main.bounds
         return CGPoint(x: screenFrame.width/2, y: screenFrame.height/2)
     }() {
         willSet { progressHUDView.center = newValue }
@@ -237,7 +237,7 @@ extension KRProgressHUD {
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message, onlyText: true)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(onlyText: true)
         KRProgressHUD.sharedView().show()
-        NSThread.afterDelay(2.0) {
+        Thread.afterDelay(2.0) {
         	KRProgressHUD.dismiss()
         }
 	}
@@ -406,7 +406,7 @@ private extension KRProgressHUD {
 
     func updateProgressHUDViewText(font: UIFont?, message: String?, onlyText: Bool = false) {
         if onlyText {
-            messageLabel.hidden = false
+            messageLabel.isHidden = false
             messageLabel.text = message ?? ""
             messageLabel.font = font ?? defaultMessageFont
             messageLabel.sizeToFit()
@@ -446,19 +446,19 @@ private extension KRProgressHUD {
         drawView.subviews.forEach { $0.removeFromSuperview() }
         drawView.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
 
-        drawView.hidden = true
-        activityIndicatorView.hidden = true
+        drawView.isHidden = true
+        activityIndicatorView.isHidden = true
         activityIndicatorView.stopAnimating()
 
         if onlyText { return }
 
         switch (iconType, image) {
         case (nil, nil):
-            activityIndicatorView.hidden = false
+            activityIndicatorView.isHidden = false
             activityIndicatorView.startAnimating()
 
         case let (nil, image):
-            drawView.hidden = false
+            drawView.isHidden = false
             let imageView = UIImageView(image: image)
             imageView.frame = KRProgressHUD.sharedView().drawView.bounds
             imageView.contentMode = .scaleAspectFit

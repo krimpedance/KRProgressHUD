@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B033C831DBE6EDA0076E452 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B033C821DBE6EDA0076E452 /* Default-568h@2x.png */; };
 		4BA70C4C1D02F3B4009EB743 /* KRProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA70C4A1D02F316009EB743 /* KRProgressHUD.framework */; };
 		4BA70C4D1D02F3B4009EB743 /* KRProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA70C4A1D02F316009EB743 /* KRProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4BF8F8091C6D3982008F07F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8F8081C6D3982008F07F0 /* AppDelegate.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4B033C821DBE6EDA0076E452 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4BA70C451D02F316009EB743 /* KRProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KRProgressHUD.xcodeproj; path = ../KRProgressHUD.xcodeproj; sourceTree = "<group>"; };
 		4BF8F8051C6D3982008F07F0 /* KRProgressHUDDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KRProgressHUDDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BF8F8081C6D3982008F07F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		4BF8F7FC1C6D3981008F07F0 = {
 			isa = PBXGroup;
 			children = (
+				4B033C821DBE6EDA0076E452 /* Default-568h@2x.png */,
 				4BF8F8071C6D3982008F07F0 /* KRProgressHUDDemo */,
 				4BF8F8061C6D3982008F07F0 /* Products */,
 				A8FFB29E968773250650FF7B /* Frameworks */,
@@ -204,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BF8F80E1C6D3982008F07F0 /* Main.storyboard in Resources */,
+				4B033C831DBE6EDA0076E452 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
