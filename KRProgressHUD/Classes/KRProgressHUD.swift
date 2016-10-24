@@ -465,7 +465,7 @@ private extension KRProgressHUD {
             drawView.addSubview(imageView)
 
         case let (type, _):
-            activityIndicatorView.stopAnimating()
+            drawView.hidden = false
 
             let pathLayer = CAShapeLayer()
             pathLayer.frame = drawView.layer.bounds
