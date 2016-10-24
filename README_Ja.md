@@ -113,6 +113,18 @@ class func updateLabel(text: String)
 KRProgressHUD.updateLabel("20%")
 ```
 
+#### メッセージだけのHUDを表示
+```Swift
+	public class func showText(
+            message: String, font: UIFont? = nil,
+            centerPosition position: CGPoint? = nil,
+            progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
+            maskType type: KRProgressHUDMaskType? = nil)
+
+// 例
+KRProgressHUD.showText("セットアップが完了しました!")
+```
+
 #### HUDを閉じる
 HUDを閉じるときは，以下を実行します．
 ```Swift
@@ -143,14 +155,13 @@ public class func setDefaultCenterPosition(position :CGPoint)  // デフォル�
 バグや機能のリクエストがありましたら，気軽にコメントしてください．
 
 ## リリースノート
+- 1.8.0 : テキストだけのHUDを表示する機能を追加．
+          標準フォントをシステムフォントに変更しました．
 - 1.7.0 : Swift2.3に対応
 - 1.6.2 : `IBInspectable`が正常に動作しないバグを修正
 - 1.6.1 : ステータスバーのスタイルを反映していないバグを修正
 - 1.6.0 : HUDの標準表示位置を画面中央にしました
           HUDの表示位置を変える関数を追加しました．
-- 1.5.2 : `KRProgressHUD.isVisible`でHUDが表示されているか確認可能
-- 1.5.1 : HUDを閉じた時，keyWindowが切り替わらないバグを修正
-- 1.5.0 : `show()`, `dismiss()`で完了時の処理をかけるようになりました
 
 
 ## ライセンス

@@ -93,7 +93,7 @@ public final class KRProgressHUD {
     private var defaultStyle: KRProgressHUDStyle = .White { willSet { progressHUDStyle = newValue } }
     private var defaultMaskType: KRProgressHUDMaskType = .Black { willSet { maskType = newValue } }
     private var defaultActivityIndicatorStyle: KRProgressHUDActivityIndicatorStyle = .Black { willSet { activityIndicatorStyle = newValue } }
-    private var defaultMessageFont = UIFont(name: "HiraginoSans-W3", size: 13) ?? UIFont.systemFontOfSize(13) { willSet { messageLabel.font = newValue } }
+    private var defaultMessageFont = UIFont.systemFontOfSize(13) { willSet { messageLabel.font = newValue } }
     private var defaultPosition: CGPoint = {
         let screenFrame = UIScreen.mainScreen().bounds
         return CGPoint(x: screenFrame.width/2, y: screenFrame.height/2)
@@ -222,19 +222,42 @@ extension KRProgressHUD {
      You can appoint only the args which You want to appoint.
      (Args is reflected only this time.)
 
+     - parameter message:        HUD's message
+     - parameter font:           HUD's message font
+     - parameter centerPosition:           HUD's center position
      - parameter progressHUDStyle:   KRProgressHUDStyle
      - parameter maskType:           KRProgressHUDMaskType
-     - parameter activityIndicatorStyle: KRProgressHUDActivityIndicatorStyle
+     */
+	public class func showText(
+            message: String, font: UIFont? = nil,
+            centerPosition position: CGPoint? = nil,
+            progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
+            maskType type: KRProgressHUDMaskType? = nil) {
+        KRProgressHUD.sharedView().progressHUDView.center = position ?? KRProgressHUD.sharedView().defaultPosition
+        KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: nil)
+        KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message, onlyText: true)
+        KRProgressHUD.sharedView().updateProgressHUDViewIcon(onlyText: true)
+        KRProgressHUD.sharedView().show()
+        NSThread.afterDelay(2.0) {
+        	KRProgressHUD.dismiss()
+        }
+	}
+
+    /**
+     Showing HUD with success glyph. the HUD dismiss after 1 secound.
+     You can appoint only the args which You want to appoint.
+     (Args is reflected only this time.)
+
+     - parameter progressHUDStyle:   KRProgressHUDStyle
+     - parameter maskType:           KRProgressHUDMaskType
      - parameter font:           HUD's message font
      - parameter message:        HUD's message
      */
-
 	public class func showSuccess(
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
             maskType type: KRProgressHUDMaskType? = nil,
-            activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
             font: UIFont? = nil, message: String? = nil) {
-        KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
+        KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: nil)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Success)
         KRProgressHUD.sharedView().show()
@@ -250,16 +273,14 @@ extension KRProgressHUD {
 
      - parameter progressHUDStyle:   KRProgressHUDStyle
      - parameter maskType:           KRProgressHUDMaskType
-     - parameter activityIndicatorStyle: KRProgressHUDActivityIndicatorStyle
      - parameter font:           HUD's message font
      - parameter message:        HUD's message
      */
     public class func showInfo(
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
             maskType type: KRProgressHUDMaskType? = nil,
-            activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
             font: UIFont? = nil, message: String? = nil) {
-        KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
+        KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: nil)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Info)
         KRProgressHUD.sharedView().show()
@@ -276,16 +297,14 @@ extension KRProgressHUD {
 
      - parameter progressHUDStyle:   KRProgressHUDStyle
      - parameter maskType:           KRProgressHUDMaskType
-     - parameter activityIndicatorStyle: KRProgressHUDActivityIndicatorStyle
      - parameter font:           HUD's message font
      - parameter message:        HUD's message
      */
     public class func showWarning(
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
             maskType type: KRProgressHUDMaskType? = nil,
-            activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
             font: UIFont? = nil, message: String? = nil) {
-        KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
+        KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: nil)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Warning)
         KRProgressHUD.sharedView().show()
@@ -302,16 +321,14 @@ extension KRProgressHUD {
 
      - parameter progressHUDStyle:   KRProgressHUDStyle
      - parameter maskType:           KRProgressHUDMaskType
-     - parameter activityIndicatorStyle: KRProgressHUDActivityIndicatorStyle
      - parameter font:           HUD's message font
      - parameter message:        HUD's message
      */
     public class func showError(
             progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
             maskType type: KRProgressHUDMaskType? = nil,
-            activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
             font: UIFont? = nil, message: String? = nil) {
-        KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: indicatorStyle)
+        KRProgressHUD.sharedView().updateStyles(progressHUDStyle: progressStyle, maskType: type, activityIndicatorStyle: nil)
         KRProgressHUD.sharedView().updateProgressHUDViewText(font: font, message: message)
         KRProgressHUD.sharedView().updateProgressHUDViewIcon(iconType: .Error)
         KRProgressHUD.sharedView().show()
@@ -388,8 +405,20 @@ private extension KRProgressHUD {
         }
     }
 
-    func updateProgressHUDViewText(font font: UIFont?, message: String?) {
-        if let text = message {
+    func updateProgressHUDViewText(font font: UIFont?, message: String?, onlyText: Bool = false) {
+        if onlyText {
+            messageLabel.hidden = false
+            messageLabel.text = message ?? ""
+            messageLabel.font = font ?? defaultMessageFont
+            messageLabel.sizeToFit()
+
+            let center = progressHUDView.center
+            var frame = messageLabel.bounds
+            frame.size = CGSize(width: frame.width + 40, height: frame.height + 20)
+            progressHUDView.frame = frame
+            progressHUDView.center = center
+            messageLabel.center = CGPoint(x: frame.width/2, y: frame.height/2)
+        } else if let text = message {
             let center = progressHUDView.center
             var frame = progressHUDView.frame
             frame.size = CGSize(width: 150, height: 110)
@@ -414,29 +443,29 @@ private extension KRProgressHUD {
         }
     }
 
-    func updateProgressHUDViewIcon(iconType iconType: KRProgressHUDIconType? = nil, image: UIImage? = nil) {
+    func updateProgressHUDViewIcon(iconType iconType: KRProgressHUDIconType? = nil, image: UIImage? = nil, onlyText: Bool = false) {
         drawView.subviews.forEach { $0.removeFromSuperview() }
         drawView.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
 
+        drawView.hidden = true
+        activityIndicatorView.hidden = true
+        activityIndicatorView.stopAnimating()
+
+        if onlyText { return }
+
         switch (iconType, image) {
         case (nil, nil):
-            drawView.hidden = true
             activityIndicatorView.hidden = false
             activityIndicatorView.startAnimating()
 
         case let (nil, image):
-            activityIndicatorView.hidden = true
-            activityIndicatorView.stopAnimating()
             drawView.hidden = false
-
             let imageView = UIImageView(image: image)
             imageView.frame = KRProgressHUD.sharedView().drawView.bounds
             imageView.contentMode = .ScaleAspectFit
             drawView.addSubview(imageView)
 
         case let (type, _):
-            drawView.hidden = false
-            activityIndicatorView.hidden = true
             activityIndicatorView.stopAnimating()
 
             let pathLayer = CAShapeLayer()

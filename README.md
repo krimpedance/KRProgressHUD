@@ -15,12 +15,12 @@
 <img src="./Images/styles.png" height=300>
 
 ## Requirements
-#### ver. 2.\* 
+#### ver. 2.\*
 - iOS 9.0+
 - Xcode 8.0+
 - Swift 3.\*
 
-#### ver. 1.\*(1.7.0 and over) (current version)
+#### ver. 1.\*(1.7.0 and over) (current branch)
 - iOS 8.0+
 - Xcode 8.0+
 - Swift 2.3.\*
@@ -36,7 +36,7 @@ To run the example project, clone the repo, and open `KRProgressHUDDemo.xcodepro
 or [appetize.io](https://appetize.io/app/nw022juw0znkf1n5u6ynga5ntm)
 
 ## Installation
-KRProgressHUD is available through [CocoaPods](http://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage). 
+KRProgressHUD is available through [CocoaPods](http://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage).
 To install it, simply add the following line to your Podfile or Cartfile:
 
 ```ruby
@@ -57,7 +57,7 @@ github "Krimpedance/KRProgressHUD"
 
 **If you want to use it with other cases (ex. pull to refresh), I suggest using [KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator).**
 
-　　
+
 
 `KRProgressHUD` is created as a singleton.
 
@@ -110,6 +110,19 @@ class func updateLabel(text: String)
 KRProgressHUD.updateLabel("20%")
 ```
 
+#### Show the HUD (only message)
+The HUD can indicate only message.
+```Swift
+	public class func showText(
+            message: String, font: UIFont? = nil,
+            centerPosition position: CGPoint? = nil,
+            progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
+            maskType type: KRProgressHUDMaskType? = nil)
+
+// Example
+KRProgressHUD.showText("Setup is complete!")
+```
+
 #### Dismissing the HUD
 The HUD can be dismissed using:
 ```Swift
@@ -143,14 +156,13 @@ I'm seeking bug reports and feature requests.
 (And please teach me if my English is wrong :| )
 
 ## Release Note
+- 1.8.0 : Add function to which indicate HUD with only message.
+          Default font was changed to system font.
 - 1.7.0 : Corresponding to Swift2.3.
 - 1.6.2 : Fixed bug which `@IBInspectable` isn't applied.
 - 1.6.1 : Fixed bug which HUD doesn't respect status bar style.
-- 1.6.0 : Changed center position of HUD to UIScreen's center. 
+- 1.6.0 : Changed center position of HUD to UIScreen's center.
           And, added function to which the position can be changed.
-- 1.5.2 : Add `KRProgressHUD.isVisible` parameter.
-- 1.5.1 : Fixed bug from which keyWindow doesn't switch when call `dismiss()`.
-- 1.5.0 : Add completion handler to `dismiss()` and `show()`.
 
 ## License
 KRProgressHUD is available under the MIT license. See the LICENSE file for more info.
