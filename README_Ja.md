@@ -113,6 +113,18 @@ class func update(text: String)
 KRProgressHUD.update(text: "20%")
 ```
 
+#### メッセージだけのHUDを表示
+```Swift
+	public class func showText(
+            message: String, font: UIFont? = nil,
+            centerPosition position: CGPoint? = nil,
+            progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
+            maskType type: KRProgressHUDMaskType? = nil)
+
+// 例
+KRProgressHUD.showText("セットアップが完了しました!")
+```
+
 #### HUDを閉じる
 HUDを閉じるときは，以下を実行します．
 ```Swift
@@ -143,8 +155,9 @@ public class func set(centerPosition: CGPoint)  // デフォルト: デバイス
 バグや機能のリクエストがありましたら，気軽にコメントしてください．
 
 ## リリースノート
+- 2.1.0 : テキストだけのHUDを表示する機能を追加．
+          標準フォントをシステムフォントに変更しました．
 - 2.0.0 : Swift3に対応
-
 
 ## ライセンス
 KRProgressHUDはMITライセンスに準拠しています．詳しくは`LICENSE`ファイルをみてください．

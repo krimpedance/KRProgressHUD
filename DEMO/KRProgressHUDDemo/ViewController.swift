@@ -26,7 +26,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        switchColorPartsHidden(hidden: true)
+        switchColorPartsHidden(true)
     }
 
 
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
  *  Button Action ---------------
  */
 extension ViewController {
-    @IBAction func showButtonTapped(_ sender: UIButton) {
+    @IBAction func showButtonTapped(withSender sender: UIButton) {
         if messageControl.selectedSegmentIndex == 0 {
             KRProgressHUD.show()
         } else {
@@ -56,7 +56,11 @@ extension ViewController {
         }
     }
 
-    @IBAction func showSuccessButtonTapped(_ sender: UIButton) {
+    @IBAction func showTextButtonTapped(withSender sender: UIButton) {
+        KRProgressHUD.showText("Single line message :)")
+    }
+
+    @IBAction func showSuccessButtonTapped(withSender sender: UIButton) {
         if messageControl.selectedSegmentIndex == 0 {
             KRProgressHUD.showSuccess()
         } else {
@@ -64,7 +68,7 @@ extension ViewController {
         }
     }
 
-    @IBAction func showInfoButtonTapped(_ sender: UIButton) {
+    @IBAction func showInfoButtonTapped(withSender sender: UIButton) {
         if messageControl.selectedSegmentIndex == 0 {
             KRProgressHUD.showInfo()
         } else {
@@ -72,7 +76,7 @@ extension ViewController {
         }
     }
 
-    @IBAction func showWarningButtonTapped(_ sender: UIButton) {
+    @IBAction func showWarningButtonTapped(withSender sender: UIButton) {
         if messageControl.selectedSegmentIndex == 0 {
             KRProgressHUD.showWarning()
         } else {
@@ -80,7 +84,7 @@ extension ViewController {
         }
     }
 
-    @IBAction func showErrorButtonTapped(_ sender: UIButton) {
+    @IBAction func showErrorButtonTapped(withSender sender: UIButton) {
         if messageControl.selectedSegmentIndex == 0 {
             KRProgressHUD.showError()
         } else {
@@ -94,7 +98,7 @@ extension ViewController {
  *  UISegmentedControl value change actions -----------------
  */
 extension ViewController {
-    @IBAction func changedMaskTypeControlValue(_ sender: UISegmentedControl) {
+    @IBAction func changedMaskTypeControlValue(withSender sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:  KRProgressHUD.set(maskType: .black)
         case 1:  KRProgressHUD.set(maskType: .white)
@@ -103,7 +107,7 @@ extension ViewController {
         }
     }
 
-    @IBAction func changedProgressHUDStyleControlValue(_ sender: UISegmentedControl) {
+    @IBAction func changedProgressHUDStyleControlValue(withSender sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:  KRProgressHUD.set(style: .white)
         case 1:  KRProgressHUD.set(style: .black)
@@ -113,14 +117,14 @@ extension ViewController {
         }
     }
 
-    @IBAction func changedActivityIndicatorStyleControlValue(_ sender: UISegmentedControl) {
-        switchColorPartsHidden(hidden: true)
+    @IBAction func changedActivityIndicatorStyleControlValue(withSender sender: UISegmentedControl) {
+        switchColorPartsHidden(true)
 
         switch sender.selectedSegmentIndex {
         case 0:  KRProgressHUD.set(activityIndicatorStyle: .black)
         case 1:  KRProgressHUD.set(activityIndicatorStyle: .white)
         case 2:
-            switchColorPartsHidden(hidden: false)
+            switchColorPartsHidden(false)
             let startColor = colors[startColorControl.selectedSegmentIndex]
             let endColor = colors[endColorControl.selectedSegmentIndex]
             KRProgressHUD.set(activityIndicatorStyle: .color(startColor, endColor))
@@ -128,13 +132,13 @@ extension ViewController {
         }
     }
 
-    @IBAction func changedStartColorControlValue(_ sender: UISegmentedControl) {
+    @IBAction func changedStartColorControlValue(withSender sender: UISegmentedControl) {
         let startColor = colors[startColorControl.selectedSegmentIndex]
         let endColor = colors[endColorControl.selectedSegmentIndex]
         KRProgressHUD.set(activityIndicatorStyle: .color(startColor, endColor))
     }
 
-    @IBAction func changedEndColorControlValue(_ sender: UISegmentedControl) {
+    @IBAction func changedEndColorControlValue(withSender sender: UISegmentedControl) {
         let startColor = colors[startColorControl.selectedSegmentIndex]
         let endColor = colors[endColorControl.selectedSegmentIndex]
         KRProgressHUD.set(activityIndicatorStyle: .color(startColor, endColor))

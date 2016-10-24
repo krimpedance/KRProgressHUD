@@ -15,12 +15,20 @@
 <img src="./Images/styles.png" height=300>
 
 ## Requirements
+<<<<<<< HEAD
 #### ver. 2.\* (current version)
+=======
+#### ver. 2.\*
+>>>>>>> swift2.3
 - iOS 9.0+
 - Xcode 8.0+
 - Swift 3.\*
 
+<<<<<<< HEAD
 #### ver. 1.\*(1.7.0 and over)
+=======
+#### ver. 1.\*(1.7.0 and over) (current branch)
+>>>>>>> swift2.3
 - iOS 8.0+
 - Xcode 8.0+
 - Swift 2.3.\*
@@ -36,7 +44,7 @@ To run the example project, clone the repo, and open `KRProgressHUDDemo.xcodepro
 or [appetize.io](https://appetize.io/app/nw022juw0znkf1n5u6ynga5ntm)
 
 ## Installation
-KRProgressHUD is available through [CocoaPods](http://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage). 
+KRProgressHUD is available through [CocoaPods](http://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage).
 To install it, simply add the following line to your Podfile or Cartfile:
 
 ```ruby
@@ -57,7 +65,7 @@ github "Krimpedance/KRProgressHUD"
 
 **If you want to use it with other cases (ex. pull to refresh), I suggest using [KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator).**
 
-　　
+
 
 `KRProgressHUD` is created as a singleton.
 
@@ -110,6 +118,19 @@ class func update(text: String)
 KRProgressHUD.update(text: "20%")
 ```
 
+#### Show the HUD (only message)
+The HUD can indicate only message.
+```Swift
+	public class func showText(
+            message: String, font: UIFont? = nil,
+            centerPosition position: CGPoint? = nil,
+            progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
+            maskType type: KRProgressHUDMaskType? = nil)
+
+// Example
+KRProgressHUD.showText("Setup is complete!")
+```
+
 #### Dismissing the HUD
 The HUD can be dismissed using:
 ```Swift
@@ -143,6 +164,8 @@ I'm seeking bug reports and feature requests.
 (And please teach me if my English is wrong :| )
 
 ## Release Note
+- 2.1.0 : Add function to which indicate HUD with only message.
+          Default font was changed to system font.
 - 2.0.0 : Corresponding to Swift3.
 
 ## License
