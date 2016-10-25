@@ -15,20 +15,12 @@
 <img src="./Images/styles.png" height=300>
 
 ## Requirements
-<<<<<<< HEAD
-#### ver. 2.\* (current version)
-=======
-#### ver. 2.\*
->>>>>>> swift2.3
+#### ver. 2.\* (current branch)
 - iOS 9.0+
 - Xcode 8.0+
 - Swift 3.\*
 
-<<<<<<< HEAD
 #### ver. 1.\*(1.7.0 and over)
-=======
-#### ver. 1.\*(1.7.0 and over) (current branch)
->>>>>>> swift2.3
 - iOS 8.0+
 - Xcode 8.0+
 - Swift 2.3.\*
