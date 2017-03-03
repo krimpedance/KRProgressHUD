@@ -20,20 +20,9 @@
 <img src="./Images/styles.png" height=300>
 
 ## 必要環境
-#### ver. 2.\*系 (現在のバージョン) 
 - iOS 9.0+
 - Xcode 8.0+
-- Swift 3.\*
-
-#### ver. 1.\*系(1.7.0以上)
-- iOS 8.0+
-- Xcode 8.0+
-- Swift 2.3.\*
-
-#### ver. 1.\*系(1.7.0未満)
-- iOS 8.0+
-- Xcode 7.\*
-- Swift 2.2.\*
+- Swift 3.0+
 
 ## デモ
 `DEMO/`以下にあるサンプルプロジェクトから確認してください．
@@ -62,7 +51,7 @@ github "Krimpedance/KRProgressHUD"
 
 **PullRefreshなど，他の場面で使用したい場合は，[KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator)を使用することをお勧めします**
 
-　　
+
 `KRProgressHUD`はシングルトンパターンで作られています．
 
 まず，`KRProgressHUD`をインポートします．
@@ -155,6 +144,8 @@ public class func set(centerPosition: CGPoint)  // デフォルト: デバイス
 バグや機能のリクエストがありましたら，気軽にコメントしてください．
 
 ## リリースノート
+- 2.2.0 : `KRProgressHUDStyle.color(background: UIColor, contents: UIColor)` を追加しました.
+          このスタイルを用いることで, HUDの背景, コンテンツ(テキスト, アイコン)の色をカスタマイズできます.
 - 2.1.0 : テキストだけのHUDを表示する機能を追加．
           標準フォントをシステムフォントに変更しました．
 - 2.0.0 : Swift3に対応

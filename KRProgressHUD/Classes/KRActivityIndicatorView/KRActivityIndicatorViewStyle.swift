@@ -11,15 +11,15 @@ import UIKit
   KRActivityIndicatorView's style
 
   - Normal size(20x20)
-    - **Black:**           the color is a gradation to `.lightGrayColor()` from `.blackColor()`.
-    - **White:**           the color is a gradation to `UIColor(white: 0.7, alpha:1)` from `.whiteColor()`.
-    - **Color(startColor, endColor):**   the color is a gradation to `endColor` from `startColor`.
+    - **black:**           the color is a gradation to `.lightGray` from `.black`.
+    - **white:**           the color is a gradation to `UIColor(white: 0.7, alpha:1)` from `.white`.
+    - **color(startColor, endColor):**   the color is a gradation to `endColor` from `startColor`.
 
 
   - Large size(50x50)
-    - **LargeBlack:**   the color is same `.Black`.
-    - **LargeWhite:**   the color is same `.White`.
-    - **LargeColor(startColor, endColor):**   the color is same `.Color()`.
+    - **largeBlack:**   the color is same `.black`.
+    - **largeWhite:**   the color is same `.white`.
+    - **largeColor(startColor, endColor):**   the color is same `.color()`.
 */
 public enum KRActivityIndicatorViewStyle {
     case black, white, color(UIColor, UIColor?)

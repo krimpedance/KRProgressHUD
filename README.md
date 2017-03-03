@@ -16,15 +16,9 @@
 <img src="./Images/styles.png" height=300>
 
 ## Requirements
-#### ver. 2.\* (current branch)
 - iOS 9.0+
 - Xcode 8.0+
-- Swift 3.\*
-
-#### ver. 1.\*(1.7.0 and over)
-- iOS 8.0+
-- Xcode 8.0+
-- Swift 2.3.\*
+- Swift 3.0+
 
 ## DEMO
 To run the example project, clone the repo, and open `KRProgressHUDDemo.xcodeproj` from the DEMO directory.
@@ -52,7 +46,6 @@ github "Krimpedance/KRProgressHUD"
 **Only use it if you absolutely need to perform a task before taking the user forward.**
 
 **If you want to use it with other cases (ex. pull to refresh), I suggest using [KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator).**
-
 
 
 `KRProgressHUD` is created as a singleton.
@@ -149,9 +142,10 @@ public class func set(centerPosition: CGPoint)  // Default is center of device s
 
 ## Contributing to this project
 I'm seeking bug reports and feature requests.
-(And please teach me if my English is wrong :| )
 
 ## Release Note
+- 2.2.0 : Add `KRProgressHUDStyle.color(background: UIColor, contents: UIColor)`.
+          This can set custom color of HUD's background and contents(text, glyph icon).
 - 2.1.0 : Add function to which indicate HUD with only message.
           Default font was changed to system font.
 - 2.0.0 : Corresponding to Swift3.
