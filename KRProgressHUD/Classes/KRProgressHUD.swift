@@ -445,6 +445,8 @@ private extension KRProgressHUD {
 
             iconView.center = CGPoint(x: 150/2, y: 40)
 
+            messageLabel.frame = CGRect(x: 0, y: 0, width: 150, height: 20)
+            messageLabel.center = CGPoint(x: 150/2, y: 90)
             messageLabel.isHidden = false
             messageLabel.text = text
             messageLabel.font = font ?? defaultMessageFont
