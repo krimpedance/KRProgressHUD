@@ -91,6 +91,19 @@ extension ViewController {
             KRProgressHUD.showError(message: "Error...")
         }
     }
+
+    @IBAction func showWithImageButtonTapped(withSender sender: UIButton) {
+        if messageControl.selectedSegmentIndex == 0 {
+            KRProgressHUD.show(image: UIImage(named: "image.png"))
+        } else {
+            KRProgressHUD.show(message: "Custom image", image: UIImage(named: "image.png"))
+        }
+
+        let delay = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: delay) {
+            KRProgressHUD.dismiss()
+        }
+    }
 }
 
 

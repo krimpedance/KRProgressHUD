@@ -13,7 +13,12 @@
 
 [KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator) is used for loading view.
 
-<img src="./Images/styles.png" height=300>
+<img src="./Resources/styles.png" height=300>
+<img src="./Resources/demo.gif" height=300>
+
+## Features
+- Round indicator
+- Indicator color can be customized
 
 ## Requirements
 - iOS 9.0+
@@ -144,6 +149,7 @@ public class func set(centerPosition: CGPoint)  // Default is center of device s
 I'm seeking bug reports and feature requests.
 
 ## Release Note
+- 2.2.1 : Fixed bug of message label's position after calling `showText()`
 - 2.2.0 : Add `KRProgressHUDStyle.color(background: UIColor, contents: UIColor)`.
           This can set custom color of HUD's background and contents(text, glyph icon).
 - 2.1.0 : Add function to which indicate HUD with only message.

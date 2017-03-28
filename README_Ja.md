@@ -10,14 +10,14 @@
 
 `KRProgressHUD`は，Swiftでかかれた綺麗で使いやすいローディング画面を表示するライブラリです．
 
-#### 特徴
-
-- 丸いインジケータ
-- カラーのカスタマイズ性
-
 インジケータには[KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator)を使用しています．
 
-<img src="./Images/styles.png" height=300>
+<img src="./Resources/styles.png" height=300>
+<img src="./Resources/demo.gif" height=300>
+
+#### 特徴
+- 丸いインジケータ
+- カラーのカスタマイズ性
 
 ## 必要環境
 - iOS 9.0+
@@ -144,6 +144,7 @@ public class func set(centerPosition: CGPoint)  // デフォルト: デバイス
 バグや機能のリクエストがありましたら，気軽にコメントしてください．
 
 ## リリースノート
+- 2.2.1 : `showText()`実行後の表示で, メッセージラベルの位置がずれるバグを修正
 - 2.2.0 : `KRProgressHUDStyle.color(background: UIColor, contents: UIColor)` を追加しました.
           このスタイルを用いることで, HUDの背景, コンテンツ(テキスト, アイコン)の色をカスタマイズできます.
 - 2.1.0 : テキストだけのHUDを表示する機能を追加．
