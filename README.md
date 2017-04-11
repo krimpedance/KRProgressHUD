@@ -149,12 +149,10 @@ public class func set(centerPosition: CGPoint)  // Default is center of device s
 I'm seeking bug reports and feature requests.
 
 ## Release Note
+- 2.2.1 : Modify `M_PI` to `Double.pi` in KRActivityIndicatorView.swift for Swift3 coding.
 - 2.2.1 : Fixed bug of message label's position after calling `showText()`
 - 2.2.0 : Add `KRProgressHUDStyle.color(background: UIColor, contents: UIColor)`.
           This can set custom color of HUD's background and contents(text, glyph icon).
-- 2.1.0 : Add function to which indicate HUD with only message.
-          Default font was changed to system font.
-- 2.0.0 : Corresponding to Swift3.
 
 ## License
 KRProgressHUD is available under the MIT license. See the LICENSE file for more info.

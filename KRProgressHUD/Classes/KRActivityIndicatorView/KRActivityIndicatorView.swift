@@ -140,7 +140,7 @@ extension KRActivityIndicatorView {
 
         let animation = CABasicAnimation(keyPath: "transform.rotation")
         animation.fromValue = 0
-        animation.toValue = M_PI*2
+        animation.toValue = Double.pi * 2
         animation.duration = 1.1
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         animation.isRemovedOnCompletion = false

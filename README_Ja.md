@@ -145,12 +145,10 @@ public class func set(centerPosition: CGPoint)  // デフォルト: デバイス
 バグや機能のリクエストがありましたら，気軽にコメントしてください．
 
 ## リリースノート
+- 2.2.2 : KRActivityIndicatorView.siwftの `M_PI` を `Double.pi` に変更.
 - 2.2.1 : `showText()`実行後の表示で, メッセージラベルの位置がずれるバグを修正
 - 2.2.0 : `KRProgressHUDStyle.color(background: UIColor, contents: UIColor)` を追加しました.
           このスタイルを用いることで, HUDの背景, コンテンツ(テキスト, アイコン)の色をカスタマイズできます.
-- 2.1.0 : テキストだけのHUDを表示する機能を追加．
-          標準フォントをシステムフォントに変更しました．
-- 2.0.0 : Swift3に対応
 
 ## ライセンス
 KRProgressHUDはMITライセンスに準拠しています．詳しくは`LICENSE`ファイルをみてください．
