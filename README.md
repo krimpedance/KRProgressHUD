@@ -11,7 +11,7 @@
 
 `KRProgressHUD` is a beautiful and easy-to-use progress HUD for your iOS written by Swift.
 
-[KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator) is used for loading view.
+[KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicatorView) is used for loading view.
 
 <img src="./Resources/demo.gif" height=400>
 <img src="./Resources/styles.png" width=400>

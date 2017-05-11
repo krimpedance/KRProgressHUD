@@ -7,17 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B5D62AE1D8411730027D21E /* KRActivityIndicatorView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4BA70C3D1D02F2ED009EB743 /* KRActivityIndicatorView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B5D62AF1D8411730027D21E /* KRProgressHUD.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4BA70C3F1D02F2ED009EB743 /* KRProgressHUD.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B7576D61D1BC6AB003FF258 /* KRProgressHUDExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7576D51D1BC6AB003FF258 /* KRProgressHUDExtensions.swift */; };
 		4B7576D81D1BC838003FF258 /* KRProgressHUDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7576D71D1BC838003FF258 /* KRProgressHUDViewController.swift */; };
 		4B7576E21D1BCD56003FF258 /* KRProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA70C301D02F28D009EB743 /* KRProgressHUD.framework */; };
 		4B7576EC1D1BECE8003FF258 /* KRProgressHUDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7576DF1D1BCD56003FF258 /* KRProgressHUDTests.swift */; };
 		4BA70C341D02F28D009EB743 /* KRProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BA70C331D02F28D009EB743 /* KRProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4BA70C411D02F2ED009EB743 /* KRActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA70C3D1D02F2ED009EB743 /* KRActivityIndicatorView.swift */; };
-		4BA70C421D02F2ED009EB743 /* KRActivityIndicatorViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA70C3E1D02F2ED009EB743 /* KRActivityIndicatorViewStyle.swift */; };
 		4BA70C431D02F2ED009EB743 /* KRProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA70C3F1D02F2ED009EB743 /* KRProgressHUD.swift */; };
 		4BA70C441D02F2ED009EB743 /* KRProgressHUDIconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA70C401D02F2ED009EB743 /* KRProgressHUDIconType.swift */; };
+		6BD5F7C81EC3F3E4007A502E /* KRActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD5F7C71EC3F3E4007A502E /* KRActivityIndicatorView.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,10 +37,9 @@
 		4BA70C301D02F28D009EB743 /* KRProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KRProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA70C331D02F28D009EB743 /* KRProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KRProgressHUD.h; sourceTree = "<group>"; };
 		4BA70C351D02F28D009EB743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4BA70C3D1D02F2ED009EB743 /* KRActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KRActivityIndicatorView.swift; sourceTree = "<group>"; };
-		4BA70C3E1D02F2ED009EB743 /* KRActivityIndicatorViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KRActivityIndicatorViewStyle.swift; sourceTree = "<group>"; };
 		4BA70C3F1D02F2ED009EB743 /* KRProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KRProgressHUD.swift; sourceTree = "<group>"; };
 		4BA70C401D02F2ED009EB743 /* KRProgressHUDIconType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KRProgressHUDIconType.swift; sourceTree = "<group>"; };
+		6BD5F7C71EC3F3E4007A502E /* KRActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KRActivityIndicatorView.framework; path = Carthage/Build/iOS/KRActivityIndicatorView.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BD5F7C81EC3F3E4007A502E /* KRActivityIndicatorView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +77,7 @@
 				4BA70C321D02F28D009EB743 /* KRProgressHUD */,
 				4B7576DE1D1BCD56003FF258 /* KRProgressHUDTests */,
 				4BA70C311D02F28D009EB743 /* Products */,
+				6BD5F7C61EC3F3E4007A502E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,7 +103,6 @@
 		4BA70C3B1D02F2ED009EB743 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4BA70C3C1D02F2ED009EB743 /* KRActivityIndicatorView */,
 				4BA70C3F1D02F2ED009EB743 /* KRProgressHUD.swift */,
 				4B7576D51D1BC6AB003FF258 /* KRProgressHUDExtensions.swift */,
 				4BA70C401D02F2ED009EB743 /* KRProgressHUDIconType.swift */,
@@ -113,13 +111,12 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		4BA70C3C1D02F2ED009EB743 /* KRActivityIndicatorView */ = {
+		6BD5F7C61EC3F3E4007A502E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4BA70C3D1D02F2ED009EB743 /* KRActivityIndicatorView.swift */,
-				4BA70C3E1D02F2ED009EB743 /* KRActivityIndicatorViewStyle.swift */,
+				6BD5F7C71EC3F3E4007A502E /* KRActivityIndicatorView.framework */,
 			);
-			path = KRActivityIndicatorView;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +127,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BA70C341D02F28D009EB743 /* KRProgressHUD.h in Headers */,
-				4B5D62AE1D8411730027D21E /* KRActivityIndicatorView.swift in Headers */,
 				4B5D62AF1D8411730027D21E /* KRProgressHUD.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,8 +259,6 @@
 				4BA70C441D02F2ED009EB743 /* KRProgressHUDIconType.swift in Sources */,
 				4B7576D61D1BC6AB003FF258 /* KRProgressHUDExtensions.swift in Sources */,
 				4B7576D81D1BC838003FF258 /* KRProgressHUDViewController.swift in Sources */,
-				4BA70C421D02F2ED009EB743 /* KRActivityIndicatorViewStyle.swift in Sources */,
-				4BA70C411D02F2ED009EB743 /* KRActivityIndicatorView.swift in Sources */,
 				4BA70C431D02F2ED009EB743 /* KRProgressHUD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +409,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = KRProgressHUD/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -435,6 +433,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = KRProgressHUD/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
