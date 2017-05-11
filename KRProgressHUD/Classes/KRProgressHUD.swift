@@ -22,14 +22,15 @@ public enum KRProgressHUDMaskType {
 /**
  Style of KRProgressHUD.
  
- - **black:**           HUD's backgroundColor is `.black`. HUD's text color is `.white`.
  - **white:**          HUD's backgroundColor is `.white`. HUD's text color is `.black`. Default style.
- - **blackColor:**   same `.black` and confirmation glyphs become original color.
- - **whiteColor:**  same `.black` and confirmation glyphs become original color.
- - **color(background, contents):**  Set custom color of HUD's background and contents(text, glyph icon).
+ - **black:**           HUD's backgroundColor is `.black`. HUD's text color is `.white`.
+ - **custom(background, text, icon):**  Set custom color of HUD's background, text and glyph icon.
+                        If you set nil to `icon`, it's shown in original color.
  */
 public enum KRProgressHUDStyle {
-   case black, white, blackColor, whiteColor, color(background: UIColor, contents: UIColor)
+   case white
+   case black
+   case custom(background: UIColor, text: UIColor, icon: UIColor?)
 }
 
 /**
@@ -110,13 +111,13 @@ fileprivate extension KRProgressHUD {
 
    func updatedProgressHUDStyle() {
       switch progressHUDStyle {
-      case .black, .blackColor:
+      case .black:
          progressHUDView.backgroundColor = .black
          messageLabel.textColor = .white
-      case .white, .whiteColor:
+      case .white:
          progressHUDView.backgroundColor = .white
          messageLabel.textColor = .black
-      case let .color(background, text):
+      case let .custom(background, text, _):
          progressHUDView.backgroundColor = background
          messageLabel.textColor = text
       }
@@ -490,8 +491,7 @@ private extension KRProgressHUD {
          switch progressHUDStyle {
          case .black:  pathLayer.fillColor = UIColor.white.cgColor
          case .white:  pathLayer.fillColor = UIColor.black.cgColor
-         case let .color(_, icon): pathLayer.fillColor = icon.cgColor
-         default:  pathLayer.fillColor = type!.getColor()
+         case let .custom(_, _, icon): pathLayer.fillColor = icon?.cgColor ?? type!.getColor()
          }
 
          drawView.layer.addSublayer(pathLayer)
