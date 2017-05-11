@@ -34,17 +34,6 @@ public enum KRProgressHUDStyle {
 }
 
 /**
- KRActivityIndicatorView style. (KRProgressHUD uses only large style.)
- 
- - **black:**   the color is `.black`. Default style.
- - **white:**  the color is `.black`.
- - **color(startColor, endColor):**   the color is a gradation to `endColor` from `startColor`.
- */
-public enum KRProgressHUDActivityIndicatorStyle {
-   case black, white, color(UIColor, UIColor)
-}
-
-/**
  *  KRProgressHUD is a beautiful and easy-to-use progress HUD.
  */
 public final class KRProgressHUD {
@@ -65,8 +54,8 @@ public final class KRProgressHUD {
    fileprivate var progressHUDStyle: KRProgressHUDStyle {
       didSet { updatedProgressHUDStyle() }
    }
-   fileprivate var activityIndicatorStyle: KRProgressHUDActivityIndicatorStyle {
-      didSet { updatedActivityIndicatorStyle() }
+   fileprivate var activityIndicatorStyle = KRActivityIndicatorViewStyle.gradationColor(head: .black, tail: .lightGray) {
+      willSet { activityIndicatorView.style = newValue }
    }
 
    fileprivate var defaultMaskType = KRProgressHUDMaskType.black {
@@ -75,7 +64,7 @@ public final class KRProgressHUD {
    fileprivate var defaultStyle = KRProgressHUDStyle.white {
       willSet { progressHUDStyle = newValue }
    }
-   fileprivate var defaultActivityIndicatorStyle = KRProgressHUDActivityIndicatorStyle.black {
+   fileprivate var defaultActivityIndicatorStyle = KRActivityIndicatorViewStyle.gradationColor(head: .black, tail: .lightGray) {
       willSet { activityIndicatorStyle = newValue }
    }
    fileprivate var defaultMessageFont = UIFont.systemFont(ofSize: 13) {
@@ -92,7 +81,6 @@ public final class KRProgressHUD {
    fileprivate init() {
       maskType = .black
       progressHUDStyle = .white
-      activityIndicatorStyle = .black
       configureProgressHUDView()
    }
 }
@@ -120,14 +108,6 @@ fileprivate extension KRProgressHUD {
       case let .custom(background, text, _):
          progressHUDView.backgroundColor = background
          messageLabel.textColor = text
-      }
-   }
-
-   func updatedActivityIndicatorStyle() {
-      switch activityIndicatorStyle {
-      case .black:  activityIndicatorView.style = .gradationColor(head: .black, tail: .lightGray)
-      case .white:  activityIndicatorView.style = .gradationColor(head: .white, tail: UIColor(white: 0.7, alpha: 1.0))
-      case let .color(sc, ec):  activityIndicatorView.style = .gradationColor(head: sc, tail: ec)
       }
    }
 
@@ -184,7 +164,7 @@ extension KRProgressHUD {
 
    /// Set default KRActivityIndicatorView style.
    /// - parameter style: `KRProgresHUDActivityIndicatorStyle`
-   public class func set(activityIndicatorStyle style: KRProgressHUDActivityIndicatorStyle) {
+   public class func set(activityIndicatorStyle style: KRActivityIndicatorViewStyle) {
       KRProgressHUD.sharedView.defaultActivityIndicatorStyle = style
    }
 
@@ -222,7 +202,7 @@ extension KRProgressHUD {
    public class func show(
       progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
       maskType type: KRProgressHUDMaskType? = nil,
-      activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle? = nil,
+      activityIndicatorStyle indicatorStyle: KRActivityIndicatorViewStyle? = nil,
       font: UIFont? = nil, message: String? = nil, image: UIImage? = nil,
       completion: (() -> Void)? = nil
       ) {
@@ -406,7 +386,7 @@ private extension KRProgressHUD {
       }
    }
 
-   func updateStyles(progressHUDStyle progressStyle: KRProgressHUDStyle?, maskType type: KRProgressHUDMaskType?, activityIndicatorStyle indicatorStyle: KRProgressHUDActivityIndicatorStyle?) {
+   func updateStyles(progressHUDStyle progressStyle: KRProgressHUDStyle?, maskType type: KRProgressHUDMaskType?, activityIndicatorStyle indicatorStyle: KRActivityIndicatorViewStyle?) {
       if let style = progressStyle {
          KRProgressHUD.sharedView.progressHUDStyle = style
       }
