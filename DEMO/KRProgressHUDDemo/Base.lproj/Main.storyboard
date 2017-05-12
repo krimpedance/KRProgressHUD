@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -89,8 +89,7 @@
                                 <segments>
                                     <segment title="White"/>
                                     <segment title="Black"/>
-                                    <segment title="WhiteColor"/>
-                                    <segment title="BlackColor"/>
+                                    <segment title="Custom"/>
                                 </segments>
                                 <connections>
                                     <action selector="changedProgressHUDStyleControlValueWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="Rh0-cu-RTk"/>
@@ -132,7 +131,7 @@
                                     <segment title="Yellow"/>
                                 </segments>
                                 <connections>
-                                    <action selector="changedStartColorControlValueWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="AjL-1F-L0y"/>
+                                    <action selector="changedHeadColorControlValueWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="Uzf-t1-vEY"/>
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5Je-uG-Adl">
@@ -148,10 +147,10 @@
                                     <segment title="Yellow"/>
                                 </segments>
                                 <connections>
-                                    <action selector="changedEndColorControlValueWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="bRB-Mz-TyC"/>
+                                    <action selector="changedTailColorControlValueWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="CuY-Wc-h6F"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CN4-yw-cwe">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Head Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CN4-yw-cwe">
                                 <rect key="frame" x="114" y="421" width="147" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="H1b-F1-wy6"/>
@@ -160,7 +159,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sx9-Rb-R1l">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tail Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sx9-Rb-R1l">
                                 <rect key="frame" x="119" y="486" width="138" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="rL8-hN-Fuj"/>
@@ -287,11 +286,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="endColorControl" destination="5Je-uG-Adl" id="DKZ-8x-s7v"/>
-                        <outlet property="endColorLabel" destination="sx9-Rb-R1l" id="rEx-yv-nZV"/>
+                        <outlet property="headColorControl" destination="Syb-cS-hSB" id="13T-pu-avh"/>
+                        <outlet property="headColorLabel" destination="CN4-yw-cwe" id="yVg-Yz-4eT"/>
                         <outlet property="messageControl" destination="1AC-q7-D4I" id="AcG-NX-Z3P"/>
-                        <outlet property="startColorControl" destination="Syb-cS-hSB" id="E6b-yd-Kt7"/>
-                        <outlet property="startColorLabel" destination="CN4-yw-cwe" id="ptK-0x-NR3"/>
+                        <outlet property="tailColorControl" destination="5Je-uG-Adl" id="u8Z-4x-WUQ"/>
+                        <outlet property="tailColorLabel" destination="sx9-Rb-R1l" id="qrb-ho-7t7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

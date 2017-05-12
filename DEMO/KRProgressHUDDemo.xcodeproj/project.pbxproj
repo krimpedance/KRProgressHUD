@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B033C831DBE6EDA0076E452 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B033C821DBE6EDA0076E452 /* Default-568h@2x.png */; };
 		4B818BBF1E8A3D0800926B42 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B818BBE1E8A3D0800926B42 /* image.png */; };
 		4BA70C4C1D02F3B4009EB743 /* KRProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA70C4A1D02F316009EB743 /* KRProgressHUD.framework */; };
 		4BA70C4D1D02F3B4009EB743 /* KRProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA70C4A1D02F316009EB743 /* KRProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4BF8F8091C6D3982008F07F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8F8081C6D3982008F07F0 /* AppDelegate.swift */; };
 		4BF8F80B1C6D3982008F07F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8F80A1C6D3982008F07F0 /* ViewController.swift */; };
 		4BF8F80E1C6D3982008F07F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BF8F80C1C6D3982008F07F0 /* Main.storyboard */; };
+		6BD5F7CF1EC42712007A502E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD5F7CD1EC42712007A502E /* Launch Screen.storyboard */; };
+		6BD5F7D11EC42859007A502E /* KRActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD5F7D01EC42859007A502E /* KRActivityIndicatorView.framework */; };
+		6BD5F7D21EC42859007A502E /* KRActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD5F7D01EC42859007A502E /* KRActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				4BA70C4D1D02F3B4009EB743 /* KRProgressHUD.framework in Embed Frameworks */,
+				6BD5F7D21EC42859007A502E /* KRActivityIndicatorView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,7 +58,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4B033C821DBE6EDA0076E452 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4B818BBE1E8A3D0800926B42 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		4BA70C451D02F316009EB743 /* KRProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KRProgressHUD.xcodeproj; path = ../KRProgressHUD.xcodeproj; sourceTree = "<group>"; };
 		4BF8F8051C6D3982008F07F0 /* KRProgressHUDDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KRProgressHUDDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +65,8 @@
 		4BF8F80A1C6D3982008F07F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4BF8F80D1C6D3982008F07F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4BF8F8141C6D3982008F07F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BD5F7CE1EC42712007A502E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
+		6BD5F7D01EC42859007A502E /* KRActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KRActivityIndicatorView.framework; path = ../Carthage/Build/iOS/KRActivityIndicatorView.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BA70C4C1D02F3B4009EB743 /* KRProgressHUD.framework in Frameworks */,
+				6BD5F7D11EC42859007A502E /* KRActivityIndicatorView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +94,6 @@
 		4BF8F7FC1C6D3981008F07F0 = {
 			isa = PBXGroup;
 			children = (
-				4B033C821DBE6EDA0076E452 /* Default-568h@2x.png */,
 				4BF8F8071C6D3982008F07F0 /* KRProgressHUDDemo */,
 				4BF8F8061C6D3982008F07F0 /* Products */,
 				A8FFB29E968773250650FF7B /* Frameworks */,
@@ -111,6 +115,7 @@
 				4BF8F8081C6D3982008F07F0 /* AppDelegate.swift */,
 				4BF8F80A1C6D3982008F07F0 /* ViewController.swift */,
 				4BF8F80C1C6D3982008F07F0 /* Main.storyboard */,
+				6BD5F7CD1EC42712007A502E /* Launch Screen.storyboard */,
 				4BF8F8141C6D3982008F07F0 /* Info.plist */,
 				4B818BBE1E8A3D0800926B42 /* image.png */,
 			);
@@ -120,6 +125,7 @@
 		A8FFB29E968773250650FF7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6BD5F7D01EC42859007A502E /* KRActivityIndicatorView.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -209,8 +215,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BD5F7CF1EC42712007A502E /* Launch Screen.storyboard in Resources */,
 				4BF8F80E1C6D3982008F07F0 /* Main.storyboard in Resources */,
-				4B033C831DBE6EDA0076E452 /* Default-568h@2x.png in Resources */,
 				4B818BBF1E8A3D0800926B42 /* image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +267,14 @@
 				4BF8F80D1C6D3982008F07F0 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6BD5F7CD1EC42712007A502E /* Launch Screen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BD5F7CE1EC42712007A502E /* Base */,
+			);
+			name = "Launch Screen.storyboard";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -358,10 +372,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = KRProgressHUDDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.mond.krimpedance.KRProgressHUDDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -374,10 +392,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = KRProgressHUDDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.mond.krimpedance.KRProgressHUDDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
