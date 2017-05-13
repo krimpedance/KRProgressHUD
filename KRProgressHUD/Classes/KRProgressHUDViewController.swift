@@ -17,7 +17,7 @@ class KRProgressHUDViewController: UIViewController {
    }
 
    override var preferredStatusBarStyle: UIStatusBarStyle {
-      guard let vc = UIApplication.topViewController() else { return statusBarStyle }
+      guard let vc = UIApplication.shared.topViewController() else { return statusBarStyle }
       if !vc.isKind(of: KRProgressHUDViewController.self) {
          statusBarStyle = vc.preferredStatusBarStyle
       }
@@ -25,10 +25,29 @@ class KRProgressHUDViewController: UIViewController {
    }
 
    override var prefersStatusBarHidden: Bool {
-      guard let vc = UIApplication.topViewController() else { return statusBarHidden }
+      guard let vc = UIApplication.shared.topViewController() else { return statusBarHidden }
       if !vc.isKind(of: KRProgressHUDViewController.self) {
          statusBarHidden = vc.prefersStatusBarHidden
       }
       return statusBarHidden
+   }
+}
+
+// MARK: - UIApplication extension ------------
+
+fileprivate extension UIApplication {
+   func topViewController(_ base: UIViewController? = nil) -> UIViewController? {
+      let base = base ?? keyWindow?.rootViewController
+      if let nav = base as? UINavigationController {
+         return topViewController(nav.visibleViewController)
+      }
+      if let tab = base as? UITabBarController {
+         guard let selected = tab.selectedViewController else { return base }
+         return topViewController(selected)
+      }
+      if let presented = base?.presentedViewController {
+         return topViewController(presented)
+      }
+      return base
    }
 }

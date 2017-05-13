@@ -50,7 +50,8 @@ extension ViewController {
 
       let delay = DispatchTime.now() + 1
       DispatchQueue.main.asyncAfter(deadline: delay) {
-         KRProgressHUD.dismiss()
+//         KRProgressHUD.dismiss()
+         KRProgressHUD.showSuccess()
       }
    }
 

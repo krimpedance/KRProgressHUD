@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B5D62AF1D8411730027D21E /* KRProgressHUD.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4BA70C3F1D02F2ED009EB743 /* KRProgressHUD.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		4B7576D61D1BC6AB003FF258 /* KRProgressHUDExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7576D51D1BC6AB003FF258 /* KRProgressHUDExtensions.swift */; };
+		4B7576D61D1BC6AB003FF258 /* InnerKRProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7576D51D1BC6AB003FF258 /* InnerKRProgressHUD.swift */; };
 		4B7576D81D1BC838003FF258 /* KRProgressHUDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7576D71D1BC838003FF258 /* KRProgressHUDViewController.swift */; };
 		4B7576E21D1BCD56003FF258 /* KRProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA70C301D02F28D009EB743 /* KRProgressHUD.framework */; };
 		4B7576EC1D1BECE8003FF258 /* KRProgressHUDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7576DF1D1BCD56003FF258 /* KRProgressHUDTests.swift */; };
@@ -29,7 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4B7576D51D1BC6AB003FF258 /* KRProgressHUDExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KRProgressHUDExtensions.swift; sourceTree = "<group>"; };
+		4B7576D51D1BC6AB003FF258 /* InnerKRProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InnerKRProgressHUD.swift; sourceTree = "<group>"; };
 		4B7576D71D1BC838003FF258 /* KRProgressHUDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KRProgressHUDViewController.swift; sourceTree = "<group>"; };
 		4B7576DD1D1BCD56003FF258 /* KRProgressHUDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KRProgressHUDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B7576DF1D1BCD56003FF258 /* KRProgressHUDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KRProgressHUDTests.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				4BA70C3F1D02F2ED009EB743 /* KRProgressHUD.swift */,
-				4B7576D51D1BC6AB003FF258 /* KRProgressHUDExtensions.swift */,
+				4B7576D51D1BC6AB003FF258 /* InnerKRProgressHUD.swift */,
 				4BA70C401D02F2ED009EB743 /* KRProgressHUDIconType.swift */,
 				4B7576D71D1BC838003FF258 /* KRProgressHUDViewController.swift */,
 			);
@@ -257,7 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BA70C441D02F2ED009EB743 /* KRProgressHUDIconType.swift in Sources */,
-				4B7576D61D1BC6AB003FF258 /* KRProgressHUDExtensions.swift in Sources */,
+				4B7576D61D1BC6AB003FF258 /* InnerKRProgressHUD.swift in Sources */,
 				4B7576D81D1BC838003FF258 /* KRProgressHUDViewController.swift in Sources */,
 				4BA70C431D02F2ED009EB743 /* KRProgressHUD.swift in Sources */,
 			);
