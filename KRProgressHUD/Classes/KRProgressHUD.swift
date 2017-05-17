@@ -102,7 +102,7 @@ public final class KRProgressHUD {
    var viewCenterPosition: CGPoint?
    var deadlineTime: Double?
 
-   weak var dismissHandler: DispatchWorkItem?
+   var dismissHandler: DispatchWorkItem?
    weak var appWindow: UIWindow?
 
    public static var isVisible: Bool {
@@ -175,7 +175,7 @@ extension KRProgressHUD {
     - parameter completion: Show completion handler.
     */
    public class func show(withMessage message: String? = nil, completion: CompletionHandler? = nil) {
-      shared.show(withMessage: message, isLoading: true)
+      shared.show(withMessage: message, isLoading: true, completion: completion)
    }
 
    /**
@@ -262,6 +262,6 @@ extension KRProgressHUD {
     - parameter completion: Hide completion handler.
     */
    public class func dismiss(_ completion: CompletionHandler? = nil) {
-      shared.dismiss { completion?() }
+      shared.dismiss(completion: completion)
    }
 }

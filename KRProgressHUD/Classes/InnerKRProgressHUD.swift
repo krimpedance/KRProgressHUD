@@ -53,8 +53,12 @@ extension KRProgressHUD {
       applyStyles()
    }
 
-   func show(withMessage message: String?, iconType: KRProgressHUDIconType? = nil,
-             image: UIImage? = nil, onlyText: Bool = false, isLoading: Bool = false) {
+   func show(withMessage message: String?,
+             iconType: KRProgressHUDIconType? = nil,
+             image: UIImage? = nil,
+             onlyText: Bool = false,
+             isLoading: Bool = false,
+             completion: CompletionHandler? = nil ) {
       applyStyles()
       updateProgressHUDViewMessage(message, onlyText: onlyText)
       updateProgressHUDViewIcon(iconType: iconType, image: image, onlyText: onlyText)
@@ -62,14 +66,14 @@ extension KRProgressHUD {
       DispatchQueue.main.async {
          let deadline = self.cancelCurrentDismissHandler() ? 0 : fadeTime
          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + deadline) {
-            self.fadeInView()
+            self.fadeInView(completion: completion)
             if isLoading { return }
             self.registerDismissHandler()
          }
       }
    }
 
-   func dismiss(_ completion: @escaping CompletionHandler) {
+   func dismiss(completion: CompletionHandler?) {
       DispatchQueue.main.async {
          UIView.animate(withDuration: fadeTime, animations: {
             self.window.alpha = 0
@@ -77,7 +81,7 @@ extension KRProgressHUD {
             self.appWindow?.makeKeyAndVisible()
             self.window.isHidden = true
             self.activityIndicatorView.stopAnimating()
-            completion()
+            completion?()
          })
       }
    }
@@ -102,15 +106,7 @@ fileprivate extension KRProgressHUD {
       DispatchQueue.global().asyncAfter(deadline: deadline, execute: dismissHandler!)
    }
 
-   func hideHUDView(_ completion: CompletionHandler? = nil) {
-      UIView.animate(withDuration: fadeTime, animations: {
-         self.hudView.alpha = 0
-      }, completion: { _ in
-         completion?()
-      })
-   }
-
-   func fadeInView() {
+   func fadeInView(completion: CompletionHandler?) {
       if KRProgressHUD.isVisible {
          self.hudView.alpha = 0
       } else {
@@ -119,9 +115,11 @@ fileprivate extension KRProgressHUD {
       }
       self.window.makeKeyAndVisible()
 
-      UIView.animate(withDuration: fadeTime) {
+      UIView.animate(withDuration: fadeTime, animations: {
          self.window.alpha = 1
          self.hudView.alpha = 1
+      }) { _ in
+         completion?()
       }
    }
 
