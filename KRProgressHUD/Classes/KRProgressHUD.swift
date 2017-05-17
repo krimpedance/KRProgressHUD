@@ -104,10 +104,9 @@ public final class KRProgressHUD {
 
    var dismissHandler: DispatchWorkItem?
    weak var appWindow: UIWindow?
+   weak var presentingViewController: UIViewController?
 
-   public static var isVisible: Bool {
-      return shared.window.alpha == 0 ? false : true
-   }
+   public internal(set) static var isVisible = false
 
    private init() {
       configureProgressHUDView()
@@ -159,6 +158,11 @@ extension KRProgressHUD {
       shared.font = nil
       shared.viewCenterPosition = nil
       shared.deadlineTime = nil
+      return KRProgressHUD.self
+   }
+
+   public class func showOn(_ viewController: UIViewController) -> KRProgressHUD.Type {
+      shared.presentingViewController = viewController
       return KRProgressHUD.self
    }
 }

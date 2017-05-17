@@ -13,7 +13,6 @@ class KRProgressHUDViewController: UIViewController {
 
    override func viewDidLoad() {
       super.viewDidLoad()
-      view.backgroundColor = UIColor(white: 0, alpha: 0.4)
    }
 
    override var preferredStatusBarStyle: UIStatusBarStyle {
