@@ -76,6 +76,7 @@ public final class KRProgressHUD {
       public var activityIndicatorStyle = KRActivityIndicatorViewStyle.gradationColor(head: .black, tail: .lightGray)
       public var font = UIFont.systemFont(ofSize: 13)
       public var viewCenterPosition = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
+      public var deadlineTime = Double(1.0)
 
       fileprivate init() {}
    }
@@ -99,6 +100,7 @@ public final class KRProgressHUD {
    var activityIndicatorStyle: KRActivityIndicatorViewStyle?
    var font: UIFont?
    var viewCenterPosition: CGPoint?
+   var deadlineTime: Double?
 
    weak var dismissHandler: DispatchWorkItem?
    weak var appWindow: UIWindow?
@@ -121,38 +123,43 @@ extension KRProgressHUD {
    }
 
    @discardableResult public class func set(style: KRProgressHUDStyle) -> KRProgressHUD.Type {
-      shared.hudView.backgroundColor = style.backgroundColor
-      shared.messageLabel.textColor = style.textColor
-      shared.iconDrawingLayer.fillColor = style.iconColor?.cgColor
+      shared.style = style
       return KRProgressHUD.self
    }
 
    @discardableResult public class func set(maskType: KRProgressHUDMaskType) -> KRProgressHUD.Type {
-      shared.hudViewController.view.backgroundColor = maskType.maskColor
+      shared.maskType = maskType
       return KRProgressHUD.self
    }
 
    @discardableResult public class func set(activityIndicatorViewStyle style: KRActivityIndicatorViewStyle) -> KRProgressHUD.Type {
-      shared.activityIndicatorView.style = style
+      shared.activityIndicatorStyle = style
       return KRProgressHUD.self
    }
 
    @discardableResult public class func set(font: UIFont) -> KRProgressHUD.Type {
-      shared.messageLabel.font = font
+      shared.font = font
       return KRProgressHUD.self
    }
 
    @discardableResult public class func set(centerPosition point: CGPoint) -> KRProgressHUD.Type {
-      shared.hudView.center = point
+      shared.viewCenterPosition = point
       return KRProgressHUD.self
    }
 
-   public class func resetStyles() {
+   @discardableResult public class func set(deadlineTime time: Double) -> KRProgressHUD.Type {
+      shared.deadlineTime = time
+      return KRProgressHUD.self
+   }
+
+   @discardableResult public class func resetStyles() -> KRProgressHUD.Type {
       shared.style = nil
       shared.maskType = nil
       shared.activityIndicatorStyle = nil
       shared.font = nil
       shared.viewCenterPosition = nil
+      shared.deadlineTime = nil
+      return KRProgressHUD.self
    }
 }
 
@@ -168,12 +175,7 @@ extension KRProgressHUD {
     - parameter completion: Show completion handler.
     */
    public class func show(withMessage message: String? = nil, completion: CompletionHandler? = nil) {
-      DispatchQueue.main.async {
-         shared.applyStyles()
-         shared.updateProgressHUDViewMessage(message)
-         shared.updateProgressHUDViewIcon()
-         shared.show(isLoading: true)
-      }
+      shared.show(withMessage: message, isLoading: true)
    }
 
    /**
@@ -184,15 +186,7 @@ extension KRProgressHUD {
     - parameter completion: Hide completion handler.
     */
    public class func showSuccess(withMessage message: String? = nil) {
-      DispatchQueue.main.async {
-         shared.dismissHandler?.cancel()
-         shared.hideHUDView {
-            shared.applyStyles()
-            shared.updateProgressHUDViewMessage(message)
-            shared.updateProgressHUDViewIcon(iconType: .success)
-            shared.show()
-         }
-      }
+      shared.show(withMessage: message, iconType: .success)
    }
 
    /**
@@ -203,12 +197,7 @@ extension KRProgressHUD {
     - parameter completion: Hide completion handler.
     */
    public class func showInfo(withMessage message: String? = nil) {
-      DispatchQueue.main.async {
-         shared.applyStyles()
-         shared.updateProgressHUDViewMessage(message)
-         shared.updateProgressHUDViewIcon(iconType: .info)
-         shared.show()
-      }
+      shared.show(withMessage: message, iconType: .info)
    }
 
    /**
@@ -219,12 +208,7 @@ extension KRProgressHUD {
     - parameter completion: Hide completion handler.
     */
    public class func showWarning(withMessage message: String? = nil) {
-      DispatchQueue.main.async {
-         shared.applyStyles()
-         shared.updateProgressHUDViewMessage(message)
-         shared.updateProgressHUDViewIcon(iconType: .warning)
-         shared.show()
-      }
+      shared.show(withMessage: message, iconType: .warning)
    }
 
    /**
@@ -235,12 +219,7 @@ extension KRProgressHUD {
     - parameter completion: Hide completion handler.
     */
    public class func showError(withMessage message: String? = nil) {
-      DispatchQueue.main.async {
-         shared.applyStyles()
-         shared.updateProgressHUDViewMessage(message)
-         shared.updateProgressHUDViewIcon(iconType: .error)
-         shared.show()
-      }
+      shared.show(withMessage: message, iconType: .error)
    }
 
    /**
@@ -254,14 +233,7 @@ extension KRProgressHUD {
     - returns: No return value.
     */
    public class func showImage(_ image: UIImage, message: String? = nil) {
-      DispatchQueue.main.async {
-         shared.hideHUDView {
-            shared.applyStyles()
-            shared.updateProgressHUDViewMessage(message)
-            shared.updateProgressHUDViewIcon(image: image)
-            shared.show()
-         }
-      }
+      shared.show(withMessage: message, image: image)
    }
 
    /**
@@ -272,12 +244,7 @@ extension KRProgressHUD {
     - parameter completion: Hide completion handler.
     */
    public class func showMessage(_ message: String) {
-      DispatchQueue.main.async {
-         shared.applyStyles()
-         shared.updateProgressHUDViewMessage(message, onlyText: true)
-         shared.updateProgressHUDViewIcon(onlyText: true)
-         shared.show()
-      }
+      shared.show(withMessage: message, onlyText: true)
    }
 
    /**

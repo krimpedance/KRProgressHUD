@@ -15,7 +15,6 @@ extension KRProgressHUD {
    func configureProgressHUDView() {
       window.windowLevel = UIWindowLevelNormal
       window.alpha = 0
-      window.tag = 100
 
       hudView.backgroundColor = .white
       hudView.layer.cornerRadius = 10
@@ -54,7 +53,12 @@ extension KRProgressHUD {
       applyStyles()
    }
 
-   func show(isLoading: Bool = false) {
+   func show(withMessage message: String?, iconType: KRProgressHUDIconType? = nil,
+             image: UIImage? = nil, onlyText: Bool = false, isLoading: Bool = false) {
+      applyStyles()
+      updateProgressHUDViewMessage(message, onlyText: onlyText)
+      updateProgressHUDViewIcon(iconType: iconType, image: image, onlyText: onlyText)
+
       DispatchQueue.main.async {
          let deadline = self.cancelCurrentDismissHandler() ? 0 : fadeTime
          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + deadline) {
@@ -81,7 +85,7 @@ extension KRProgressHUD {
 
 // MARK: - Private actions --------------------------
 
-extension KRProgressHUD {
+fileprivate extension KRProgressHUD {
    func cancelCurrentDismissHandler() -> Bool {
       guard let handler = dismissHandler else { return true }
       defer { dismissHandler = nil }
@@ -94,8 +98,8 @@ extension KRProgressHUD {
          KRProgressHUD.dismiss()
          _ = self.cancelCurrentDismissHandler()
       }
-      let when = DispatchTime.now() + 1.0
-      DispatchQueue.global().asyncAfter(deadline: when, execute: dismissHandler!)
+      let deadline = DispatchTime.now() + (deadlineTime ?? viewAppearance.deadlineTime)
+      DispatchQueue.global().asyncAfter(deadline: deadline, execute: dismissHandler!)
    }
 
    func hideHUDView(_ completion: CompletionHandler? = nil) {
@@ -131,7 +135,7 @@ extension KRProgressHUD {
       hudView.center = viewCenterPosition ?? viewAppearance.viewCenterPosition
    }
 
-   func updateProgressHUDViewMessage(_ message: String?, onlyText: Bool = false) {
+   func updateProgressHUDViewMessage(_ message: String?, onlyText: Bool) {
       if onlyText {
          messageLabel.isHidden = false
          messageLabel.text = message ?? ""
@@ -169,7 +173,7 @@ extension KRProgressHUD {
       }
    }
 
-   func updateProgressHUDViewIcon(iconType: KRProgressHUDIconType? = nil, image: UIImage? = nil, onlyText: Bool = false) {
+   func updateProgressHUDViewIcon(iconType: KRProgressHUDIconType?, image: UIImage?, onlyText: Bool) {
       iconDrawingView.subviews.forEach { $0.removeFromSuperview() }
 
       iconDrawingView.isHidden = true
