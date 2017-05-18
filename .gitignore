@@ -22,5 +22,5 @@ DerivedData
 # Bundler
 .bundle
 
-Carthage
+Carthage/
 Pods/
