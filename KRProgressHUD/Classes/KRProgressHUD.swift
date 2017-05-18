@@ -88,12 +88,13 @@ public final class KRProgressHUD {
    let window = UIWindow(frame: UIScreen.main.bounds)
    let hudViewController = KRProgressHUDViewController()
 
-   let hudView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-   let iconView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+   let hudView = UIView()
+   let iconView = UIView()
    let activityIndicatorView = KRActivityIndicatorView(style: .gradationColor(head: .black, tail: .lightGray))
-   let iconDrawingView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+   let iconDrawingView = UIView()
    let iconDrawingLayer = CAShapeLayer()
-   let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 20))
+   let imageView = UIImageView()
+   let messageLabel = UILabel()
 
    var style: KRProgressHUDStyle?
    var maskType: KRProgressHUDMaskType?
@@ -248,7 +249,7 @@ extension KRProgressHUD {
     - parameter completion: Hide completion handler.
     */
    public class func showMessage(_ message: String) {
-      shared.show(withMessage: message, onlyText: true)
+      shared.show(withMessage: message, isOnlyText: true)
    }
 
    /**

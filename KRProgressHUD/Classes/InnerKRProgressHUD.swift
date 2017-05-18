@@ -8,6 +8,16 @@
 import UIKit
 
 fileprivate let fadeTime = Double(0.2)
+fileprivate let hudSize = CGSize(width: 150, height: 110)
+fileprivate let simpleHUDSize = CGSize(width: 100, height: 100)
+fileprivate let iconViewSize = CGSize(width: 50, height: 50)
+fileprivate let iconViewCenter = CGPoint(x: hudSize.width/2, y: 40)
+fileprivate let simpleHUDIconViewCenter = CGPoint(x: simpleHUDSize.width/2, y: 50)
+fileprivate let messageLabelMargin = CGFloat(10)
+fileprivate let messageLabelFrame = CGRect(x: messageLabelMargin,
+                                           y: iconViewCenter.y + iconViewSize.height / 2 + messageLabelMargin,
+                                           width: hudSize.width - messageLabelMargin * 2,
+                                           height: 20)
 
 // MARK: - Internal actions --------------------------
 
@@ -15,33 +25,46 @@ extension KRProgressHUD {
    func configureProgressHUDView() {
       window.windowLevel = UIWindowLevelNormal
 
+      hudView.frame.size = hudSize
+      hudView.center = viewAppearance.viewCenterPosition
       hudView.backgroundColor = .white
       hudView.layer.cornerRadius = 10
-      hudView.autoresizingMask = [.flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin]
+      hudView.autoresizingMask = [
+         .flexibleTopMargin,
+         .flexibleBottomMargin,
+         .flexibleLeftMargin,
+         .flexibleRightMargin
+      ]
 
+      iconView.frame = CGRect(origin: iconViewCenter, size: iconViewSize)
       iconView.backgroundColor = .clear
-      iconView.center = CGPoint(x: 50, y: 50)
 
+      activityIndicatorView.frame.size = iconViewSize
       activityIndicatorView.isLarge = true
+      activityIndicatorView.animating = false
       activityIndicatorView.hidesWhenStopped = true
-      activityIndicatorView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
 
+      iconDrawingView.frame.size = iconViewSize
       iconDrawingView.backgroundColor = .clear
       iconDrawingView.isHidden = true
 
-      iconDrawingLayer.frame = iconDrawingView.layer.bounds
+      iconDrawingLayer.frame.size = iconViewSize
       iconDrawingLayer.lineWidth = 0
       iconDrawingLayer.fillColor = nil
 
-      messageLabel.center = CGPoint(x: 150/2, y: 90)
+      imageView.frame.size = iconViewSize
+      imageView.backgroundColor = .clear
+      imageView.contentMode = .scaleAspectFit
+      imageView.isHidden = true
+
+      messageLabel.frame = messageLabelFrame
       messageLabel.backgroundColor = .clear
       messageLabel.textAlignment = .center
       messageLabel.adjustsFontSizeToFitWidth = true
       messageLabel.minimumScaleFactor = 0.5
-      messageLabel.text = nil
-      messageLabel.isHidden = true
 
       iconDrawingView.layer.addSublayer(iconDrawingLayer)
+      iconView.addSubview(imageView)
       iconView.addSubview(iconDrawingView)
       iconView.addSubview(activityIndicatorView)
       hudView.addSubview(iconView)
@@ -55,18 +78,16 @@ extension KRProgressHUD {
    func show(withMessage message: String?,
              iconType: KRProgressHUDIconType? = nil,
              image: UIImage? = nil,
-             onlyText: Bool = false,
+             isOnlyText: Bool = false,
              isLoading: Bool = false,
              completion: CompletionHandler? = nil ) {
       DispatchQueue.main.async {
          self.applyStyles()
-         self.updateProgressHUDViewMessage(message, onlyText: onlyText)
-         self.updateProgressHUDViewIcon(iconType: iconType, image: image, onlyText: onlyText)
+         self.updateLayouts(message: message, iconType: iconType, image: image, isOnlyText: isOnlyText)
 
          let deadline = self.cancelCurrentDismissHandler() ? 0 : fadeTime
          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + deadline) {
             self.fadeInView(completion: completion)
-            KRProgressHUD.isVisible = true
             if isLoading { return }
             self.registerDismissHandler()
          }
@@ -75,20 +96,7 @@ extension KRProgressHUD {
 
    func dismiss(completion: CompletionHandler?) {
       DispatchQueue.main.async {
-         UIView.animate(withDuration: fadeTime, animations: {
-            self.hudViewController.view.alpha = 0
-         }, completion: { _ in
-            if self.presentingViewController == nil {
-               self.appWindow?.makeKeyAndVisible()
-               self.window.isHidden = true
-            } else {
-               self.hudViewController.view.removeFromSuperview()
-               self.presentingViewController = nil
-            }
-            self.activityIndicatorView.stopAnimating()
-            KRProgressHUD.isVisible = false
-            completion?()
-         })
+         self.fadeOutView(completion: completion)
       }
    }
 }
@@ -125,12 +133,28 @@ fileprivate extension KRProgressHUD {
          }
       }
 
+      KRProgressHUD.isVisible = true
       UIView.animate(withDuration: fadeTime, animations: {
          self.hudView.alpha = 1
          self.hudViewController.view.alpha = 1
       }) { _ in
          completion?()
       }
+   }
+
+   func fadeOutView(completion: CompletionHandler?) {
+         UIView.animate(withDuration: fadeTime, animations: {
+            self.hudViewController.view.alpha = 0
+         }, completion: { _ in
+            self.appWindow?.makeKeyAndVisible()
+            self.appWindow = nil
+            self.window.isHidden = true
+            self.hudViewController.view.removeFromSuperview()
+            self.presentingViewController = nil
+            self.activityIndicatorView.stopAnimating()
+            KRProgressHUD.isVisible = false
+            completion?()
+         })
    }
 
    func applyStyles() {
@@ -140,72 +164,58 @@ fileprivate extension KRProgressHUD {
       hudViewController.view.backgroundColor = maskType?.maskColor ?? viewAppearance.maskType.maskColor
       activityIndicatorView.style = activityIndicatorStyle ?? viewAppearance.activityIndicatorStyle
       messageLabel.font = font ?? viewAppearance.font
+   }
+
+   func resetLayouts() {
+      hudView.frame.size = hudSize
       hudView.center = viewCenterPosition ?? viewAppearance.viewCenterPosition
-   }
-
-   func updateProgressHUDViewMessage(_ message: String?, onlyText: Bool) {
-      if onlyText {
-         messageLabel.isHidden = false
-         messageLabel.text = message ?? ""
-         messageLabel.sizeToFit()
-
-         let center = hudView.center
-         var frame = messageLabel.bounds
-         frame.size = CGSize(width: frame.width + 40, height: frame.height + 20)
-         hudView.frame = frame
-         hudView.center = center
-         messageLabel.center = CGPoint(x: frame.width/2, y: frame.height/2)
-      } else if let text = message {
-         let center = hudView.center
-         var frame = hudView.frame
-         frame.size = CGSize(width: 150, height: 110)
-         hudView.frame = frame
-         hudView.center = center
-
-         iconView.center = CGPoint(x: 150/2, y: 40)
-
-         messageLabel.frame = CGRect(x: 0, y: 0, width: 150, height: 20)
-         messageLabel.center = CGPoint(x: 150/2, y: 90)
-         messageLabel.isHidden = false
-         messageLabel.text = text
-      } else {
-         let center = hudView.center
-         var frame = hudView.frame
-         frame.size = CGSize(width: 100, height: 100)
-         hudView.frame = frame
-         hudView.center = center
-
-         iconView.center = CGPoint(x: 50, y: 50)
-
-         messageLabel.isHidden = true
-      }
-   }
-
-   func updateProgressHUDViewIcon(iconType: KRProgressHUDIconType?, image: UIImage?, onlyText: Bool) {
-      iconDrawingView.subviews.forEach { $0.removeFromSuperview() }
-
-      iconDrawingView.isHidden = true
-      activityIndicatorView.isHidden = true
+      iconView.isHidden = false
+      iconView.center = iconViewCenter
       activityIndicatorView.stopAnimating()
+      iconDrawingView.isHidden = true
+      iconDrawingLayer.path = nil
+      imageView.image = nil
+      imageView.isHidden = true
+      messageLabel.frame = messageLabelFrame
+      messageLabel.numberOfLines = 1
+      messageLabel.isHidden = false
+   }
 
-      if onlyText { return }
+   func updateLayouts(message: String?, iconType: KRProgressHUDIconType?, image: UIImage?, isOnlyText: Bool) {
+      resetLayouts()
+      messageLabel.text = message
+
+      if isOnlyText {
+         iconView.isHidden = true
+         messageLabel.numberOfLines = 0
+         messageLabel.frame.size.width = UIScreen.main.bounds.width - messageLabelMargin * 4
+         messageLabel.sizeToFit()
+         messageLabel.frame.origin = CGPoint(x: messageLabelMargin, y: messageLabelMargin)
+         hudView.frame.size = CGSize(width: messageLabel.bounds.width + messageLabelMargin*2,
+                                     height: messageLabel.bounds.height + messageLabelMargin*2)
+         hudView.center = viewCenterPosition ?? viewAppearance.viewCenterPosition
+         return
+      }
+
+      if message == nil {
+         messageLabel.isHidden = true
+         hudView.frame.size = simpleHUDSize
+         hudView.center = viewCenterPosition ?? viewAppearance.viewCenterPosition
+         iconView.center = simpleHUDIconViewCenter
+      }
 
       switch (iconType, image) {
       case (nil, nil):
-         activityIndicatorView.isHidden = false
          activityIndicatorView.startAnimating()
 
-      case let (nil, image):
-         iconDrawingView.isHidden = false
-         let imageView = UIImageView(image: image)
-         imageView.frame = iconDrawingView.bounds
-         imageView.contentMode = .scaleAspectFit
-         iconDrawingView.addSubview(imageView)
+      case (nil, let image):
+         imageView.isHidden = false
+         imageView.image = image
 
-      case let (type, _):
+      case (let iconType, _):
          iconDrawingView.isHidden = false
-         iconDrawingLayer.path = type!.getPath()
-         iconDrawingLayer.fillColor = iconDrawingLayer.fillColor ?? type!.getColor()
+         iconDrawingLayer.path = iconType!.getPath()
+         iconDrawingLayer.fillColor = iconDrawingLayer.fillColor ?? iconType!.getColor()
       }
    }
 }

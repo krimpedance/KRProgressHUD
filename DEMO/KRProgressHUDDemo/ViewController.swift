@@ -54,7 +54,12 @@ extension ViewController {
    }
 
    @IBAction func showTextButtonTapped(withSender sender: UIButton) {
-      KRProgressHUD.showMessage("Single line message :)")
+      let rand = arc4random() % 10
+      if rand > 3 {
+         KRProgressHUD.showMessage("message only HUD :)\nThis can indicate multiline message.")
+      } else {
+         KRProgressHUD.showMessage("こ\nん\nに\nち\nは\n😃")
+      }
    }
 
    @IBAction func showSuccessButtonTapped(withSender sender: UIButton) {
