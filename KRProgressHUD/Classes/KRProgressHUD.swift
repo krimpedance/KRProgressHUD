@@ -71,11 +71,17 @@ public final class KRProgressHUD {
    public typealias CompletionHandler = () -> Void
 
    public class KRProgressHUDAppearance {
+      /// Default style.
       public var style = KRProgressHUDStyle.white
+      /// Default mask type.
       public var maskType = KRProgressHUDMaskType.black
+      /// Default KRActivityIndicatorView style.
       public var activityIndicatorStyle = KRActivityIndicatorViewStyle.gradationColor(head: .black, tail: .lightGray)
+      /// Default message label font.
       public var font = UIFont.systemFont(ofSize: 13)
+      /// Default HUD center position.
       public var viewCenterPosition = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
+      /// Default time to show HUD.
       public var deadlineTime = Double(1.0)
 
       fileprivate init() {}
@@ -107,6 +113,7 @@ public final class KRProgressHUD {
    weak var appWindow: UIWindow?
    weak var presentingViewController: UIViewController?
 
+   /// This have whether HUD is indicated.
    public internal(set) static var isVisible = false
 
    private init() {
@@ -114,44 +121,110 @@ public final class KRProgressHUD {
    }
 }
 
-/**
- *  KRProgressHUD Set styles --------------------------
- */
+// MARK: - Set styles --------------------------
+
 extension KRProgressHUD {
+   /**
+    Returns the appearance proxy for the receiver.
+
+    - returns: The appearance proxy for the receiver.
+    */
    public class func appearance() -> KRProgressHUDAppearance {
       return shared.viewAppearance
    }
 
+   /**
+    Sets the HUD style.
+    This value is cleared by `resetStyles()`.
+
+    - parameter style: KRProgressHUDStyle
+
+    - returns: KRProgressHUD.Type (discardable)
+    */
    @discardableResult public class func set(style: KRProgressHUDStyle) -> KRProgressHUD.Type {
       shared.style = style
       return KRProgressHUD.self
    }
 
+   /**
+    Sets the HUD mask type.
+    This value is cleared by `resetStyles()`.
+
+    - parameter maskType: KRProgressHUDMaskType
+
+    - returns: KRProgressHUD.Type (discardable)
+    */
    @discardableResult public class func set(maskType: KRProgressHUDMaskType) -> KRProgressHUD.Type {
       shared.maskType = maskType
       return KRProgressHUD.self
    }
 
+   /**
+    Sets the KRActivityIndicatorView style.
+    This value is cleared by `resetStyles()`.
+
+    - parameter style: KRActivityIndicatorViewStyle
+
+    - returns: KRProgressHUD.Type (discardable)
+    */
    @discardableResult public class func set(activityIndicatorViewStyle style: KRActivityIndicatorViewStyle) -> KRProgressHUD.Type {
       shared.activityIndicatorStyle = style
       return KRProgressHUD.self
    }
 
+   /**
+    Sets the HUD message label font.
+    This value is cleared by `resetStyles()`.
+
+    - parameter font: the message label font.
+
+    - returns: KRProgressHUD.Type (discardable)
+    */
    @discardableResult public class func set(font: UIFont) -> KRProgressHUD.Type {
       shared.font = font
       return KRProgressHUD.self
    }
 
+   /**
+    Sets the HUD center position.
+    This value is cleared by `resetStyles()`.
+
+    - parameter point: the HUD center position.
+
+    - returns: KRProgressHUD.Type (discardable)
+    */
    @discardableResult public class func set(centerPosition point: CGPoint) -> KRProgressHUD.Type {
       shared.viewCenterPosition = point
       return KRProgressHUD.self
    }
 
+   /**
+    Sets deadline time to show HUD.
+
+    This is used:
+      - `showSuccess()`
+      - `showInfo()`
+      - `showWarning()`
+      - `showError()`
+      - `showImage()`
+      - `showMessage()`
+
+    This value is cleared by `resetStyles()`.
+
+    - parameter point: the HUD center position.
+
+    - returns: KRProgressHUD.Type (discardable)
+    */
    @discardableResult public class func set(deadlineTime time: Double) -> KRProgressHUD.Type {
       shared.deadlineTime = time
       return KRProgressHUD.self
    }
 
+   /**
+    Resets the HUD styles.
+
+    - returns: KRProgressHUD.Type (discardable)
+    */
    @discardableResult public class func resetStyles() -> KRProgressHUD.Type {
       shared.style = nil
       shared.maskType = nil
@@ -162,22 +235,29 @@ extension KRProgressHUD {
       return KRProgressHUD.self
    }
 
+   /**
+    Sets the view controller which presents HUD.
+    This is applied only once.
+
+    - parameter viewController: Presenting view controller.
+
+    - returns: KRProgressHUD.Type
+    */
    public class func showOn(_ viewController: UIViewController) -> KRProgressHUD.Type {
       shared.presentingViewController = viewController
       return KRProgressHUD.self
    }
 }
 
-/**
- *  KRProgressHUD Show & Dismiss --------------------------
- */
+// MARK: - Show, Update & Dismiss --------------------------
+
 extension KRProgressHUD {
    /**
     Shows the HUD.
     You can appoint only the args which You want to appoint.
 
-    - parameter message:    HUD's message.
-    - parameter completion: Show completion handler.
+    - parameter message:    HUD's message (option).
+    - parameter completion: Show completion handler (option).
     */
    public class func show(withMessage message: String? = nil, completion: CompletionHandler? = nil) {
       shared.show(withMessage: message, isLoading: true, completion: completion)
@@ -186,9 +266,8 @@ extension KRProgressHUD {
    /**
     Shows the HUD with success glyph.
     The HUD dismiss after 1 secound (Default).
-    
-    - parameter message: HUD's message
-    - parameter completion: Hide completion handler.
+
+    - parameter message: HUD's message (option).
     */
    public class func showSuccess(withMessage message: String? = nil) {
       shared.show(withMessage: message, iconType: .success)
@@ -197,9 +276,8 @@ extension KRProgressHUD {
    /**
     Shows the HUD with information glyph.
     The HUD dismiss after 1 secound (Default).
-    
-    - parameter message: HUD's message
-    - parameter completion: Hide completion handler.
+
+    - parameter message: HUD's message (option).
     */
    public class func showInfo(withMessage message: String? = nil) {
       shared.show(withMessage: message, iconType: .info)
@@ -209,8 +287,7 @@ extension KRProgressHUD {
     Shows the HUD with warning glyph.
     The HUD dismiss after 1 secound (Default).
 
-    - parameter message: HUD's message
-    - parameter completion: Hide completion handler.
+    - parameter message: HUD's message (option).
     */
    public class func showWarning(withMessage message: String? = nil) {
       shared.show(withMessage: message, iconType: .warning)
@@ -220,8 +297,7 @@ extension KRProgressHUD {
     Shows the HUD with error glyph.
     The HUD dismiss after 1 secound (Default).
 
-    - parameter message: HUD's message
-    - parameter completion: Hide completion handler.
+    - parameter message: HUD's message (option).
     */
    public class func showError(withMessage message: String? = nil) {
       shared.show(withMessage: message, iconType: .error)
@@ -230,30 +306,26 @@ extension KRProgressHUD {
    /**
     Shows the HUD with image.
     The HUD dismiss after 1 secound (Default).
-    
-    - parameter image:      Image that display instead of activity indicator
-    - parameter message:    HUD's message
-    - parameter completion: Hide completion handler.
 
-    - returns: No return value.
+    - parameter image:   Image that display instead of activity indicator.
+    - parameter message: HUD's message (option).
     */
    public class func showImage(_ image: UIImage, message: String? = nil) {
       shared.show(withMessage: message, image: image)
    }
 
    /**
-    Shows the HUD only for message.
+    Shows the message only HUD.
     The HUD dismiss after 1 secound (Default).
 
     - parameter message: HUD's message.
-    - parameter completion: Hide completion handler.
     */
    public class func showMessage(_ message: String) {
       shared.show(withMessage: message, isOnlyText: true)
    }
 
    /**
-    Update message.
+    Updates the HUD message.
 
     - parameter message: String
     */
@@ -264,7 +336,7 @@ extension KRProgressHUD {
    /**
     Hides the HUD.
 
-    - parameter completion: Hide completion handler.
+    - parameter completion: Hide completion handler (option).
     */
    public class func dismiss(_ completion: CompletionHandler? = nil) {
       shared.dismiss(completion: completion)

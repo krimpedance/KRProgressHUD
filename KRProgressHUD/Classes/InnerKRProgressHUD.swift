@@ -29,12 +29,8 @@ extension KRProgressHUD {
       hudView.center = viewAppearance.viewCenterPosition
       hudView.backgroundColor = .white
       hudView.layer.cornerRadius = 10
-      hudView.autoresizingMask = [
-         .flexibleTopMargin,
-         .flexibleBottomMargin,
-         .flexibleLeftMargin,
-         .flexibleRightMargin
-      ]
+      hudView.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin,
+                                  .flexibleLeftMargin, .flexibleRightMargin]
 
       iconView.frame = CGRect(origin: iconViewCenter, size: iconViewSize)
       iconView.backgroundColor = .clear
