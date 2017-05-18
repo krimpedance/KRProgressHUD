@@ -1,10 +1,11 @@
 language: objective-c
 osx_image: xcode8.3
 
+before_install:
+  - carthage bootstrap
+
 install:
   - gem install xcpretty
-  - carthage bootstrap
 
 script:
   - set -o pipefail && travis_retry xcodebuild -project KRProgressHUD.xcodeproj -scheme KRProgressHUD -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.1' test | xcpretty
-  - swift test --parallel
