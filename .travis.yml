@@ -1,11 +1,12 @@
 language: objective-c
 osx_image: xcode8.3
-
-before_install:
-  - carthage bootstrap
-
 install:
-  - gem install xcpretty
-
+- gem install xcpretty
+- carthage bootstrap
 script:
-  - set -o pipefail && travis_retry xcodebuild -project KRProgressHUD.xcodeproj -scheme KRProgressHUD -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.1' test | xcpretty
+- set -o pipefail && travis_retry xcodebuild -project KRProgressHUD.xcodeproj -scheme
+  KRProgressHUD -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone
+  7,OS=10.1' test | xcpretty
+env:
+  global:
+    secure: H2F4FRck9DrekGj3GVscqwrK+Sf53UZeENw59GPXXIL3drotK0xn1sOS6kUe3vq+zOOa3s8QRixMB0XfEsu2lALz5/QA7rdaRQTIgybDs7bPUuJte4l/CIBY0c56vIUIIYTRSd2kjeCQp0xWWn9mhK5sHYDkDLMxINEx78+coEuwp0tOhPRrVczhtbTCfdi8CZI94RwxHHem1H7FNCvl7tPBh4hIxIryCFoXkodGYMfYbJ1td6HXvQFU8qIS7IHta63jEbZPXLOHUC4o4bFNtgtj9n6Qh/lb5DrWvSdmCwxebaiXEMQ0chyev17X2koIzqpTo7zgSFEZWaqKj+WpAHUeUEcWlc0P7fMRTE/jOhSm4YnuMXSWRbFPWy//Jl07dZAZaZY9Yf6nQ4j4r3rzQubfrm336ofWv4RTdsQ2JuNUX9NHB2829ctj2hEsMjJfh6r7rnkzZt7VgG7vRQTKU/U/kwfW2NQmOwZNu2zSBXQArIGu6fE6WmwZcZbVA9fZF7l40do71KFywYgECBnWkmt6xEpdeH6Me6BI9tG5I5em1Do3x+UBQmPvilPe2r+vOqcZdBRL3zu7sQXgiBeeE3pqttxcV/QYQjZfQrZTaBbjke/Ov+fHdKZ+vyzIy82gGnsU0zhK7iYaDhtV6PW3E9lMFOY1AEI61mEy7untJQU=
