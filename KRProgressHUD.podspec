@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/krimpedance/KRProgressHUD.git", :tag => s.version.to_s }
   s.source_files = "KRProgressHUD/**/*.swift"
 
-  s.dependency "KRActivityIndicator", "~> 2.0.1"
+  s.dependency "KRActivityIndicator", "~> 2.0.2"
 end

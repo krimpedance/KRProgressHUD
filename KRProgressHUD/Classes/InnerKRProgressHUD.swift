@@ -32,8 +32,10 @@ extension KRProgressHUD {
       hudView.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin,
                                   .flexibleLeftMargin, .flexibleRightMargin]
 
-      iconView.frame = CGRect(origin: iconViewCenter, size: iconViewSize)
+      iconView.frame.size = iconViewSize
+      iconView.center = iconViewCenter
       iconView.backgroundColor = .clear
+      iconView.isHidden = false
 
       activityIndicatorView.frame.size = iconViewSize
       activityIndicatorView.isLarge = true
@@ -58,6 +60,7 @@ extension KRProgressHUD {
       messageLabel.textAlignment = .center
       messageLabel.adjustsFontSizeToFitWidth = true
       messageLabel.minimumScaleFactor = 0.5
+      messageLabel.numberOfLines = 1
 
       iconDrawingView.layer.addSublayer(iconDrawingLayer)
       iconView.addSubview(imageView)
@@ -99,7 +102,7 @@ extension KRProgressHUD {
 
 // MARK: - Private actions --------------------------
 
-fileprivate extension KRProgressHUD {
+extension KRProgressHUD {
    func cancelCurrentDismissHandler() -> Bool {
       guard let handler = dismissHandler else { return true }
       defer { dismissHandler = nil }

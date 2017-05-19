@@ -15,6 +15,7 @@
 		4BA70C341D02F28D009EB743 /* KRProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BA70C331D02F28D009EB743 /* KRProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4BA70C431D02F2ED009EB743 /* KRProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA70C3F1D02F2ED009EB743 /* KRProgressHUD.swift */; };
 		4BA70C441D02F2ED009EB743 /* KRProgressHUDIconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA70C401D02F2ED009EB743 /* KRProgressHUDIconType.swift */; };
+		6B8AE6981ECE793600CE27A8 /* KRActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD5F7C71EC3F3E4007A502E /* KRActivityIndicatorView.framework */; };
 		6BD5F7C81EC3F3E4007A502E /* KRActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD5F7C71EC3F3E4007A502E /* KRActivityIndicatorView.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B8AE6981ECE793600CE27A8 /* KRActivityIndicatorView.framework in Frameworks */,
 				4B7576E21D1BCD56003FF258 /* KRProgressHUD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,9 +280,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = KRProgressHUDTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/Carthage/Build/iOS";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.mond.krimpedance.KRProgressHUDTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -292,6 +299,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = KRProgressHUDTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/Carthage/Build/iOS";
@@ -417,6 +428,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.mond.krimpedance.KRProgressHUD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
