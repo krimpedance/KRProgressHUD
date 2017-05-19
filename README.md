@@ -47,7 +47,7 @@ github "Krimpedance/KRProgressHUD"
 ## Usage
 (see sample Xcode project in /Demo)
 
-###### Caution :
+#### Caution :
 **Only use it if you absolutely need to perform a task before taking the user forward.**
 
 **If you want to use it with other cases (ex. pull to refresh), I suggest using [KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator).**
@@ -58,101 +58,134 @@ github "Krimpedance/KRProgressHUD"
 At first, import `KRProgressHUD` in your swift file.
 
 
-Show simple HUD (using GCD) :
+Show simple HUD :
 ```Swift
 KRProgressHUD.show()
 
-let delay = DispatchTime.now() + 1
-DispatchQueue.main.asyncAfter(deadline: delay) {
-		KRProgressHUD.dismiss()
+DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+   KRProgressHUD.dismiss()
 }
 ```
 
-#### Showing the HUD
-You can show HUD with some args.
-You can appoint only the args which You want to appoint.
-(Args is reflected only this time.)
+### Showing the HUD
+
 ```Swift
-// progressHUDStyle : background color of progressView
-// maskType : background color of maskView
-// activityIndicatorStyle : style of KRActivityIndicatorView
-// message : Text to display together
-// image : Image that display instead of activity indicator
-class func show(
-    progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
-    maskType type:KRProgressHUDMaskType? = nil,
-    activityIndicatorStyle indicatorStyle :KRProgressHUDActivityIndicatorStyle? = nil,
-    message :String? = nil,
-    font :UIFont? = nil,
-    image :UIImage? = nil,
-    completion: (()->())? = nil
-)
+class func show(withMessage message:String? = nil, completion: CompleteHandler? = nil)
 
 // Example
 KRProgressHUD.show()
-KRProgressHUD.show(message: "Loading...")
-KRProgressHUD.show(progressHUDStyle: .black, message: "Loading...")
-...
+KRProgressHUD.show(withMessage: "Loading...")
+KRProgressHUD.show(withMessage: "Loading...") {
+   print("Complete handler")
+}
 ```
 
-#### Update the HUD's message
-The HUD can update message.
+**Show on ViewController**
+
+If you want to show HUD on a view controller, set at `showOn()`.
+
+(This is applied only once.)
+
 ```Swift
-class func update(text: String)
-
-// Example
-KRProgressHUD.update(text: "20%")
+  KRProgressHUD.showOn(viewController).show()
 ```
 
-#### Show the HUD (only message)
-The HUD can indicate only message.
-```Swift
-	public class func showText(
-            message: String, font: UIFont? = nil,
-            centerPosition position: CGPoint? = nil,
-            progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
-            maskType type: KRProgressHUDMaskType? = nil)
-
-// Example
-KRProgressHUD.showText("Setup is complete!")
-```
-
-#### Dismissing the HUD
-The HUD can be dismissed using:
-```Swift
-class func dismiss(_ completion: (()->())?)
-```
 Show a confirmation glyph before getting dismissed a little bit later.
-(The display time is 1 sec.)
-
-These can appoint some args like `show()`, too.
+(The display time is 1 sec in default. You can change the timing.)
 
 ```Swift
 class func showSuccess()
 class func showInfo()
 class func showWarning()
 class func showError()
+class func showImage() // This can set custom image.
 ```
 
-## Customization
-`KRProgressHUD` can be customized via the following methods.
+Show the HUD (only message)
+
 ```Swift
-public class func set(maskType: KRProgressHUDMaskType)  // Default is .black
-public class func set(style: KRProgressHUDStyle)  // Default is .white
-public class func set(activityIndicatorStyle: KRProgressHUDActivityIndicatorStyle)  // Default is .black
-public class func set(font: UIFont)  // Default is Hiragino Sans W3 13px (When it can't be used, system font 13px)
-public class func set(centerPosition: CGPoint)  // Default is center of device screen.
+public class func showMessage(_ message: String)
+
+// Example
+KRProgressHUD.showMessage("Completed! \n Let's start!")
 ```
-`KRActivityIndicatorView`'s style, please refer to [here](https://github.com/krimpedance/KRActivityIndicator/blob/master/README.md).
+
+### Update the HUD's message
+The HUD can update message.
+
+```Swift
+class func update(message: String)
+
+// Example
+KRProgressHUD.update(message: "20%")
+```
+
+### Dismissing the HUD
+The HUD can be dismissed using:
+
+```Swift
+class func dismiss(_ completion: CompleteHandler? = nil)
+```
+
+### Customization
+`KRProgressHUD.appearance()` can set default styles.
+
+```Swift
+class KRProgressHUDAppearance {
+   /// Default style.
+   public var style = KRProgressHUDStyle.white
+   /// Default mask type.
+   public var maskType = KRProgressHUDMaskType.black
+   /// Default KRActivityIndicatorView style.
+   public var activityIndicatorStyle = KRActivityIndicatorViewStyle.gradationColor(head: .black, tail: .lightGray)
+   /// Default message label font.
+   public var font = UIFont.systemFont(ofSize: 13)
+   /// Default HUD center position.
+   public var viewCenterPosition = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
+   /// Default time to show HUD.
+   public var deadlineTime = Double(1.0)
+}
+```
+
+When you'd like to make styles reflected only in specific situation, use following methods.
+
+```Swift
+@discardableResult public class func set(style: KRProgressHUDStyle) -> KRProgressHUD.Type
+@discardableResult public class func set(maskType: KRProgressHUDMaskType) -> KRProgressHUD.Type
+@discardableResult public class func set(activityIndicatorViewStyle style: KRActivityIndicatorViewStyle) -> KRProgressHUD.Type
+@discardableResult public class func set(font: UIFont) -> KRProgressHUD.Type
+@discardableResult public class func set(centerPosition point: CGPoint) -> KRProgressHUD.Type
+@discardableResult public class func set(deadlineTime time: Double) -> KRProgressHUD.Type
+
+
+// Example
+KRProgressHUD
+   .set(style: .custom(background: .blue, text: .white, icon: nil))
+   .set(maskType: .white)
+   .show()
+```
+
+These `set()` setting can be reset by
+
+```Swift
+@discardableResult public class func resetStyles() -> KRProgressHUD.Type
+```
 
 ## Contributing to this project
 I'm seeking bug reports and feature requests.
 
 ## Release Note
-- 2.2.1 : Modify `M_PI` to `Double.pi` in KRActivityIndicatorView.swift for Swift3 coding.
-- 2.2.1 : Fixed bug of message label's position after calling `showText()`
-- 2.2.0 : Add `KRProgressHUDStyle.color(background: UIColor, contents: UIColor)`.
-          This can set custom color of HUD's background and contents(text, glyph icon).
++ 3.0.0 :
+  - [ADD] Set styles with method chaining.
+  - [ADD] Show HUD on VC.
+
++ 2.2.2 :
+  - [MODIFY] `M_PI` to `Double.pi`
+
++ 2.2.1 :
+  - [BUGFIX] Bug of message label's position after calling `showText()`
 
 ## License
-KRProgressHUD is available under the MIT license. See the LICENSE file for more info.
+KRProgressHUD is available under the MIT license.
+
+See the LICENSE file for more info.

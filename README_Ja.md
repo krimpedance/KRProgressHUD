@@ -9,9 +9,9 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CI Status](http://img.shields.io/travis/krimpedance/KRProgressHUD.svg?style=flat)](https://travis-ci.org/krimpedance/KRProgressHUD)
 
-`KRProgressHUD`は，Swiftでかかれた綺麗で使いやすいローディング画面を表示するライブラリです．
+`KRProgressHUD`は, Swiftで書かれた綺麗で使いやすいローディング画面を表示するライブラリです.
 
-インジケータには[KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator)を使用しています．
+インジケータには[KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicatorView)を使用しています.
 
 <img src="./Resources/demo.gif" height=400>
 <img src="./Resources/styles.png" width=400>
@@ -26,13 +26,13 @@
 - Swift 3.0+
 
 ## デモ
-`DEMO/`以下にあるサンプルプロジェクトから確認してください．
+`DEMO/`以下にあるサンプルプロジェクトから確認してください.
 
-または，[Appetize.io](https://appetize.io/app/nw022juw0znkf1n5u6ynga5ntm)にてシュミレートしてください．
+または, [Appetize.io](https://appetize.io/app/nw022juw0znkf1n5u6ynga5ntm)にてシュミレートしてください.
 
 ## インストール
 KRProgressHUDは[CocoaPods](http://cocoapods.org)と[Carthage](https://github.com/Carthage/Carthage)で
-インストールすることができます．
+インストールすることができます.
 
 ```ruby
 # Podfile
@@ -47,55 +47,71 @@ github "Krimpedance/KRProgressHUD"
 ## 使い方
 (`/Demo`以下のサンプルを見てみてください)
 
-###### 注意 :
+#### 注意 :
 **このライブラリは同期通信のようなユーザの操作を止めて処理を行うときなどに使用してください**
 
-**PullRefreshなど，他の場面で使用したい場合は，[KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator)を使用することをお勧めします**
+**PullRefreshなど, 他の場面で使用したい場合は, [KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicator)を使用することをお勧めします**
 
 
-`KRProgressHUD`はシングルトンパターンで作られています．
+`KRProgressHUD`はシングルトンパターンで作られています.
 
-まず，`KRProgressHUD`をインポートします．
+まず, `KRProgressHUD`をインポートします.
 
 GCDを使用した一番簡単な表示：
 ```Swift
 KRProgressHUD.show()
 
-let delay = DispatchTime.now() + 1
-DispatchQueue.main.asyncAfter(deadline: delay) {
-		KRProgressHUD.dismiss()
+DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+   KRProgressHUD.dismiss()
 }
 ```
 
-#### HUDの表示
-HUDの表示は，幾つかの引数を指定して行うことができます．
-この引数は，オプションであるため，指定したいものだけ追加することが可能です．
-また，この時の指定は，その表示の時有効となります．
+### HUDの表示
 
 ```Swift
-// progressHUDStyle : HUDの背景色の指定
-// maskType : HUDの後ろ側のビューの色
-// activityIndicatorStyle : KRActivityIndicatorViewのスタイル
-// message : インジケータと一緒に表示するテキスト
-// image : インジケータの代わりに表示する画像
-class func show(
-    progressHUDStyle progressStyle :KRProgressHUDStyle? = nil,
-    maskType type:KRProgressHUDMaskType? = nil,
-    activityIndicatorStyle indicatorStyle :KRActivityIndicatorStyle? = nil,
-    message :String? = nil,
-    font :UIFont? = nil,
-    image :UIImage? = nil,
-    completion: (()->())? = nil
-)
+class func show(withMessage message:String? = nil, completion: CompleteHandler? = nil)
 
 // 例
 KRProgressHUD.show()
-KRProgressHUD.show(message: "Loading...")
-KRProgressHUD.show(progressHUDStyle: .Black, message: "Loading...")
+KRProgressHUD.show(withMessage: "Loading...")
+KRProgressHUD.show(withMessage: "Loading...") {
+   print("Complete handler")
+}
 ```
 
-#### HUDのメッセージの更新
-パーセンテージの表示などのために，メッセージの更新メソッドがあります．
+**ViewController上に表示**
+
+もしViewController上にHUDを表示したいときは, `showOn()` で設定してください.
+
+この設定は一度だけ適用されます.
+
+```Swift
+  KRProgressHUD.showOn(viewController).show()
+```
+
+HUDを閉じる前に, 成功やエラーなどの情報をアイコン付きで表示することもできます.
+(表示は1秒間. 秒数は設定可能です.)
+
+```Swift
+class func showSuccess()
+class func showInfo()
+class func showWarning()
+class func showError()
+class func showImage() // 好きな画像を設定できます.
+```
+
+メッセージだけのHUDを表示
+
+```Swift
+public class func showMessage(_ message: String)
+
+// 例
+KRProgressHUD.showText("完了しました! \n 早速始めましょう!")
+```
+
+### HUDのメッセージの更新
+パーセンテージの表示などのために, メッセージの更新メソッドがあります.
+
 ```Swift
 class func update(text: String)
 
@@ -103,52 +119,73 @@ class func update(text: String)
 KRProgressHUD.update(text: "20%")
 ```
 
-#### メッセージだけのHUDを表示
-```Swift
-	public class func showText(
-            message: String, font: UIFont? = nil,
-            centerPosition position: CGPoint? = nil,
-            progressHUDStyle progressStyle: KRProgressHUDStyle? = nil,
-            maskType type: KRProgressHUDMaskType? = nil)
-
-// 例
-KRProgressHUD.showText("セットアップが完了しました!")
-```
-
-#### HUDを閉じる
-HUDを閉じるときは，以下を実行します．
-```Swift
-class func dismiss(_ completion: (()->())?)
-```
-HUDを閉じる前に，成功やエラーなどの情報をアイコン付きで表示することもできます．
-(表示は1秒間)
+### HUDを閉じる
+HUDを閉じるときは, 以下を実行します.
 
 ```Swift
-class func showSuccess()
-class func showInfo()
-class func showWarning()
-class func showError()
+class func dismiss(_ completion: CompleteHandler? = nil)
 ```
 
 ## カスタマイズ
-`KRProgressHUD`は，以下の設定が可能です．
+`KRProgressHUD.appearance()` では, 標準のスタイルを設定できます.
+
 ```Swift
-public class func set(maskType: KRProgressHUDMaskType)  // デフォルト: .black
-public class func set(style: KRProgressHUDStyle)  // デフォルト: .white
-public class func set(activityIndicatorStyle: KRProgressHUDActivityIndicatorStyle)  // デフォルト: .black
-public class func set(font: UIFont)  // デフォルト: ヒラギノ角ゴ W3 13px(ない場合はシステムフォント13px)
-public class func set(centerPosition: CGPoint)  // デフォルト: デバイスの画面の中央
+class KRProgressHUDAppearance {
+   /// HUDのスタイル.
+   public var style = KRProgressHUDStyle.white
+   /// マスクタイプ
+   public var maskType = KRProgressHUDMaskType.black
+   /// ローディングインジケータのスタイル
+   public var activityIndicatorStyle = KRActivityIndicatorViewStyle.gradationColor(head: .black, tail: .lightGray)
+   /// ラベルのフォント
+   public var font = UIFont.systemFont(ofSize: 13)
+   /// HUDのセンター位置
+   public var viewCenterPosition = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
+   /// HUDの表示時間.
+   public var deadlineTime = Double(1.0)
+}
 ```
-`KRActivityIndicatorView`のスタイルは[こちら](https://github.com/krimpedance/KRActivityIndicator/blob/master/README.md)を参考にしてください．
+
+特定の場面だけでスタイルを適用したいときは, 以下の関数を使用できます.
+
+```Swift
+@discardableResult public class func set(style: KRProgressHUDStyle) -> KRProgressHUD.Type
+@discardableResult public class func set(maskType: KRProgressHUDMaskType) -> KRProgressHUD.Type
+@discardableResult public class func set(activityIndicatorViewStyle style: KRActivityIndicatorViewStyle) -> KRProgressHUD.Type
+@discardableResult public class func set(font: UIFont) -> KRProgressHUD.Type
+@discardableResult public class func set(centerPosition point: CGPoint) -> KRProgressHUD.Type
+@discardableResult public class func set(deadlineTime time: Double) -> KRProgressHUD.Type
+
+
+// 例
+KRProgressHUD
+   .set(style: .custom(background: .blue, text: .white, icon: nil))
+   .set(maskType: .white)
+   .show()
+```
+
+`set()` で設定したスタイルは以下の関数でリセットできます.
+
+```Swift
+@discardableResult public class func resetStyles() -> KRProgressHUD.Type
+```
+
 
 ## ライブラリに関する質問等
-バグや機能のリクエストがありましたら，気軽にコメントしてください．
+バグや機能のリクエストがありましたら, 気軽にコメントしてください.
 
 ## リリースノート
-- 2.2.2 : KRActivityIndicatorView.siwftの `M_PI` を `Double.pi` に変更.
-- 2.2.1 : `showText()`実行後の表示で, メッセージラベルの位置がずれるバグを修正
-- 2.2.0 : `KRProgressHUDStyle.color(background: UIColor, contents: UIColor)` を追加しました.
-          このスタイルを用いることで, HUDの背景, コンテンツ(テキスト, アイコン)の色をカスタマイズできます.
++ 3.0.0 :
+  - [追加] スタイルをメソッドチェーンを用いて設定できるようになりました.
+  - [追加] ViewController上でHUDを表示できるようになりました.
+
++ 2.2.2 :
+  - [変更] `M_PI` を `Double.pi` に変更.
+
++ 2.2.1 :
+  - [バグ修正] `showText()`実行後の表示で, メッセージラベルの位置がずれるバグを修正
 
 ## ライセンス
-KRProgressHUDはMITライセンスに準拠しています．詳しくは`LICENSE`ファイルをみてください．
+KRProgressHUDはMITライセンスに準拠しています.
+
+詳しくは`LICENSE`ファイルをみてください.
