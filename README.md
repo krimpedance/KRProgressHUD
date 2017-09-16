@@ -62,7 +62,7 @@ Show simple HUD :
 ```Swift
 KRProgressHUD.show()
 
-DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+DispatchQueue.main.asyncAfter(deadline: .now()+1) {
    KRProgressHUD.dismiss()
 }
 ```
