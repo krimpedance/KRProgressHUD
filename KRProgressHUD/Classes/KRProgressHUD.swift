@@ -129,7 +129,7 @@ extension KRProgressHUD {
 
     - returns: The appearance proxy for the receiver.
     */
-   public class func appearance() -> KRProgressHUDAppearance {
+   public static func appearance() -> KRProgressHUDAppearance {
       return shared.viewAppearance
    }
 
@@ -141,7 +141,7 @@ extension KRProgressHUD {
 
     - returns: KRProgressHUD.Type (discardable)
     */
-   @discardableResult public class func set(style: KRProgressHUDStyle) -> KRProgressHUD.Type {
+   @discardableResult public static func set(style: KRProgressHUDStyle) -> KRProgressHUD.Type {
       shared.style = style
       return KRProgressHUD.self
    }
@@ -154,7 +154,7 @@ extension KRProgressHUD {
 
     - returns: KRProgressHUD.Type (discardable)
     */
-   @discardableResult public class func set(maskType: KRProgressHUDMaskType) -> KRProgressHUD.Type {
+   @discardableResult public static func set(maskType: KRProgressHUDMaskType) -> KRProgressHUD.Type {
       shared.maskType = maskType
       return KRProgressHUD.self
    }
@@ -167,7 +167,7 @@ extension KRProgressHUD {
 
     - returns: KRProgressHUD.Type (discardable)
     */
-   @discardableResult public class func set(activityIndicatorViewStyle style: KRActivityIndicatorViewStyle) -> KRProgressHUD.Type {
+   @discardableResult public static func set(activityIndicatorViewStyle style: KRActivityIndicatorViewStyle) -> KRProgressHUD.Type {
       shared.activityIndicatorStyle = style
       return KRProgressHUD.self
    }
@@ -180,7 +180,7 @@ extension KRProgressHUD {
 
     - returns: KRProgressHUD.Type (discardable)
     */
-   @discardableResult public class func set(font: UIFont) -> KRProgressHUD.Type {
+   @discardableResult public static func set(font: UIFont) -> KRProgressHUD.Type {
       shared.font = font
       return KRProgressHUD.self
    }
@@ -193,7 +193,7 @@ extension KRProgressHUD {
 
     - returns: KRProgressHUD.Type (discardable)
     */
-   @discardableResult public class func set(centerPosition point: CGPoint) -> KRProgressHUD.Type {
+   @discardableResult public static func set(centerPosition point: CGPoint) -> KRProgressHUD.Type {
       shared.viewCenterPosition = point
       return KRProgressHUD.self
    }
@@ -215,7 +215,7 @@ extension KRProgressHUD {
 
     - returns: KRProgressHUD.Type (discardable)
     */
-   @discardableResult public class func set(deadlineTime time: Double) -> KRProgressHUD.Type {
+   @discardableResult public static func set(deadlineTime time: Double) -> KRProgressHUD.Type {
       shared.deadlineTime = time
       return KRProgressHUD.self
    }
@@ -225,7 +225,7 @@ extension KRProgressHUD {
 
     - returns: KRProgressHUD.Type (discardable)
     */
-   @discardableResult public class func resetStyles() -> KRProgressHUD.Type {
+   @discardableResult public static func resetStyles() -> KRProgressHUD.Type {
       shared.style = nil
       shared.maskType = nil
       shared.activityIndicatorStyle = nil
@@ -243,7 +243,7 @@ extension KRProgressHUD {
 
     - returns: KRProgressHUD.Type
     */
-   public class func showOn(_ viewController: UIViewController) -> KRProgressHUD.Type {
+   public static func showOn(_ viewController: UIViewController) -> KRProgressHUD.Type {
       shared.presentingViewController = viewController
       return KRProgressHUD.self
    }
@@ -259,7 +259,7 @@ extension KRProgressHUD {
     - parameter message:    HUD's message (option).
     - parameter completion: Show completion handler (option).
     */
-   public class func show(withMessage message: String? = nil, completion: CompletionHandler? = nil) {
+   public static func show(withMessage message: String? = nil, completion: CompletionHandler? = nil) {
       shared.show(withMessage: message, isLoading: true, completion: completion)
    }
 
@@ -269,7 +269,7 @@ extension KRProgressHUD {
 
     - parameter message: HUD's message (option).
     */
-   public class func showSuccess(withMessage message: String? = nil) {
+   public static func showSuccess(withMessage message: String? = nil) {
       shared.show(withMessage: message, iconType: .success)
    }
 
@@ -279,7 +279,7 @@ extension KRProgressHUD {
 
     - parameter message: HUD's message (option).
     */
-   public class func showInfo(withMessage message: String? = nil) {
+   public static func showInfo(withMessage message: String? = nil) {
       shared.show(withMessage: message, iconType: .info)
    }
 
@@ -289,7 +289,7 @@ extension KRProgressHUD {
 
     - parameter message: HUD's message (option).
     */
-   public class func showWarning(withMessage message: String? = nil) {
+   public static func showWarning(withMessage message: String? = nil) {
       shared.show(withMessage: message, iconType: .warning)
    }
 
@@ -299,7 +299,7 @@ extension KRProgressHUD {
 
     - parameter message: HUD's message (option).
     */
-   public class func showError(withMessage message: String? = nil) {
+   public static func showError(withMessage message: String? = nil) {
       shared.show(withMessage: message, iconType: .error)
    }
 
@@ -310,7 +310,7 @@ extension KRProgressHUD {
     - parameter image:   Image that display instead of activity indicator.
     - parameter message: HUD's message (option).
     */
-   public class func showImage(_ image: UIImage, message: String? = nil) {
+   public static func showImage(_ image: UIImage, message: String? = nil) {
       shared.show(withMessage: message, image: image)
    }
 
@@ -320,7 +320,7 @@ extension KRProgressHUD {
 
     - parameter message: HUD's message.
     */
-   public class func showMessage(_ message: String) {
+   public static func showMessage(_ message: String) {
       shared.show(withMessage: message, isOnlyText: true)
    }
 
@@ -329,7 +329,7 @@ extension KRProgressHUD {
 
     - parameter message: String
     */
-   public class func update(message: String) {
+   public static func update(message: String) {
       shared.messageLabel.text = message
    }
 
@@ -338,7 +338,7 @@ extension KRProgressHUD {
 
     - parameter completion: Hide completion handler (option).
     */
-   public class func dismiss(_ completion: CompletionHandler? = nil) {
+   public static func dismiss(_ completion: CompletionHandler? = nil) {
       shared.dismiss(completion: completion)
    }
 }
