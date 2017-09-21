@@ -21,9 +21,9 @@
 - Indicator color can be customized
 
 ## Requirements
-- iOS 9.0+
-- Xcode 8.0+
-- Swift 3.0+
+- iOS 10.0+
+- Xcode 9.0+
+- Swift 4.0+
 
 ## DEMO
 To run the example project, clone the repo, and open `KRProgressHUDDemo.xcodeproj` from the DEMO directory.
@@ -175,15 +175,12 @@ These `set()` setting can be reset by
 I'm seeking bug reports and feature requests.
 
 ## Release Note
++ 3.1.0 :
+  - Available at CocoaPods and Carthage with Xcode9 and Swift4.
+
 + 3.0.0 :
   - [ADD] Set styles with method chaining.
   - [ADD] Show HUD on VC.
-
-+ 2.2.2 :
-  - [MODIFY] `M_PI` to `Double.pi`
-
-+ 2.2.1 :
-  - [BUGFIX] Bug of message label's position after calling `showText()`
 
 ## License
 KRProgressHUD is available under the MIT license.
