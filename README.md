@@ -21,7 +21,7 @@
 - Indicator color can be customized
 
 ## Requirements
-- iOS 10.0+
+- iOS 8.0+
 - Xcode 9.0+
 - Swift 4.0+
 
@@ -175,6 +175,9 @@ These `set()` setting can be reset by
 I'm seeking bug reports and feature requests.
 
 ## Release Note
++ 3.1.1 :
+  - Supported from iOS 8.0.
+
 + 3.1.0 :
   - Available at CocoaPods and Carthage with Xcode9 and Swift4.
 
