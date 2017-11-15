@@ -77,12 +77,13 @@ extension KRProgressHUD {
    func show(withMessage message: String?,
              iconType: KRProgressHUDIconType? = nil,
              image: UIImage? = nil,
+             imageSize: CGSize? = nil,
              isOnlyText: Bool = false,
              isLoading: Bool = false,
              completion: CompletionHandler? = nil ) {
       DispatchQueue.main.async {
          self.applyStyles()
-         self.updateLayouts(message: message, iconType: iconType, image: image, isOnlyText: isOnlyText)
+         self.updateLayouts(message: message, iconType: iconType, image: image, imageSize: imageSize, isOnlyText: isOnlyText)
 
          let deadline = self.cancelCurrentDismissHandler() ? 0 : fadeTime
          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + deadline) {
@@ -180,7 +181,7 @@ extension KRProgressHUD {
       messageLabel.isHidden = false
    }
 
-   func updateLayouts(message: String?, iconType: KRProgressHUDIconType?, image: UIImage?, isOnlyText: Bool) {
+   func updateLayouts(message: String?, iconType: KRProgressHUDIconType?, image: UIImage?, imageSize: CGSize?, isOnlyText: Bool) {
       resetLayouts()
       messageLabel.text = message
 
@@ -209,6 +210,8 @@ extension KRProgressHUD {
 
       case (nil, let image):
          imageView.isHidden = false
+         let size = imageSize ?? image!.size
+         imageView.contentMode = size.width < imageView.bounds.width && size.height < imageView.bounds.height ? .center : .scaleAspectFit
          imageView.image = image
 
       case (let iconType, _):

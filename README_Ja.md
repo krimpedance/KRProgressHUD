@@ -97,7 +97,7 @@ class func showSuccess()
 class func showInfo()
 class func showWarning()
 class func showError()
-class func showImage() // 好きな画像を設定できます.
+class func showImage() // 好きな画像を設定できます. (最大サイズは50x50です)
 ```
 
 メッセージだけのHUDを表示
@@ -175,6 +175,9 @@ KRProgressHUD
 バグや機能のリクエストがありましたら, 気軽にコメントしてください.
 
 ## リリースノート
++ 3.1.2 :
+  - 小さいカスタム画像の表示のバグを修正しました.
+
 + 3.1.1 :
   - iOS 8.0以降をサポートするようにしました.
 

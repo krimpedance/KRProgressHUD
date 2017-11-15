@@ -98,7 +98,7 @@ class func showSuccess()
 class func showInfo()
 class func showWarning()
 class func showError()
-class func showImage() // This can set custom image.
+class func showImage() // This can set custom image. (Max size is 50x50)
 ```
 
 Show the HUD (only message)
@@ -175,6 +175,9 @@ These `set()` setting can be reset by
 I'm seeking bug reports and feature requests.
 
 ## Release Note
++ 3.1.2 :
+  - Fixed bug of custom small image.
+
 + 3.1.1 :
   - Supported from iOS 8.0.
 

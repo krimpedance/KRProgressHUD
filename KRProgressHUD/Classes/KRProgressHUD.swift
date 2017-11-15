@@ -310,8 +310,8 @@ extension KRProgressHUD {
     - parameter image:   Image that display instead of activity indicator.
     - parameter message: HUD's message (option).
     */
-   public static func showImage(_ image: UIImage, message: String? = nil) {
-      shared.show(withMessage: message, image: image)
+   public static func showImage(_ image: UIImage, size: CGSize? = nil, message: String? = nil) {
+      shared.show(withMessage: message, image: image, imageSize: size)
    }
 
    /**

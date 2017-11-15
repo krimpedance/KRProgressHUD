@@ -97,25 +97,25 @@ class KRProgressHUDTests: XCTestCase {
       KRProgressHUD.appearance().viewCenterPosition = CGPoint(x: 100, y: 100)
       
       // loading
-      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 100, y: 100))
       // loading with message
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 100, y: 100))
       // icon
-      KRProgressHUD.shared.updateLayouts(message: nil, iconType: .success, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: nil, iconType: .success, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 100, y: 100))
       // icon with message
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: .info, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: .info, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 100, y: 100))
       // image
-      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: image, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: image, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 100, y: 100))
       // image with message
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: image, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: image, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 100, y: 100))
       // test conly
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, isOnlyText: true)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, imageSize: nil, isOnlyText: true)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 100, y: 100))
       
       /**
@@ -124,25 +124,25 @@ class KRProgressHUDTests: XCTestCase {
       KRProgressHUD.set(centerPosition: CGPoint(x: 50, y: 50))
       
       // loading
-      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 50, y: 50))
       // loading with message
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 50, y: 50))
       // icon
-      KRProgressHUD.shared.updateLayouts(message: nil, iconType: .success, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: nil, iconType: .success, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 50, y: 50))
       // icon with message
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: .info, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: .info, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 50, y: 50))
       // image
-      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: image, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: image, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 50, y: 50))
       // image with message
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: image, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: image, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 50, y: 50))
       // test conly
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, isOnlyText: true)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, imageSize: nil, isOnlyText: true)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 50, y: 50))
       
       /**
@@ -151,25 +151,25 @@ class KRProgressHUDTests: XCTestCase {
       KRProgressHUD.resetStyles()
       
       // loading
-      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 100, y: 100))
       // loading with message
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 100, y: 100))
       // icon
-      KRProgressHUD.shared.updateLayouts(message: nil, iconType: .success, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: nil, iconType: .success, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 100, y: 100))
       // icon with message
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: .info, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: .info, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 100, y: 100))
       // image
-      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: image, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: image, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 100, y: 100))
       // image with message
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: image, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: image, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 100, y: 100))
       // test conly
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, isOnlyText: true)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, imageSize: nil, isOnlyText: true)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 100, y: 100))
    }
    
@@ -204,7 +204,7 @@ class KRProgressHUDTests: XCTestCase {
       XCTAssertEqual(KRProgressHUD.shared.messageLabel.isHidden, false)
       
       // loading
-      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.frame.size, simpleHUDSize)
       XCTAssertEqual(KRProgressHUD.shared.iconView.isHidden, false)
       XCTAssertEqual(KRProgressHUD.shared.iconView.center, simpleHUDIconViewCenter)
@@ -218,7 +218,7 @@ class KRProgressHUDTests: XCTestCase {
       XCTAssertEqual(KRProgressHUD.shared.messageLabel.isHidden, true)
       
       // loading with message
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.frame.size, hudSize)
       XCTAssertEqual(KRProgressHUD.shared.iconView.isHidden, false)
       XCTAssertEqual(KRProgressHUD.shared.iconView.center, iconViewCenter)
@@ -232,7 +232,7 @@ class KRProgressHUDTests: XCTestCase {
       XCTAssertEqual(KRProgressHUD.shared.messageLabel.isHidden, false)
       
       // icon
-      KRProgressHUD.shared.updateLayouts(message: nil, iconType: .success, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: nil, iconType: .success, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.frame.size, simpleHUDSize)
       XCTAssertEqual(KRProgressHUD.shared.iconView.isHidden, false)
       XCTAssertEqual(KRProgressHUD.shared.iconView.center, simpleHUDIconViewCenter)
@@ -246,7 +246,7 @@ class KRProgressHUDTests: XCTestCase {
       XCTAssertEqual(KRProgressHUD.shared.messageLabel.isHidden, true)
       
       // icon with message
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: .info, image: nil, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: .info, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.frame.size, hudSize)
       XCTAssertEqual(KRProgressHUD.shared.iconView.isHidden, false)
       XCTAssertEqual(KRProgressHUD.shared.iconView.center, iconViewCenter)
@@ -260,7 +260,7 @@ class KRProgressHUDTests: XCTestCase {
       XCTAssertEqual(KRProgressHUD.shared.messageLabel.isHidden, false)
       
       // image
-      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: image, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: image, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.frame.size, simpleHUDSize)
       XCTAssertEqual(KRProgressHUD.shared.iconView.isHidden, false)
       XCTAssertEqual(KRProgressHUD.shared.iconView.center, simpleHUDIconViewCenter)
@@ -274,7 +274,7 @@ class KRProgressHUDTests: XCTestCase {
       XCTAssertEqual(KRProgressHUD.shared.messageLabel.isHidden, true)
       
       // image with message
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: image, isOnlyText: false)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: image, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.frame.size, hudSize)
       XCTAssertEqual(KRProgressHUD.shared.iconView.isHidden, false)
       XCTAssertEqual(KRProgressHUD.shared.iconView.center, iconViewCenter)
@@ -288,7 +288,7 @@ class KRProgressHUDTests: XCTestCase {
       XCTAssertEqual(KRProgressHUD.shared.messageLabel.isHidden, false)
       
       // test conly
-      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, isOnlyText: true)
+      KRProgressHUD.shared.updateLayouts(message: "test", iconType: nil, image: nil, imageSize: nil, isOnlyText: true)
       XCTAssertEqual(KRProgressHUD.shared.iconView.isHidden, true)
       XCTAssertEqual(KRProgressHUD.shared.iconView.center, iconViewCenter)
       XCTAssertEqual(KRProgressHUD.shared.activityIndicatorView.isAnimating, false)
