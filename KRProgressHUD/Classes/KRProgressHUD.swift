@@ -16,13 +16,14 @@ import KRActivityIndicatorView
  - **black:** `UIColor(white: 0, alpho: 0.2)`. Default type.
  */
 public enum KRProgressHUDMaskType {
-   case clear, white, black
+    case clear, white, black, custom(color: UIColor)
 
    var maskColor: UIColor {
       switch self {
       case .clear: return .clear
       case .white: return UIColor(white: 1, alpha: 0.2)
       case .black: return UIColor(white: 0, alpha: 0.2)
+      case .custom(let color): return color
       }
    }
 }
