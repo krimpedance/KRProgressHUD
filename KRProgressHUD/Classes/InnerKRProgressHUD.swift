@@ -24,9 +24,10 @@ fileprivate let messageLabelFrame = CGRect(x: messageLabelMargin,
 extension KRProgressHUD {
    func configureProgressHUDView() {
       window.windowLevel = UIWindowLevelNormal
+      defaultViewCenterPosition = CGPoint(x: window.bounds.midX, y: window.bounds.midY)
 
       hudView.frame.size = hudSize
-      hudView.center = viewAppearance.viewCenterPosition
+      hudView.center = defaultViewCenterPosition
       hudView.backgroundColor = .white
       hudView.layer.cornerRadius = 10
       hudView.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin,
@@ -167,8 +168,10 @@ extension KRProgressHUD {
    }
 
    func resetLayouts() {
+      hudViewController.view.frame = window.frame
+      defaultViewCenterPosition = CGPoint(x: window.bounds.midX, y: window.bounds.midY)
       hudView.frame.size = hudSize
-      hudView.center = viewCenterPosition ?? viewAppearance.viewCenterPosition
+      hudView.center = viewCenterPosition ?? defaultViewCenterPosition
       iconView.isHidden = false
       iconView.center = iconViewCenter
       activityIndicatorView.stopAnimating()
@@ -193,14 +196,14 @@ extension KRProgressHUD {
          messageLabel.frame.origin = CGPoint(x: messageLabelMargin, y: messageLabelMargin)
          hudView.frame.size = CGSize(width: messageLabel.bounds.width + messageLabelMargin*2,
                                      height: messageLabel.bounds.height + messageLabelMargin*2)
-         hudView.center = viewCenterPosition ?? viewAppearance.viewCenterPosition
+         hudView.center = viewCenterPosition ?? defaultViewCenterPosition
          return
       }
 
       if message == nil {
          messageLabel.isHidden = true
          hudView.frame.size = simpleHUDSize
-         hudView.center = viewCenterPosition ?? viewAppearance.viewCenterPosition
+         hudView.center = viewCenterPosition ?? defaultViewCenterPosition
          iconView.center = simpleHUDIconViewCenter
       }
 
