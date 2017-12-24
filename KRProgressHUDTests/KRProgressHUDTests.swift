@@ -91,6 +91,12 @@ class KRProgressHUDTests: XCTestCase {
        */
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, centerPosition)
       
+      /**
+       Set default center position test
+       */
+    
+      KRProgressHUD.shared.defaultViewCenterPosition = CGPoint(x: 100, y: 100)
+    
       // loading
       KRProgressHUD.shared.updateLayouts(message: nil, iconType: nil, image: nil, imageSize: nil, isOnlyText: false)
       XCTAssertEqual(KRProgressHUD.shared.hudView.center, CGPoint(x: 100, y: 100))
