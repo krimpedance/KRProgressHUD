@@ -80,8 +80,6 @@ public final class KRProgressHUD {
       public var activityIndicatorStyle = KRActivityIndicatorViewStyle.gradationColor(head: .black, tail: .lightGray)
       /// Default message label font.
       public var font = UIFont.systemFont(ofSize: 13)
-      /// Default HUD center position.
-      public var viewCenterPosition = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
       /// Default time to show HUD.
       public var deadlineTime = Double(1.0)
 
@@ -107,6 +105,7 @@ public final class KRProgressHUD {
    var maskType: KRProgressHUDMaskType?
    var activityIndicatorStyle: KRActivityIndicatorViewStyle?
    var font: UIFont?
+   var defaultViewCenterPosition: CGPoint!
    var viewCenterPosition: CGPoint?
    var deadlineTime: Double?
 
