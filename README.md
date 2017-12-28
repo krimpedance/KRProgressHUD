@@ -177,7 +177,8 @@ I'm seeking bug reports and feature requests.
 ## Release Note
 + 3.2.0 :
   - Can now customize mask color.
-  - Fixed bug of HUD layout when the screen orientation changes.
+  - HUD size varies dynamically depending on text length.
+  - Fixed bug of HUD layout when the screen orientation changes. [#32](https://github.com/krimpedance/KRProgressHUD/pull/32)
 
 + 3.1.2 :
   - Fixed bug of custom small image.
