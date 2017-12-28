@@ -31,22 +31,3 @@ class KRProgressHUDViewController: UIViewController {
         return statusBarHidden
     }
 }
-
-// MARK: - UIApplication extension ------------
-
-fileprivate extension UIApplication {
-    func topViewController(_ base: UIViewController? = nil) -> UIViewController? {
-        let base = base ?? keyWindow?.rootViewController
-        if let nav = base as? UINavigationController {
-            return topViewController(nav.visibleViewController)
-        }
-        if let tab = base as? UITabBarController {
-            guard let selected = tab.selectedViewController else { return base }
-            return topViewController(selected)
-        }
-        if let presented = base?.presentedViewController {
-            return topViewController(presented)
-        }
-        return base
-    }
-}

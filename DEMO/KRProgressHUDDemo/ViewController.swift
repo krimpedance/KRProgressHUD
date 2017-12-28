@@ -44,7 +44,7 @@ extension ViewController {
             KRProgressHUD.show(withMessage: "Loading...")
         }
 
-        let delay = DispatchTime.now() + 1
+        let delay = DispatchTime.now() + 2
         DispatchQueue.main.asyncAfter(deadline: delay) {
             KRProgressHUD.dismiss {
                 print("dismiss() completion handler.")
@@ -54,7 +54,7 @@ extension ViewController {
 
     @IBAction func showTextButtonTapped(withSender sender: UIButton) {
         let rand = arc4random() % 10
-        if rand > 3 {
+        if rand > 2 {
             KRProgressHUD.showMessage("message only HUD :)\nThis can indicate multiline message.")
         } else {
             KRProgressHUD.showMessage("こ\nん\nに\nち\nは\n😃")

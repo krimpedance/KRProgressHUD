@@ -14,6 +14,7 @@ import KRActivityIndicatorView
  - **clear:** `UIColor.clear`.
  - **white:** `UIColor(white: 1, alpho: 0.2)`.
  - **black:** `UIColor(white: 0, alpho: 0.2)`. Default type.
+ - **custom:** You can set custom mask color.
  */
 public enum KRProgressHUDMaskType {
     case clear, white, black, custom(color: UIColor)
@@ -33,7 +34,7 @@ public enum KRProgressHUDMaskType {
  
  - **white:**          HUD's backgroundColor is `.white`. HUD's text color is `.black`. Default style.
  - **black:**           HUD's backgroundColor is `.black`. HUD's text color is `.white`.
- - **custom(background, text, icon):**  Set custom color of HUD's background, text and glyph icon.
+ - **custom(background, text, icon):**  You can set custom color of HUD's background, text and glyph icon.
  If you set nil to `icon`, it's shown in original color.
  */
 public enum KRProgressHUDStyle {
@@ -45,7 +46,7 @@ public enum KRProgressHUDStyle {
         switch self {
         case .white: return .white
         case .black: return .black
-        case .custom(let background, _, _): return background
+        case .custom(let style): return style.background
         }
     }
 
@@ -53,13 +54,13 @@ public enum KRProgressHUDStyle {
         switch self {
         case .white: return .black
         case .black: return .white
-        case .custom(_, let text, _): return text
+        case .custom(let style): return style.text
         }
     }
 
     var iconColor: UIColor? {
         switch self {
-        case .custom(_, _, let icon): return icon
+        case .custom(let style): return style.icon
         default: return nil
         }
     }
@@ -80,8 +81,8 @@ public final class KRProgressHUD {
         public var activityIndicatorStyle = KRActivityIndicatorViewStyle.gradationColor(head: .black, tail: .lightGray)
         /// Default message label font.
         public var font = UIFont.systemFont(ofSize: 13)
-        /// Default HUD center position.
-        public var viewCenterPosition = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
+        /// Default HUD center offset of y axis.
+        public var viewOffset = CGFloat(0.0)
         /// Default time to show HUD.
         public var deadlineTime = Double(1.0)
 
@@ -107,8 +108,14 @@ public final class KRProgressHUD {
     var maskType: KRProgressHUDMaskType?
     var activityIndicatorStyle: KRActivityIndicatorViewStyle?
     var font: UIFont?
-    var viewCenterPosition: CGPoint?
+    var viewOffset: CGFloat?
     var deadlineTime: Double?
+
+    var hudViewCenterYConstraint: NSLayoutConstraint!
+    var hudViewSideMarginConstraints = [NSLayoutConstraint]()
+    var iconViewConstraints = [NSLayoutConstraint]()
+    var messageLabelConstraints = [NSLayoutConstraint]()
+    var messageLabelMinWidthConstraint: NSLayoutConstraint!
 
     var dismissHandler: DispatchWorkItem?
     weak var appWindow: UIWindow?
@@ -187,21 +194,21 @@ extension KRProgressHUD {
     }
 
     /**
-     Sets the HUD center position.
+     Sets the HUD center offset of y axis.
      This value is cleared by `resetStyles()`.
-     
-     - parameter point: the HUD center position.
-     
+
+     - parameter viewOffset: the HUD center offset of y axis.
+
      - returns: KRProgressHUD.Type (discardable)
      */
-    @discardableResult public static func set(centerPosition point: CGPoint) -> KRProgressHUD.Type {
-        shared.viewCenterPosition = point
+    @discardableResult public static func set(viewOffset offset: CGFloat) -> KRProgressHUD.Type {
+        shared.viewOffset = offset
         return KRProgressHUD.self
     }
 
     /**
      Sets deadline time to show HUD.
-     
+
      This is used:
      - `showSuccess()`
      - `showInfo()`
@@ -209,11 +216,11 @@ extension KRProgressHUD {
      - `showError()`
      - `showImage()`
      - `showMessage()`
-     
+
      This value is cleared by `resetStyles()`.
-     
-     - parameter point: the HUD center position.
-     
+
+     - parameter time: deadline time.
+
      - returns: KRProgressHUD.Type (discardable)
      */
     @discardableResult public static func set(deadlineTime time: Double) -> KRProgressHUD.Type {
@@ -231,7 +238,7 @@ extension KRProgressHUD {
         shared.maskType = nil
         shared.activityIndicatorStyle = nil
         shared.font = nil
-        shared.viewCenterPosition = nil
+        shared.viewOffset = nil
         shared.deadlineTime = nil
         return KRProgressHUD.self
     }
