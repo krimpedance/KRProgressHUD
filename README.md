@@ -175,18 +175,12 @@ These `set()` setting can be reset by
 I'm seeking bug reports and feature requests.
 
 ## Release Note
++ 3.2.0 :
+  - Can now customize mask color.
+  - Fixed bug of HUD layout when the screen orientation changes.
+
 + 3.1.2 :
   - Fixed bug of custom small image.
-
-+ 3.1.1 :
-  - Supported from iOS 8.0.
-
-+ 3.1.0 :
-  - Available at CocoaPods and Carthage with Xcode9 and Swift4.
-
-+ 3.0.0 :
-  - [ADD] Set styles with method chaining.
-  - [ADD] Show HUD on VC.
 
 ## License
 KRProgressHUD is available under the MIT license.
