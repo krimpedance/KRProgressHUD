@@ -156,6 +156,7 @@ extension KRProgressHUD {
             hudViewController.view.alpha = 0
             if let presentingVC = presentingViewController {
                 presentingVC.view.addSubview(hudViewController.view)
+                setConstraintsToPresentingVC()
             } else {
                 appWindow = UIApplication.shared.keyWindow
                 window.makeKeyAndVisible()
@@ -241,5 +242,15 @@ extension KRProgressHUD {
             iconDrawingLayer.path = iconType!.getPath()
             iconDrawingLayer.fillColor = iconDrawingLayer.fillColor ?? iconType!.getColor()
         }
+    }
+
+    func setConstraintsToPresentingVC() {
+        guard let view = presentingViewController?.view, view == hudViewController.view.superview else { return }
+        view.addConstraints([
+            NSLayoutConstraint(item: hudViewController.view, attribute: .top, toItem: view),
+            NSLayoutConstraint(item: hudViewController.view, attribute: .bottom, toItem: view),
+            NSLayoutConstraint(item: hudViewController.view, attribute: .left, toItem: view),
+            NSLayoutConstraint(item: hudViewController.view, attribute: .right, toItem: view)
+        ])
     }
 }

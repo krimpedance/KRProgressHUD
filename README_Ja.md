@@ -175,6 +175,10 @@ KRProgressHUD
 バグや機能のリクエストがありましたら, 気軽にコメントしてください.
 
 ## リリースノート
++ 3.2.1 :
+  - `UINavigationController` を使用した時，無限ループになるバグを修正. [#34](https://github.com/krimpedance/KRProgressHUD/pull/34)
+  - `showOn(_ viewController:)` 関数を使用した時にレイアウトが崩れるバグを修正.
+
 + 3.2.0 :
   - マスクカラーを好きな色に設定できるようになりました.
   - HUDのサイズはテキストサイズによって動的に変化するようになります.
