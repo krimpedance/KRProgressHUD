@@ -12,11 +12,10 @@ import UIKit
 extension UIApplication {
     func topViewController(_ base: UIViewController? = nil) -> UIViewController? {
         let base = base ?? keyWindow?.rootViewController
-        if let nav = base as? UINavigationController {
-            return topViewController(nav.visibleViewController)
+        if let top = (base as? UINavigationController)?.topViewController {
+            return topViewController(top)
         }
-        if let tab = base as? UITabBarController {
-            guard let selected = tab.selectedViewController else { return base }
+        if let selected = (base as? UITabBarController)?.selectedViewController {
             return topViewController(selected)
         }
         if let presented = base?.presentedViewController {
