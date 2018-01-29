@@ -13,8 +13,8 @@
 
 [KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicatorView) is used for loading view.
 
-<img src="https://github.com/krimpedance/KRProgressHUD/blob/master/Resources/demo.gif" height=400>
-<img src="https://github.com/krimpedance/KRProgressHUD/blob/master/Resources/styles.png" width=400>
+<img src="https://github.com/krimpedance/Resources/blob/master/KRProgressHUD/demo.gif" height=400>
+<img src="https://github.com/krimpedance/Resources/blob/master/KRProgressHUD/styles.png" width=400>
 
 ## Features
 - Round indicator

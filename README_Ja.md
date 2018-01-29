@@ -13,8 +13,8 @@
 
 インジケータには[KRActivityIndicatorView](https://github.com/krimpedance/KRActivityIndicatorView)を使用しています.
 
-<img src="https://github.com/krimpedance/KRProgressHUD/Resources/demo.gif" height=400>
-<img src="https://github.com/krimpedance/KRProgressHUD/Resources/styles.png" width=400>
+<img src="https://github.com/krimpedance/Resources/blob/master/KRProgressHUD/demo.gif" height=400>
+<img src="https://github.com/krimpedance/Resources/blob/master/KRProgressHUD/styles.png" width=400>
 
 ## 特徴
 - 丸いインジケータ
