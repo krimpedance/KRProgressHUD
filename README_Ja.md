@@ -1,6 +1,6 @@
 [English](./README.md)
 
-# KRProgressHUD
+<img src="https://github.com/krimpedance/Resources/blob/master/KRProgressHUD/logo.png" width="100%">
 
 [![Version](https://img.shields.io/cocoapods/v/KRProgressHUD.svg?style=flat)](http://cocoapods.org/pods/KRProgressHUD)
 [![License](https://img.shields.io/cocoapods/l/KRProgressHUD.svg?style=flat)](http://cocoapods.org/pods/KRProgressHUD)
