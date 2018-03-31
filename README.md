@@ -175,6 +175,9 @@ These `set()` setting can be reset by
 I'm seeking bug reports and feature requests.
 
 ## Release Note
++ 3.2.2 :
+  - Compatible with Swift 4.1.
+
 + 3.2.1 :
   - Fixed bug of recursion when uses `UINavigationController`. [#34](https://github.com/krimpedance/KRProgressHUD/pull/34)
   - Fixed bug of HUD layout when uses `showOn(_ viewController:)` method.

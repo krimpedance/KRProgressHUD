@@ -16,17 +16,17 @@ class KRProgressHUDViewController: UIViewController {
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        guard let vc = UIApplication.shared.topViewController() else { return statusBarStyle }
-        if !vc.isKind(of: KRProgressHUDViewController.self) {
-            statusBarStyle = vc.preferredStatusBarStyle
+        guard let topVC = UIApplication.shared.topViewController() else { return statusBarStyle }
+        if !topVC.isKind(of: KRProgressHUDViewController.self) {
+            statusBarStyle = topVC.preferredStatusBarStyle
         }
         return statusBarStyle
     }
 
     override var prefersStatusBarHidden: Bool {
-        guard let vc = UIApplication.shared.topViewController() else { return statusBarHidden }
-        if !vc.isKind(of: KRProgressHUDViewController.self) {
-            statusBarHidden = vc.prefersStatusBarHidden
+        guard let topVC = UIApplication.shared.topViewController() else { return statusBarHidden }
+        if !topVC.isKind(of: KRProgressHUDViewController.self) {
+            statusBarHidden = topVC.prefersStatusBarHidden
         }
         return statusBarHidden
     }
