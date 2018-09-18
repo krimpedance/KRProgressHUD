@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/phpmaple/KRProgressHUD.git", :tag => s.version.to_s }
   s.source_files = "KRProgressHUD/**/*.swift"
 
-  s.dependency "KRActivityIndicatorView", "2.1.2"
+  s.dependency "KRActivityIndicatorView", :branch => "master"
 end
