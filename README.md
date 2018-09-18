@@ -22,8 +22,8 @@
 
 ## Requirements
 - iOS 8.0+
-- Xcode 9.0+
-- Swift 4.0+
+- Xcode 10.0+
+- Swift 4.2+
 
 ## DEMO
 To run the example project, clone the repo, and open `KRProgressHUDDemo.xcodeproj` from the DEMO directory.
@@ -175,6 +175,9 @@ These `set()` setting can be reset by
 I'm seeking bug reports and feature requests.
 
 ## Release Note
++ 3.3.0 :
+  - Compatible with Swift 4.2.
+
 + 3.2.2 :
   - Compatible with Swift 4.1.
 
@@ -186,9 +189,6 @@ I'm seeking bug reports and feature requests.
   - Can now customize mask color.
   - HUD size varies dynamically depending on text length.
   - Fixed bug of HUD layout when the screen orientation changes. [#32](https://github.com/krimpedance/KRProgressHUD/pull/32)
-
-+ 3.1.2 :
-  - Fixed bug of custom small image.
 
 ## License
 KRProgressHUD is available under the MIT license.
