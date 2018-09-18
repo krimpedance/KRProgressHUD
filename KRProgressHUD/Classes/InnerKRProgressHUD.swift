@@ -18,7 +18,7 @@ private let messageLabelMinWidth = CGFloat(120)
 
 extension KRProgressHUD {
     func configureProgressHUDView() {
-        window.windowLevel = UIWindowLevelNormal
+        window.windowLevel = UIWindow.Level.normal
         hudViewController.view.translatesAutoresizingMaskIntoConstraints = false
 
         hudView.backgroundColor = .white
@@ -99,28 +99,28 @@ extension KRProgressHUD {
 extension KRProgressHUD {
     func setUpConstraints() {
         hudViewCenterYConstraint = NSLayoutConstraint(item: hudView, attribute: .centerY, toItem: hudViewController.view, constant: viewOffset ?? viewAppearance.viewOffset)
-        hudViewSideMarginConstraints.append(contentsOf: [
+        hudViewSideMarginConstraints += [
             NSLayoutConstraint(item: hudView, attribute: .left, relatedBy: .greaterThanOrEqual, toItem: hudViewController.view, constant: hudViewMargin),
             NSLayoutConstraint(item: hudView, attribute: .right, relatedBy: .lessThanOrEqual, toItem: hudViewController.view, constant: -hudViewMargin)
-        ])
+        ]
 
-        iconViewConstraints.append(contentsOf: [
+        iconViewConstraints += [
             NSLayoutConstraint(item: iconView, attribute: .top, toItem: hudView, constant: hudViewPadding),
             NSLayoutConstraint(item: iconView, attribute: .centerX, toItem: hudView),
             NSLayoutConstraint(item: iconView, attribute: .left, relatedBy: .greaterThanOrEqual, toItem: hudView, constant: hudViewPadding),
             NSLayoutConstraint(item: iconView, attribute: .right, relatedBy: .lessThanOrEqual, toItem: hudView, constant: -hudViewPadding),
             NSLayoutConstraint(item: iconView, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: hudView, constant: -hudViewPadding)
-        ])
+        ]
 
         messageLabelMinWidthConstraint = NSLayoutConstraint(item: messageLabel, attribute: .width, relatedBy: .greaterThanOrEqual, constant: messageLabelMinWidth)
-        messageLabelConstraints.append(contentsOf: [
+        messageLabelConstraints += [
             messageLabelMinWidthConstraint,
             NSLayoutConstraint(item: messageLabel, attribute: .top, toItem: iconView, attribute: .bottom, constant: messageLabelTopMargin),
             NSLayoutConstraint(item: messageLabel, attribute: .top, relatedBy: .greaterThanOrEqual, toItem: hudView, constant: hudViewPadding),
             NSLayoutConstraint(item: messageLabel, attribute: .left, toItem: hudView, constant: hudViewPadding),
             NSLayoutConstraint(item: messageLabel, attribute: .right, toItem: hudView, constant: -hudViewPadding),
             NSLayoutConstraint(item: messageLabel, attribute: .bottom, toItem: hudView, constant: -hudViewPadding)
-        ])
+        ]
 
         hudViewController.view.addConstraints([
             NSLayoutConstraint(item: hudView, attribute: .centerX, toItem: hudViewController.view),
