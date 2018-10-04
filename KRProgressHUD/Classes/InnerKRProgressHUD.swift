@@ -30,7 +30,6 @@ extension KRProgressHUD {
         iconView.translatesAutoresizingMaskIntoConstraints = false
 
         activityIndicatorView.frame.size = iconViewSize
-        activityIndicatorView.isLarge = true
         activityIndicatorView.animating = false
         activityIndicatorView.hidesWhenStopped = true
 
@@ -73,8 +72,8 @@ extension KRProgressHUD {
               imageSize: CGSize? = nil,
               isOnlyText: Bool = false,
               isLoading: Bool = false,
-              completion: CompletionHandler? = nil ) {
-        DispatchQueue.main.async {
+              completion: CompletionHandler? = nil) {
+        DispatchQueue.main.async { [unowned self] in
             self.applyStyles()
             self.updateLayouts(message: message, iconType: iconType, image: image, imageSize: imageSize, isOnlyText: isOnlyText)
 
@@ -88,7 +87,7 @@ extension KRProgressHUD {
     }
 
     func dismiss(completion: CompletionHandler?) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [unowned self] in
             self.fadeOutView(completion: completion)
         }
     }
@@ -141,12 +140,12 @@ extension KRProgressHUD {
     }
 
     func registerDismissHandler() {
-        dismissHandler = DispatchWorkItem {
+        dismissHandler = DispatchWorkItem { [unowned self] in
             KRProgressHUD.dismiss()
             _ = self.cancelCurrentDismissHandler()
         }
-        let deadline = DispatchTime.now() + (deadlineTime ?? viewAppearance.deadlineTime)
-        DispatchQueue.global().asyncAfter(deadline: deadline, execute: dismissHandler!)
+        let duration = DispatchTime.now() + (self.duration ?? viewAppearance.duration)
+        DispatchQueue.global().asyncAfter(deadline: duration, execute: dismissHandler!)
     }
 
     func fadeInView(completion: CompletionHandler?) {
@@ -164,7 +163,7 @@ extension KRProgressHUD {
         }
 
         KRProgressHUD.isVisible = true
-        UIView.animate(withDuration: fadeTime, animations: {
+        UIView.animate(withDuration: fadeTime, animations: { [unowned self] in
             self.hudView.alpha = 1
             self.hudViewController.view.alpha = 1
         }, completion: { _ in
@@ -173,9 +172,9 @@ extension KRProgressHUD {
     }
 
     func fadeOutView(completion: CompletionHandler?) {
-        UIView.animate(withDuration: fadeTime, animations: {
+        UIView.animate(withDuration: fadeTime, animations: { [unowned self] in
             self.hudViewController.view.alpha = 0
-        }, completion: { _ in
+        }, completion: { [unowned self] _ in
             self.appWindow?.makeKeyAndVisible()
             self.appWindow = nil
             self.window.isHidden = true
@@ -192,7 +191,7 @@ extension KRProgressHUD {
         messageLabel.textColor = style?.textColor ?? viewAppearance.style.textColor
         iconDrawingLayer.fillColor = style?.iconColor?.cgColor ?? viewAppearance.style.iconColor?.cgColor
         hudViewController.view.backgroundColor = maskType?.maskColor ?? viewAppearance.maskType.maskColor
-        activityIndicatorView.style = activityIndicatorStyle ?? viewAppearance.activityIndicatorStyle
+        activityIndicatorView.colors = activityIndicatorColors ?? viewAppearance.activityIndicatorColors
         messageLabel.font = font ?? viewAppearance.font
     }
 

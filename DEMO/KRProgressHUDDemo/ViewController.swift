@@ -99,24 +99,24 @@ extension ViewController {
     @IBAction func changedActivityIndicatorStyleControlValue(withSender sender: UISegmentedControl) {
         let headColor = colors[headColorControl.selectedSegmentIndex]
         let tailColor = colors[tailColorControl.selectedSegmentIndex]
-        let styles: [KRActivityIndicatorViewStyle] = [
-            .gradationColor(head: .black, tail: .lightGray),
-            .gradationColor(head: .white, tail: UIColor(white: 0.7, alpha: 1)),
-            .gradationColor(head: headColor, tail: tailColor)
+        let colorsList: [[UIColor]] = [
+            [.black, .lightGray],
+            [.white, UIColor(white: 0.7, alpha: 1)],
+            [headColor, tailColor]
         ]
-        KRProgressHUD.set(activityIndicatorViewStyle: styles[sender.selectedSegmentIndex])
+        KRProgressHUD.set(activityIndicatorViewColors: colorsList[sender.selectedSegmentIndex])
         switchColorPartsHidden(sender.selectedSegmentIndex != 2)
     }
 
     @IBAction func changedHeadColorControlValue(withSender sender: UISegmentedControl) {
         let headColor = colors[headColorControl.selectedSegmentIndex]
         let tailColor = colors[tailColorControl.selectedSegmentIndex]
-        KRProgressHUD.set(activityIndicatorViewStyle: .gradationColor(head: headColor, tail: tailColor))
+        KRProgressHUD.set(activityIndicatorViewColors: [headColor, tailColor])
     }
 
     @IBAction func changedTailColorControlValue(withSender sender: UISegmentedControl) {
         let headColor = colors[headColorControl.selectedSegmentIndex]
         let tailColor = colors[tailColorControl.selectedSegmentIndex]
-        KRProgressHUD.set(activityIndicatorViewStyle: .gradationColor(head: headColor, tail: tailColor))
+        KRProgressHUD.set(activityIndicatorViewColors: [headColor, tailColor])
     }
 }

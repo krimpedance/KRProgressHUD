@@ -135,14 +135,14 @@ class KRProgressHUDAppearance {
    public var style = KRProgressHUDStyle.white
    /// マスクタイプ
    public var maskType = KRProgressHUDMaskType.black
-   /// ローディングインジケータのスタイル
-   public var activityIndicatorStyle = KRActivityIndicatorViewStyle.gradationColor(head: .black, tail: .lightGray)
+   /// ローディングインジケータのグラデーションカラー
+    public var activityIndicatorColors = [UIColor]([.black, .lightGray])
    /// ラベルのフォント
    public var font = UIFont.systemFont(ofSize: 13)
    /// HUDのセンター位置
    public var viewCenterPosition = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
    /// HUDの表示時間.
-   public var deadlineTime = Double(1.0)
+    public var duration = Double(1.0)
 }
 ```
 
@@ -151,10 +151,10 @@ class KRProgressHUDAppearance {
 ```Swift
 @discardableResult public class func set(style: KRProgressHUDStyle) -> KRProgressHUD.Type
 @discardableResult public class func set(maskType: KRProgressHUDMaskType) -> KRProgressHUD.Type
-@discardableResult public class func set(activityIndicatorViewStyle style: KRActivityIndicatorViewStyle) -> KRProgressHUD.Type
+@discardableResult public class func set(activityIndicatorViewColors colors: [UIColor]) -> KRProgressHUD.Type
 @discardableResult public class func set(font: UIFont) -> KRProgressHUD.Type
 @discardableResult public class func set(centerPosition point: CGPoint) -> KRProgressHUD.Type
-@discardableResult public class func set(deadlineTime time: Double) -> KRProgressHUD.Type
+@discardableResult public class func set(duration: Double) -> KRProgressHUD.Type
 
 
 // 例
@@ -175,20 +175,12 @@ KRProgressHUD
 バグや機能のリクエストがありましたら, 気軽にコメントしてください.
 
 ## リリースノート
++ 3.4.0 :
+  - KRActivityIndicatorView@3.0.0 に対応.
+  - いくつかのプロパティ名と関数名を変更.
+
 + 3.3.0 :
   - Swift 4.2 に対応.
-
-+ 3.2.2 :
-  - Swift 4.1 に対応.
-
-+ 3.2.1 :
-  - `UINavigationController` を使用した時，無限ループになるバグを修正. [#34](https://github.com/krimpedance/KRProgressHUD/pull/34)
-  - `showOn(_ viewController:)` 関数を使用した時にレイアウトが崩れるバグを修正.
-
-+ 3.2.0 :
-  - マスクカラーを好きな色に設定できるようになりました.
-  - HUDのサイズはテキストサイズによって動的に変化するようになります.
-  - 画面の向きが変わったときのレイアウトのバグを修正しました. [#32](https://github.com/krimpedance/KRProgressHUD/pull/32)
 
 ## ライセンス
 KRProgressHUDはMITライセンスに準拠しています.

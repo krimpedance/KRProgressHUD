@@ -33,7 +33,7 @@ class KRProgressHUDTests: XCTestCase {
 
         KRProgressHUD.appearance().style = .custom(background: .red, text: .white, icon: .green)
         KRProgressHUD.appearance().maskType = .clear
-        KRProgressHUD.appearance().activityIndicatorStyle = .color(.yellow)
+        KRProgressHUD.appearance().activityIndicatorColors = [.yellow]
         KRProgressHUD.appearance().font = UIFont.systemFont(ofSize: 20)
 
         KRProgressHUD.shared.applyStyles()
@@ -50,7 +50,7 @@ class KRProgressHUDTests: XCTestCase {
         KRProgressHUD
             .set(style: .custom(background: .red, text: .orange, icon: .black))
             .set(maskType: .white)
-            .set(activityIndicatorViewStyle: .gradationColor(head: .red, tail: .blue))
+            .set(activityIndicatorViewColors: [.red, .blue])
             .set(font: UIFont.systemFont(ofSize: 10))
             .shared
             .applyStyles()
