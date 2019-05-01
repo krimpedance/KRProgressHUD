@@ -22,8 +22,8 @@
 
 ## Requirements
 - iOS 8.0+
-- Xcode 10.0+
-- Swift 4.2+
+- Xcode 10.2+
+- Swift 5.0+
 
 ## DEMO
 To run the example project, clone the repo, and open `KRProgressHUDDemo.xcodeproj` from the DEMO directory.
@@ -175,6 +175,9 @@ These `set()` setting can be reset by
 I'm seeking bug reports and feature requests.
 
 ## Release Note
++ 3.4.1 :
+  - Compatible with Swift 5.0.
+
 + 3.4.0 :
   - Updated for KRActivityIndicatorView@3.0.0.
   - Few properties and methods were renamed.

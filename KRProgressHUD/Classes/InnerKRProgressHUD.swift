@@ -246,10 +246,10 @@ extension KRProgressHUD {
     func setConstraintsToPresentingVC() {
         guard let view = presentingViewController?.view, view == hudViewController.view.superview else { return }
         view.addConstraints([
-            NSLayoutConstraint(item: hudViewController.view, attribute: .top, toItem: view),
-            NSLayoutConstraint(item: hudViewController.view, attribute: .bottom, toItem: view),
-            NSLayoutConstraint(item: hudViewController.view, attribute: .left, toItem: view),
-            NSLayoutConstraint(item: hudViewController.view, attribute: .right, toItem: view)
+            NSLayoutConstraint(item: hudViewController.view!, attribute: .top, toItem: view),
+            NSLayoutConstraint(item: hudViewController.view!, attribute: .bottom, toItem: view),
+            NSLayoutConstraint(item: hudViewController.view!, attribute: .left, toItem: view),
+            NSLayoutConstraint(item: hudViewController.view!, attribute: .right, toItem: view)
         ])
     }
 }

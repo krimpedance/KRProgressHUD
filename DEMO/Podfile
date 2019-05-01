@@ -1,0 +1,7 @@
+# Podfile
+platform :ios, '12.2'
+
+target 'KRProgressHUDDemo' do
+  use_frameworks!
+  pod 'KRProgressHUD', path: '../KRProgressHUD.podspec'
+end
