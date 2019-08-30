@@ -154,10 +154,12 @@ extension KRProgressHUD {
         } else {
             hudViewController.view.alpha = 0
             if let presentingVC = presentingViewController {
+                window.rootViewController = nil
+                presentingVC.addChild(hudViewController)
                 presentingVC.view.addSubview(hudViewController.view)
                 setConstraintsToPresentingVC()
+                presentingVC.didMove(toParent: hudViewController)
             } else {
-                appWindow = UIApplication.shared.keyWindow
                 window.makeKeyAndVisible()
             }
         }
@@ -175,11 +177,14 @@ extension KRProgressHUD {
         UIView.animate(withDuration: fadeTime, animations: { [unowned self] in
             self.hudViewController.view.alpha = 0
         }, completion: { [unowned self] _ in
-            self.appWindow?.makeKeyAndVisible()
-            self.appWindow = nil
             self.window.isHidden = true
-            self.hudViewController.view.removeFromSuperview()
-            self.presentingViewController = nil
+            if self.presentingViewController != nil {
+                self.hudViewController.willMove(toParent: nil)
+                self.hudViewController.view.removeFromSuperview()
+                self.hudViewController.removeFromParent()
+                self.presentingViewController = nil
+                self.window.rootViewController = self.hudViewController
+            }
             self.activityIndicatorView.stopAnimating()
             KRProgressHUD.isVisible = false
             completion?()
