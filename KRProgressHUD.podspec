@@ -10,9 +10,10 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.platform     = :ios, '8.0'
   s.ios.deployment_target = '8.0'
+  s.swift_version = '5.1'
 
   s.source       = { :git => "https://github.com/krimpedance/KRProgressHUD.git", :tag => s.version.to_s }
   s.source_files = "KRProgressHUD/**/*.swift"
 
-  s.dependency "KRActivityIndicatorView", "3.0.2"
+  s.dependency "KRActivityIndicatorView", "3.0.3"
 end
