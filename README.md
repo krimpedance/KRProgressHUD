@@ -22,7 +22,7 @@
 
 ## Requirements
 - iOS 8.0+
-- Xcode 10.2+
+- Xcode 11.0+
 - Swift 5.0+
 
 ## DEMO
@@ -175,6 +175,9 @@ These `set()` setting can be reset by
 I'm seeking bug reports and feature requests.
 
 ## Release Note
++ 3.4.2 :
+  - Fix for iOS 13 & Xcode 11.
+
 + 3.4.1 :
   - Compatible with Swift 5.0.
 
