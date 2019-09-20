@@ -121,7 +121,6 @@ public final class KRProgressHUD {
     var messageLabelMinWidthConstraint: NSLayoutConstraint!
 
     var dismissHandler: DispatchWorkItem?
-    weak var appWindow: UIWindow?
     weak var presentingViewController: UIViewController?
 
     /// This have whether HUD is indicated.

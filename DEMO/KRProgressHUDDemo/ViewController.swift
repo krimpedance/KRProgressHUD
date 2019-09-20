@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  KRProgressHUDDemo
 //
-//  Copyright © 2016 Krimpedance. All rights reserved.
+//  Copyright © 2019 Krimpedance. All rights reserved.
 //
 
 import UIKit
