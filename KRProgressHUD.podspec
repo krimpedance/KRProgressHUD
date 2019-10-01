@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "KRProgressHUD"
-  s.version      = "3.4.3"
+  s.version      = "3.4.4"
   s.summary      = "A beautiful progress HUD for your iOS."
   s.description  = "KRProgressHUD is a beautiful and easy-to-use HUD meant to display the progress on iOS."
   s.homepage     = "https://github.com/krimpedance/KRProgressHUD"
@@ -15,5 +15,5 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/krimpedance/KRProgressHUD.git", :tag => s.version.to_s }
   s.source_files = "KRProgressHUD/**/*.swift"
 
-  s.dependency "KRActivityIndicatorView", "3.0.3"
+  s.dependency "KRActivityIndicatorView", "3.0.4"
 end
