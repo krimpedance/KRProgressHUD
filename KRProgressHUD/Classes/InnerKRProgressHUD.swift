@@ -77,18 +77,36 @@ extension KRProgressHUD {
             self.applyStyles()
             self.updateLayouts(message: message, iconType: iconType, image: image, imageSize: imageSize, isOnlyText: isOnlyText)
 
-            let deadline = self.cancelCurrentDismissHandler() ? 0 : fadeTime
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + deadline) {
-                self.fadeInView(completion: completion)
-                if isLoading { return }
-                self.registerDismissHandler()
+            if let graceTime = self.graceTime, graceTime > 0.0 {
+                let timer = Timer(timeInterval: graceTime, target: self, selector: #selector(self.handleGraceTimer), userInfo: nil, repeats: false)
+                RunLoop.current.add(timer, forMode: .common)
+                self.graceTimer = timer
+            } else {
+                self.shoHudView(isLoading: isLoading, completion: completion)
             }
         }
     }
 
     func dismiss(completion: CompletionHandler?) {
         DispatchQueue.main.async { [unowned self] in
+            self.graceTimer?.invalidate()
             self.fadeOutView(completion: completion)
+        }
+    }
+
+    private func shoHudView(isLoading: Bool, completion: CompletionHandler? = nil) {
+        let deadline = self.cancelCurrentDismissHandler() ? 0 : fadeTime
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + deadline) {
+            self.graceTimer?.invalidate()
+            self.fadeInView(completion: completion)
+            if isLoading { return }
+            self.registerDismissHandler()
+        }
+    }
+
+    @objc private func handleGraceTimer() {
+        if graceTimer?.isValid ?? false {
+            shoHudView(isLoading: false, completion: nil)
         }
     }
 }
