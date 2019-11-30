@@ -76,9 +76,9 @@ extension KRProgressHUD {
         DispatchQueue.main.async { [unowned self] in
             self.applyStyles()
             self.updateLayouts(message: message, iconType: iconType, image: image, imageSize: imageSize, isOnlyText: isOnlyText)
+            self.isLoading = isLoading
 
             if let graceTime = self.graceTime, graceTime > 0 {
-                self.isLoading = isLoading
                 let timer = Timer(timeInterval: graceTime, target: self, selector: #selector(self.handleGraceTimer), userInfo: nil, repeats: false)
                 RunLoop.current.add(timer, forMode: .common)
                 self.graceTimer = timer
