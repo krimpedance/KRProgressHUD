@@ -89,16 +89,16 @@ extension KRProgressHUD {
     }
 
     func dismiss(completion: CompletionHandler?) {
-        graceTimer?.invalidate()
         DispatchQueue.main.async { [unowned self] in
+            self.graceTimer?.invalidate()
             self.fadeOutView(completion: completion)
         }
     }
 
     private func shoHudView(isLoading: Bool, completion: CompletionHandler? = nil) {
-        graceTimer?.invalidate()
         let deadline = self.cancelCurrentDismissHandler() ? 0 : fadeTime
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + deadline) {
+            self.graceTimer?.invalidate()
             self.fadeInView(completion: completion)
             if isLoading { return }
             self.registerDismissHandler()
