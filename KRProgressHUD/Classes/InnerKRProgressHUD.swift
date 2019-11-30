@@ -77,7 +77,8 @@ extension KRProgressHUD {
             self.applyStyles()
             self.updateLayouts(message: message, iconType: iconType, image: image, imageSize: imageSize, isOnlyText: isOnlyText)
 
-            if let graceTime = self.graceTime, graceTime > 0.0 {
+            if let graceTime = self.graceTime, graceTime > 0 {
+                self.isLoading = isLoading
                 let timer = Timer(timeInterval: graceTime, target: self, selector: #selector(self.handleGraceTimer), userInfo: nil, repeats: false)
                 RunLoop.current.add(timer, forMode: .common)
                 self.graceTimer = timer
@@ -106,7 +107,7 @@ extension KRProgressHUD {
 
     @objc private func handleGraceTimer() {
         if graceTimer?.isValid ?? false {
-            shoHudView(isLoading: false, completion: nil)
+            shoHudView(isLoading: isLoading, completion: nil)
         }
     }
 }

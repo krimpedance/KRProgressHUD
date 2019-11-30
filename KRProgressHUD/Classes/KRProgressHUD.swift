@@ -114,6 +114,7 @@ public final class KRProgressHUD {
     var viewOffset: CGFloat?
     var duration: Double?
     var graceTime: Double?
+    var isLoading = false
 
     var graceTimer: Timer?
 
