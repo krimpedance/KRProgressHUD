@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.2
 
 import PackageDescription
 
@@ -11,7 +11,7 @@ let package = Package(
             targets: ["KRProgressHUD"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/krimpedance/KRActivityIndicatorView.git", from: "3.0.4"),
+        .package(url: "https://github.com/krimpedance/KRActivityIndicatorView.git", from: "3.0.5"),
     ],
     targets: [
         .target(

@@ -42,7 +42,7 @@ public enum KRProgressHUDStyle {
         switch self {
         case .white: return .white
         case .black: return .black
-        case .custom(let style): return style.background
+        case let .custom(background, _, _): return background
         }
     }
 
@@ -50,13 +50,13 @@ public enum KRProgressHUDStyle {
         switch self {
         case .white: return .black
         case .black: return .white
-        case .custom(let style): return style.text
+        case let .custom(_, text, _): return text
         }
     }
 
     var iconColor: UIColor? {
         switch self {
-        case .custom(let style): return style.icon
+        case let .custom(_, _, icon): return icon
         default: return nil
         }
     }
