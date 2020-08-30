@@ -154,7 +154,7 @@ When you'd like to make styles reflected only in specific situation, use followi
 @discardableResult public class func set(maskType: KRProgressHUDMaskType) -> KRProgressHUD.Type
 @discardableResult public class func set(activityIndicatorViewColors colors: [UIColor]) -> KRProgressHUD.Type
 @discardableResult public class func set(font: UIFont) -> KRProgressHUD.Type
-@discardableResult public class func set(centerPosition point: CGPoint) -> KRProgressHUD.Type
+@discardableResult public class func set(viewOffset offset: CGFloat) -> KRProgressHUD.Type
 @discardableResult public class func set(duration: Double) -> KRProgressHUD.Type
 
 
