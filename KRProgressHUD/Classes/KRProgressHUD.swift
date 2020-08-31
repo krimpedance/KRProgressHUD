@@ -113,6 +113,10 @@ public final class KRProgressHUD {
     var font: UIFont?
     var viewOffset: CGFloat?
     var duration: Double?
+    var graceTime: Double?
+    var isLoading = false
+
+    var graceTimer: Timer?
 
     var hudViewCenterYConstraint: NSLayoutConstraint!
     var hudViewSideMarginConstraints = [NSLayoutConstraint]()
@@ -213,6 +217,11 @@ extension KRProgressHUD {
     /// - Returns: KRProgressHUD.Type (discardable)
     @discardableResult public static func set(duration: Double) -> KRProgressHUD.Type {
         shared.duration = duration
+        return KRProgressHUD.self
+    }
+
+    @discardableResult public static func set(graceTime: Double) -> KRProgressHUD.Type {
+        shared.graceTime = graceTime
         return KRProgressHUD.self
     }
 
