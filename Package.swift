@@ -1,10 +1,10 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.3
 
 import PackageDescription
 
 let package = Package(
     name: "KRProgressHUD",
-    platforms: [.iOS(.v8)],
+    platforms: [.iOS(.v12)],
     products: [
         .library(
             name: "KRProgressHUD",

@@ -21,9 +21,9 @@
 - Indicator color can be customized
 
 ## Requirements
-- iOS 8.0+
-- Xcode 11.0+
-- Swift 5.1+
+- iOS 12.0+
+- Xcode 12.0+
+- Swift 5.3+
 
 ## DEMO
 To run the example project, clone the repo, and open `KRProgressHUDDemo.xcodeproj` from the DEMO directory.
@@ -175,6 +175,10 @@ These `set()` setting can be reset by
 I'm seeking bug reports and feature requests.
 
 ## Release Note
++ 4.0.0:
+- Drop versions below iOS 12
+- Xcode 12 updates
+
 + 3.4.4 :
   - Support SwiftPM.
 
