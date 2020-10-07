@@ -1,5 +1,5 @@
 # Podfile
-platform :ios, '8.0'
+platform :ios, '10.0'
 
 target 'KRProgressHUDDemo' do
   use_frameworks!
