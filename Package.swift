@@ -11,7 +11,7 @@ let package = Package(
             targets: ["KRProgressHUD"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/krimpedance/KRActivityIndicatorView.git", from: "3.0.6"),
+        .package(url: "https://github.com/krimpedance/KRActivityIndicatorView.git", from: "3.0.7"),
     ],
     targets: [
         .target(

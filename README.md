@@ -175,6 +175,9 @@ These `set()` setting can be reset by
 I'm seeking bug reports and feature requests.
 
 ## Release Note
++ 3.4.7 :
+  - Support for iOS 11 and below
+
 + 3.4.6 :
   - Update for Xcode 12
 
